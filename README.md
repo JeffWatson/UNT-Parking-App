@@ -1,4 +1,4 @@
 UNT-Parking-App
 ===============
 
-This application will offer funcationality of a parking application.
+This application will offer functionality of a parking application.
