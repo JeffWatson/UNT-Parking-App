@@ -1,24 +1,18 @@
 package com.ParkingSquad.ParkingApp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 
 import java.util.Locale;
+
+//import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable;
 
 public class ParkingActivity extends FragmentActivity {
     private static final String TAG = "ParkingActivity";
@@ -30,7 +24,7 @@ public class ParkingActivity extends FragmentActivity {
     /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
 
         context = this.getApplicationContext();
 
@@ -58,7 +52,7 @@ public class ParkingActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -91,13 +85,17 @@ public class ParkingActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a DummySectionFragment (defined as a static inner class
-            // below) with the page number as its lone argument.
-            Fragment fragment = new DummySectionFragment();
-            Bundle args = new Bundle();
-            args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-            fragment.setArguments(args);
-            return fragment;
+            // Return a the applicable Fragment for each section
+            switch (position) {
+                case 0: // Parking status fragment
+                    return new ParkingStatusFragment();
+
+                case 1: // Map Fragment
+                    return new ParkingMapFragment();
+
+                default: //Settings Fragment
+                    return new SettingsFragment();
+            }
         }
 
         @Override
@@ -111,40 +109,13 @@ public class ParkingActivity extends FragmentActivity {
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
+                    return getString(R.string.title_status).toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return getString(R.string.title_map).toUpperCase(l);
                 case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
+                    return getString(R.string.title_setting).toUpperCase(l);
             }
             return null;
-        }
-    }
-
-    /**
-     * A dummy fragment representing a section of the app, but that simply
-     * displays dummy text.
-     */
-    public static class DummySectionFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        public static final String ARG_SECTION_NUMBER = "section_number";
-
-        public DummySectionFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.dummy_layout,
-                    container, false);
-            TextView dummyTextView = (TextView) rootView
-                    .findViewById(R.id.section_label);
-            dummyTextView.setText(Integer.toString(getArguments().getInt(
-                    ARG_SECTION_NUMBER)));
-            return rootView;
         }
     }
 }
