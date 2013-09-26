@@ -5,4 +5,6 @@
     <string name="title_status">Parking Status</string>
     <string name="title_map">Map</string>
     <string name="title_setting">Settings</string>
+    <string name="current_price">Current Price</string>
+    <string name="last_updated">Last Updated: </string>
 </resources>

@@ -34,6 +34,7 @@ public class ParkingMapFragment extends SupportMapFragment {
         // add the marker to the map and zoom to that location.
         googleMap.addMarker(mOptions);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DENTON_PARKING_GARAGE, 15));
+        //googleMap.setMyLocationEnabled(true);
 
         return view;
     }
