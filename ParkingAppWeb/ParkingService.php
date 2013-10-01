@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>UNT Parking Garage Console</title>
-  <link rel="stylesheet" type="text/css" href="demo.css" />
+  <link rel="stylesheet" type="text/css" href="parkingServices.css" />
 </head>
 
 <body>
