@@ -62,7 +62,7 @@ $db = new SQLite3('./parking.db');
 
 // select everything in the database
 $statement = $db->prepare('SELECT * FROM parking;');
-$results = $statement->execute();
+$results =  $statement->execute();
 
 // fetch an array for every row
 while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
