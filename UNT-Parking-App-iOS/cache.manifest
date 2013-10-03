@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# hash +VhP+9yOsapbw8k9y8ujeLlSOoM=
+# hash uCzga5CCdXatZ8Nd1syi0CPStO0=
 # uuid 0a9e5f2231c949cdaa49ff0ed7433bb5
 
 images/Default.png
@@ -8,6 +8,7 @@ res/images/checkboxOff.png
 res/images/checkboxOn.png
 res/images/homescreenPrompt.png
 res/images/icon.png
+res/images/marker1.png
 res/images/navigationBar.png
 res/images/sw-alpha-multi.png
 res/images/sw-alpha.png
@@ -19,6 +20,7 @@ res/images/sw-no-check.png
 res/images/sw-slot-border.png
 res/iscroll.js
 res/jquery-1.8.3.min.js
+res/phoneui-map.js
 res/phoneui.js
 res/spinningwheel.css
 res/spinningwheel.js

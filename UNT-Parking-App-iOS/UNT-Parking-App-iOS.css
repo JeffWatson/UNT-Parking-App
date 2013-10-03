@@ -78,6 +78,11 @@
   z-index: 99;
 }
 
+.m1-map{
+  background-color: rgb(255,255,255);
+  white-space: normal;
+}
+
 .m1-iscroll-wrapper{
   overflow: hidden;
 }
@@ -303,6 +308,12 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
+.m1-border-2{
+  -webkit-border-radius: 0px;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+}
+
 .m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-4{
   background-color: rgb(255,255,255);
   background-image: none;
@@ -347,7 +358,7 @@ li > .m1-list .m1-text{
   background-image: none;
 }
 
-.m1-selected.m1-border-2{
+.m1-selected.m1-border-3{
   -webkit-border-radius: 3px;
 }
 
@@ -596,6 +607,26 @@ body{
   left: 0px;
   top: 0px;
   width: 100.0%;
+}
+
+#m1-UNT-Parking-App-iOS-map1{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 364px;
+  left: 0px;
+  line-height: 40px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-UNT-Parking-App-iOS-map1outer{
+  border-width: 1px 1px 1px 1px;
+  height: 368px;
+  left: 0px;
+  line-height: 366px;
+  top: 0px;
+  width: 320px;
 }
 
 #m1-UNT-Parking-App-iOS-text2{
