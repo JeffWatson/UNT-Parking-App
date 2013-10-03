@@ -36,6 +36,7 @@ public class ParkingMapFragment extends SupportMapFragment {
 
         // get the map
         googleMap = getMap();
+        googleMap.setPadding(4,4,4,4);                      // set map padding for the map view     KS
 
         // Create a marker that shows the parking garage on the map
         MarkerOptions mOptions = new MarkerOptions();
