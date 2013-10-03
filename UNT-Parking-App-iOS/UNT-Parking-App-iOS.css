@@ -295,15 +295,9 @@ li > .m1-list .m1-text{
   -webkit-border-radius: 0px;
 }
 
-.m1-background-3{
-  background-color: rgba(0,0,0,0);
-  background-image: 
-    -webkit-gradient(linear, 50.0% 0.0, 50.0% 100.0%, from(rgb(179,190,206)), to(rgb(109,131,161)), color-stop(0.499,rgb(136,154,178)), color-stop(0.501,rgb(129,148,173)));
-}
-
 .m1-font-1{
   color: rgb(255,255,255);
-  font-family: Helvetica;
+  font-family: Arial;
   font-size: 19px;
   font-weight: bold;
   text-decoration: none;
@@ -315,15 +309,15 @@ li > .m1-list .m1-text{
 }
 
 .m1-font-2{
-  color: rgb(255,255,255);
-  font-family: Helvetica;
+  color: rgb(0,0,0);
+  font-family: Arial;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
 }
 
 .m1-shadow-1{
-  text-shadow: rgb(64,64,64) 1px 1px 1px;
+  text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
 .m1-list.m1-plain-list > .m1-list-header.m1-background-5{
@@ -334,14 +328,10 @@ li > .m1-list .m1-text{
 
 .m1-font-3{
   color: rgb(0,0,0);
-  font-family: Helvetica;
+  font-family: Arial;
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
-}
-
-.m1-shadow-2{
-  text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
 .m1-font-4{
@@ -352,7 +342,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-background-6,.m1-selected.m1-background-7{
+.m1-background-3,.m1-selected.m1-background-6{
   background-color: rgb(5,144,51);
   background-image: none;
 }
@@ -481,16 +471,16 @@ body{
   border-width: 1px 0px 0px 0px;
   height: 45px;
   left: 8px;
-  line-height: 32px;
+  line-height: 29px;
   margin-right: 0px;
-  top: 5px;
+  top: 8px;
   width: auto;
 }
 
 #m1-UNT-Parking-App-iOS-listHeader10{
   height: 45px;
   left: 0px;
-  line-height: 32px;
+  line-height: 29px;
   margin-right: 0px;
   top: 0px;
   width: auto;
@@ -506,11 +496,11 @@ body{
 }
 
 #m1-UNT-Parking-App-iOS-text4{
-  height: 25px;
+  height: 23px;
   left: 122px;
-  line-height: 25px;
+  line-height: 23px;
   text-align: center;
-  top: 9px;
+  top: 10px;
   width: 76px;
 }
 
@@ -609,11 +599,11 @@ body{
 }
 
 #m1-UNT-Parking-App-iOS-text2{
-  height: 25px;
+  height: 23px;
   left: 140px;
-  line-height: 25px;
+  line-height: 23px;
   text-align: center;
-  top: 9px;
+  top: 10px;
   width: 40px;
 }
 
@@ -654,11 +644,11 @@ body{
 }
 
 #m1-UNT-Parking-App-iOS-text1{
-  height: 25px;
+  height: 23px;
   left: 92px;
-  line-height: 25px;
+  line-height: 23px;
   text-align: center;
-  top: 9px;
+  top: 10px;
   width: 136px;
 }
 
