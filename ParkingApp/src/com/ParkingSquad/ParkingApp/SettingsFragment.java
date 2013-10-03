@@ -31,6 +31,9 @@ public class SettingsFragment extends Fragment {
         ArrayList<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
         ArrayList<ArrayList<Map<String, String>>> childData = new ArrayList<ArrayList<Map<String, String>>>();
 
+
+        // TODO convert these arrays to resources.
+
         HashMap<String, String> groupMap = new HashMap<String, String>();
         groupMap.put("Notifications", "Notifications");
         groupData.add(groupMap);
@@ -46,7 +49,6 @@ public class SettingsFragment extends Fragment {
         childInnerList.add(childMap2);
 
         childData.add(childInnerList);
-
 
         try{
             SimpleExpandableListAdapter expListAdapter =

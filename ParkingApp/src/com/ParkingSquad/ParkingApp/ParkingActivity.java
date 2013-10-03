@@ -18,21 +18,6 @@ public class ParkingActivity extends FragmentActivity {
     private static final String TAG = "ParkingActivity";
     private Context context;
 
-    /**
-     * Called when the activity is first created.
-     */
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        context = this.getApplicationContext();
-
-        Toast.makeText(context, "This is a toast message!", Toast.LENGTH_SHORT).show();
-
-        Log.i(TAG, "This is how you use logs!");
-    }     */
-
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -63,6 +48,8 @@ public class ParkingActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        mViewPager.setCurrentItem(1);
+
     }
 
     @Override
@@ -87,11 +74,11 @@ public class ParkingActivity extends FragmentActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a the applicable Fragment for each section
             switch (position) {
-                case 0: // Parking status fragment
-                    return new ParkingStatusFragment();
-
-                case 1: // Map Fragment
+                case 0: // Map Fragment
                     return new ParkingMapFragment();
+
+                case 1: // Parking status fragment
+                    return new PromotionStatusFragment();
 
                 default: //Settings Fragment
                     return new SettingsFragment();
@@ -109,9 +96,9 @@ public class ParkingActivity extends FragmentActivity {
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_status).toUpperCase(l);
-                case 1:
                     return getString(R.string.title_map).toUpperCase(l);
+                case 1:
+                    return getString(R.string.title_status).toUpperCase(l);
                 case 2:
                     return getString(R.string.title_setting).toUpperCase(l);
             }

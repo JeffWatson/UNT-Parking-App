@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/promotion_parent"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/status_black_rounded_bg" >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_price"
+                android:id="@+id/promotion_header"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textAllCaps="true"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="CURRENT"
+                android:id="@+id/promotion_value"
+                android:gravity="center_horizontal"
+                android:textSize="50dp"
+                android:background="@color/UNT_green"
+                android:textColor="@color/white" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_updated"
+                android:id="@+id/promotion_timestamp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textAllCaps="true"/>
+    </LinearLayout>
+</LinearLayout>
