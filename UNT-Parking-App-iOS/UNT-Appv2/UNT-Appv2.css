@@ -320,15 +320,15 @@ li > .m1-list .m1-text{
 }
 
 .m1-font-2{
-  color: rgb(0,0,0);
-  font-family: Arial;
+  color: rgb(255,255,255);
+  font-family: Helvetica;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
 }
 
 .m1-shadow-1{
-  text-shadow: rgb(255,255,255) 1px 1px 1px;
+  text-shadow: rgb(64,64,64) 1px 1px 1px;
 }
 
 .m1-list.m1-plain-list > .m1-list-header.m1-background-5{
@@ -343,6 +343,10 @@ li > .m1-list .m1-text{
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
+}
+
+.m1-shadow-2{
+  text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
 .m1-font-4{
@@ -383,7 +387,7 @@ body{
   overflow: visible;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Settings-label{
+#m1-UNT-Appv2-tabBar1-Settings-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -392,21 +396,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Settings-img{
+#m1-UNT-Appv2-tabBar1-Settings-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Settings{
+#m1-UNT-Appv2-tabBar1-Settings{
   height: 43px;
   left: 215px;
   top: -83px;
   width: 100px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Map-label{
+#m1-UNT-Appv2-tabBar1-Map-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -415,21 +419,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Map-img{
+#m1-UNT-Appv2-tabBar1-Map-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-Map{
+#m1-UNT-Appv2-tabBar1-Map{
   height: 43px;
   left: 109px;
   top: -40px;
   width: 100px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-ParkingStatus-label{
+#m1-UNT-Appv2-tabBar1-ParkingStatus-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -438,21 +442,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-ParkingStatus-img{
+#m1-UNT-Appv2-tabBar1-ParkingStatus-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1-ParkingStatus{
+#m1-UNT-Appv2-tabBar1-ParkingStatus{
   height: 43px;
   left: 3px;
   top: 3px;
   width: 100px;
 }
 
-#m1-UNT-Parking-App-iOS-tabBar1{
+#m1-UNT-Appv2-tabBar1{
   height: 49px;
   left: 0px;
   line-height: 49px;
@@ -461,7 +465,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-checkbox2{
+#m1-UNT-Appv2-checkbox1{
   height: 21px;
   left: 284px;
   line-height: 21px;
@@ -469,7 +473,7 @@ body{
   width: 21px;
 }
 
-#m1-UNT-Parking-App-iOS-checkbox1{
+#m1-UNT-Appv2-checkbox2{
   height: 21px;
   left: 284px;
   line-height: 21px;
@@ -477,7 +481,7 @@ body{
   width: 21px;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader10-label{
+#m1-UNT-Appv2-listHeader1-label{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 45px;
@@ -488,7 +492,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader10{
+#m1-UNT-Appv2-listHeader1{
   height: 45px;
   left: 0px;
   line-height: 29px;
@@ -497,7 +501,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-list3{
+#m1-UNT-Appv2-list1{
   height: 45px;
   left: 0px;
   line-height: 45px;
@@ -506,7 +510,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-text4{
+#m1-UNT-Appv2-text1{
   height: 23px;
   left: 122px;
   line-height: 23px;
@@ -515,7 +519,7 @@ body{
   width: 76px;
 }
 
-#m1-UNT-Parking-App-iOS-navigation3{
+#m1-UNT-Appv2-navigation1{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -524,7 +528,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader1-label{
+#m1-UNT-Appv2-listHeader2-label{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 30px;
@@ -535,7 +539,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader1{
+#m1-UNT-Appv2-listHeader2{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -544,7 +548,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-list1{
+#m1-UNT-Appv2-list2{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -553,7 +557,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader8-label{
+#m1-UNT-Appv2-listHeader3-label{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 30px;
@@ -564,7 +568,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-listHeader8{
+#m1-UNT-Appv2-listHeader3{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -573,7 +577,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-list2{
+#m1-UNT-Appv2-list3{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -582,7 +586,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Settings-box-scroller{
+#m1-UNT-Appv2-Settings-box-scroller{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 411px;
@@ -593,7 +597,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Settings-box{
+#m1-UNT-Appv2-Settings-box{
   height: 411px;
   left: 0px;
   line-height: 411px;
@@ -602,14 +606,14 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Settings{
+#m1-UNT-Appv2-Settings{
   height: 100.0%;
   left: 0px;
   top: 0px;
   width: 100.0%;
 }
 
-#m1-UNT-Parking-App-iOS-map1{
+#m1-UNT-Appv2-map1{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 364px;
@@ -620,7 +624,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-map1outer{
+#m1-UNT-Appv2-map1outer{
   border-width: 1px 1px 1px 1px;
   height: 368px;
   left: 0px;
@@ -629,7 +633,7 @@ body{
   width: 320px;
 }
 
-#m1-UNT-Parking-App-iOS-text2{
+#m1-UNT-Appv2-text2{
   height: 23px;
   left: 140px;
   line-height: 23px;
@@ -638,7 +642,7 @@ body{
   width: 40px;
 }
 
-#m1-UNT-Parking-App-iOS-navigation2{
+#m1-UNT-Appv2-navigation2{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -647,7 +651,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Map-box-scroller{
+#m1-UNT-Appv2-Map-box-scroller{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 411px;
@@ -658,7 +662,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Map-box{
+#m1-UNT-Appv2-Map-box{
   height: 411px;
   left: 0px;
   line-height: 411px;
@@ -667,14 +671,14 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-Map{
+#m1-UNT-Appv2-Map{
   height: 100.0%;
   left: 0px;
   top: 0px;
   width: 100.0%;
 }
 
-#m1-UNT-Parking-App-iOS-text1{
+#m1-UNT-Appv2-text3{
   height: 23px;
   left: 92px;
   line-height: 23px;
@@ -683,7 +687,7 @@ body{
   width: 136px;
 }
 
-#m1-UNT-Parking-App-iOS-navigation1{
+#m1-UNT-Appv2-navigation3{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -692,7 +696,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-ParkingStatus-box-scroller{
+#m1-UNT-Appv2-ParkingStatus-box-scroller{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 411px;
@@ -703,7 +707,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-ParkingStatus-box{
+#m1-UNT-Appv2-ParkingStatus-box{
   height: 411px;
   left: 0px;
   line-height: 411px;
@@ -712,14 +716,14 @@ body{
   width: auto;
 }
 
-#m1-UNT-Parking-App-iOS-ParkingStatus{
+#m1-UNT-Appv2-ParkingStatus{
   height: 100.0%;
   left: 0px;
   top: 0px;
   width: 100.0%;
 }
 
-#m1-UNT-Parking-App-iOS-multiPage1{
+#m1-UNT-Appv2-multiPage1{
   height: 411px;
   left: 0px;
   line-height: 411px;
