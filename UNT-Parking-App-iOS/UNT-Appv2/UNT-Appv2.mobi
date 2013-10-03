@@ -191,7 +191,7 @@
         <Property name="On Page Change" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
           <action title="(none)"/>
         </Property>
-        <Property name="Active Page" type="java.lang.Integer" value="2"/>
+        <Property name="Active Page" type="java.lang.Integer" value="1"/>
       </Properties>
       <actual-rect x="0" y="0" width="320" height="411"/>
       <Constraints>
@@ -246,9 +246,9 @@
             <AbsoluteConstraints CONSTRAINTS="N:0.0px:100.0%:0.0px|N:0.0px:100.0%:0.0px"/>
           </Constraints>
           <SubComponents>
-            <Component class="com.genuitec.mobione.designer.comp.iphone.Checkbox" name="checkbox1">
+            <Component class="com.genuitec.mobione.designer.comp.iphone.Checkbox" name="Promotions">
               <Properties>
-                <Property name="Id" type="java.lang.String" value="checkbox1"/>
+                <Property name="Id" type="java.lang.String" value="Promotions"/>
                 <Property name="Checked" type="boolean" value="true"/>
                 <Property name="Value" type="java.lang.String" value=""/>
                 <Property name="On Change" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
@@ -267,9 +267,9 @@
                 <AbsoluteConstraints CONSTRAINTS="N:284.0px:21.0px:100.0%|N:155.0px:21.0px:100.0%"/>
               </Constraints>
             </Component>
-            <Component class="com.genuitec.mobione.designer.comp.iphone.Checkbox" name="checkbox2">
+            <Component class="com.genuitec.mobione.designer.comp.iphone.Checkbox" name="Parking">
               <Properties>
-                <Property name="Id" type="java.lang.String" value="checkbox2"/>
+                <Property name="Id" type="java.lang.String" value="Parking"/>
                 <Property name="Checked" type="boolean" value="true"/>
                 <Property name="Value" type="java.lang.String" value=""/>
                 <Property name="On Change" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
@@ -423,9 +423,9 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="com.genuitec.mobione.designer.comp.iphone.PlainTable" name="list2">
+            <Container class="com.genuitec.mobione.designer.comp.iphone.PlainTable" name="Parking">
               <Properties>
-                <Property name="Id" type="java.lang.String" value="list2"/>
+                <Property name="Id" type="java.lang.String" value="Parking"/>
               </Properties>
               <actual-rect x="0" y="120" width="320" height="30"/>
               <Constraints>
@@ -462,15 +462,15 @@
                       <Point value="[50%, 100%]"/>
                     </Property>
                     <Property name="Font" type="java.awt.Font" editor="sun.beans.editors.FontEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,112,0,0,0,0,0,15,0,0,0,1,112,116,0,9,72,101,108,118,101,116,105,99,97,120"/>
+                      <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,112,0,0,0,0,0,15,0,0,0,1,112,116,0,5,65,114,105,97,108,120"/>
                     </Property>
                     <Property name="Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color alpha="ff" blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                     <Property name="Text Underline" type="boolean" value="false"/>
                     <Property name="Text Shadow Enabled" type="boolean" value="true"/>
                     <Property name="Text Shadow Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="40" green="40" red="40" type="rgb"/>
+                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="Text Shadow Offset" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
                       <Point value="[1, 1]"/>
@@ -483,9 +483,9 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="com.genuitec.mobione.designer.comp.iphone.PlainTable" name="list3">
+            <Container class="com.genuitec.mobione.designer.comp.iphone.PlainTable" name="Promotions">
               <Properties>
-                <Property name="Id" type="java.lang.String" value="list3"/>
+                <Property name="Id" type="java.lang.String" value="Promotions"/>
               </Properties>
               <actual-rect x="0" y="150" width="320" height="30"/>
               <Constraints>
@@ -522,15 +522,15 @@
                       <Point value="[50%, 100%]"/>
                     </Property>
                     <Property name="Font" type="java.awt.Font" editor="sun.beans.editors.FontEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,112,0,0,0,0,0,15,0,0,0,1,112,116,0,9,72,101,108,118,101,116,105,99,97,120"/>
+                      <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,112,0,0,0,0,0,15,0,0,0,1,112,116,0,5,65,114,105,97,108,120"/>
                     </Property>
                     <Property name="Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color alpha="ff" blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                     <Property name="Text Underline" type="boolean" value="false"/>
                     <Property name="Text Shadow Enabled" type="boolean" value="true"/>
                     <Property name="Text Shadow Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="40" green="40" red="40" type="rgb"/>
+                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="Text Shadow Offset" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
                       <Point value="[1, 1]"/>
