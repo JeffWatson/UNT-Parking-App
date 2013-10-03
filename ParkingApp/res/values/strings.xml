@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">ParkingApp</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_status">Parking Status</string>
+    <string name="title_status">Discount</string>
     <string name="title_map">Map</string>
     <string name="title_setting">Settings</string>
     <string name="current_price">Current Price</string>
