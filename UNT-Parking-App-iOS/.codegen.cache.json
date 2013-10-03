@@ -1,0 +1,8 @@
+{
+  "actionsIdCache": {
+    "m1_UNT_Parking_App_iOS_tabBar1_Map:click": "action1",
+    "m1_UNT_Parking_App_iOS_tabBar1_ParkingStatus:click": "action0",
+    "m1_UNT_Parking_App_iOS_tabBar1_Settings:click": "action2"
+  },
+  "splashScreenHashes": {}
+}
