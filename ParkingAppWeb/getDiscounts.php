@@ -1,0 +1,37 @@
+<?php
+  /**
+   * $db is discount database for app to fetch updates from
+   * @var SQLite3 database
+   */
+  $db = new SQLite3('discounts.db');
+
+  /**
+   * $selectStar is SQLite steatement to fetch ALL rows from discounts.db
+   * @var string
+   */
+  $selectStar = "SELECT * FROM promotions;";
+
+  /**
+   * $statement is SQLite3 prepared command executed by execute()
+   * @var SQLite3Stmt
+   */
+  $statement = $db->prepare($selectStar);
+
+  /**
+   * $result is A class that handles result sets for the SQLite 3 extension
+   * @var SQLite3Result
+   */
+  $result = $statement->execute();
+
+  $result->fetchArray(SQLITE3_ASSOC);
+
+  while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+    // print the array in JSON format
+    echo json_encode($row);
+}
+
+
+
+
+
+?>
