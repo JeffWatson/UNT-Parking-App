@@ -22,16 +22,23 @@
    * @var SQLite3Result
    */
   $result = $statement->execute();
-
   $result->fetchArray(SQLITE3_ASSOC);
 
+  /**
+   * $row is each discount row from database
+   * @var associative array
+   */
   while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
     // print the array in JSON format
     echo json_encode($row);
-}
+  }
 
-
-
-
-
+/* prettier formatting in a table witout JSON, possibly use to display discounts on main page
+  echo "<table>";
+  while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+    foreach($row as $key => $value)
+      echo "<tr><td>$key</td><td>$value</td></tr>";
+  }
+  echo "</table>";
+*/
 ?>
