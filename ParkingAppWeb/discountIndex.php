@@ -118,15 +118,15 @@
 <!-- Wasn't sure if we needed this yet so I shoved it in at the bottom for now...
 -Matt
 -->
-<!--
 <?php
 /**
  * User: Jeff Watson
  * Date: 9/19/13
  * Time: 8:04 PM
- */
-
-// GET parameter 'name' from the URL
+*/
+ 
+/*
+//GET parameter 'name' from the URL
 $name = htmlspecialchars($_GET["name"]);
 
 // Echo the name we got back to the user.
@@ -146,4 +146,4 @@ while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
     echo json_encode($row);
 }
 */
--->
+?>
