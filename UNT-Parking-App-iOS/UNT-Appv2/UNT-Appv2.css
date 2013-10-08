@@ -308,36 +308,45 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
+.m1-background-4{
+  background-color: rgb(0,0,0);
+  background-image: none;
+}
+
+.m1-font-2{
+  color: rgb(5,144,51);
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .m1-border-2{
   -webkit-border-radius: 0px;
   border-color: rgb(0,0,0);
   border-style: solid;
 }
 
-.m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-4{
+.m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-5{
   background-color: rgb(255,255,255);
   background-image: none;
 }
 
-.m1-font-2{
-  color: rgb(255,255,255);
+.m1-font-3{
+  color: rgb(0,0,0);
   font-family: Helvetica;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
 }
 
-.m1-shadow-1{
-  text-shadow: rgb(64,64,64) 1px 1px 1px;
-}
-
-.m1-list.m1-plain-list > .m1-list-header.m1-background-5{
+.m1-list.m1-plain-list > .m1-list-header.m1-background-6{
   background-color: rgba(0,0,0,0);
   background-image: 
     -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(177,188,205)), to(rgb(109,131,161)));
 }
 
-.m1-font-3{
+.m1-font-4{
   color: rgb(0,0,0);
   font-family: Arial;
   font-size: 24px;
@@ -345,11 +354,11 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-shadow-2{
+.m1-shadow-1{
   text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
-.m1-font-4{
+.m1-font-5{
   color: rgb(0,0,0);
   font-family: Helvetica;
   font-size: 14px;
@@ -357,7 +366,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-background-3,.m1-selected.m1-background-6{
+.m1-background-3,.m1-selected.m1-background-7{
   background-color: rgb(5,144,51);
   background-image: none;
 }
@@ -366,7 +375,7 @@ li > .m1-list .m1-text{
   -webkit-border-radius: 3px;
 }
 
-.m1-font-5{
+.m1-font-6{
   color: rgb(177,177,177);
   font-family: Arial;
   font-size: 11px;
@@ -374,7 +383,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-selected.m1-font-6{
+.m1-selected.m1-font-7{
   color: rgb(255,255,255);
   font-family: Arial;
   font-size: 11px;
@@ -465,7 +474,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-checkbox1{
+#m1-UNT-Appv2-Promotions2{
   height: 21px;
   left: 284px;
   line-height: 21px;
@@ -473,7 +482,7 @@ body{
   width: 21px;
 }
 
-#m1-UNT-Appv2-checkbox2{
+#m1-UNT-Appv2-Parking2{
   height: 21px;
   left: 284px;
   line-height: 21px;
@@ -548,7 +557,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-list2{
+#m1-UNT-Appv2-Parking{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -577,7 +586,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-list3{
+#m1-UNT-Appv2-Promotions{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -676,6 +685,24 @@ body{
   left: 0px;
   top: 0px;
   width: 100.0%;
+}
+
+#m1-UNT-Appv2-text4{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
+  text-align: center;
+  top: 20px;
+  width: 151px;
+}
+
+#m1-UNT-Appv2-CurrentPrice{
+  height: 56px;
+  left: 0px;
+  line-height: 56px;
+  margin-right: 0px;
+  top: 82px;
+  width: auto;
 }
 
 #m1-UNT-Appv2-text3{
