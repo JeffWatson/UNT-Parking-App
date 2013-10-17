@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -17,7 +18,6 @@ import java.util.Locale;
 public class ParkingActivity extends FragmentActivity {
     private static final String TAG = "ParkingActivity";
     private Context context;
-
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -38,6 +38,7 @@ public class ParkingActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this.getApplicationContext();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -50,6 +51,17 @@ public class ParkingActivity extends FragmentActivity {
 
         mViewPager.setCurrentItem(1);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        AsyncDiscountUpdateConnector updater = new AsyncDiscountUpdateConnector(this);
+        updater.execute(null, null, null);
+        //String response = updater.getResponse();
+
+        //Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -104,5 +116,9 @@ public class ParkingActivity extends FragmentActivity {
             }
             return null;
         }
+    }
+
+    public void displayResponse(String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
     }
 }
