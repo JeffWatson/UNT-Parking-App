@@ -58,7 +58,9 @@ public class ParkingActivity extends FragmentActivity {
         super.onResume();
 
         AsyncDiscountUpdateConnector updater = new AsyncDiscountUpdateConnector(this);
+        AsyncWeatherUpdate weatherUpdate = new AsyncWeatherUpdate(this);        // instantiate the weather updater class    KS
         updater.execute(null, null, null);
+        weatherUpdate.execute (null, null, null);                               // call it to execute   KS
         //String response = updater.getResponse();
 
         //Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
