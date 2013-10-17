@@ -308,6 +308,12 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
+.m1-border-2{
+  -webkit-border-radius: 0px;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+}
+
 .m1-background-4{
   background-color: rgb(0,0,0);
   background-image: none;
@@ -321,23 +327,21 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-border-2{
-  -webkit-border-radius: 0px;
-  border-color: rgb(0,0,0);
-  border-style: solid;
-}
-
 .m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-5{
   background-color: rgb(255,255,255);
   background-image: none;
 }
 
 .m1-font-3{
-  color: rgb(0,0,0);
+  color: rgb(255,255,255);
   font-family: Helvetica;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
+}
+
+.m1-shadow-1{
+  text-shadow: rgb(64,64,64) 1px 1px 1px;
 }
 
 .m1-list.m1-plain-list > .m1-list-header.m1-background-6{
@@ -354,7 +358,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-shadow-1{
+.m1-shadow-2{
   text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
@@ -396,7 +400,7 @@ body{
   overflow: visible;
 }
 
-#m1-UNT-Appv2-tabBar1-Settings-label{
+#m1-UNT-Appv2-tabBar-Settings-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -405,21 +409,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-tabBar1-Settings-img{
+#m1-UNT-Appv2-tabBar-Settings-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Appv2-tabBar1-Settings{
+#m1-UNT-Appv2-tabBar-Settings{
   height: 43px;
   left: 215px;
   top: -83px;
   width: 100px;
 }
 
-#m1-UNT-Appv2-tabBar1-Map-label{
+#m1-UNT-Appv2-tabBar-ParkingStatus-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -428,21 +432,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-tabBar1-Map-img{
+#m1-UNT-Appv2-tabBar-ParkingStatus-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Appv2-tabBar1-Map{
+#m1-UNT-Appv2-tabBar-ParkingStatus{
   height: 43px;
   left: 109px;
   top: -40px;
   width: 100px;
 }
 
-#m1-UNT-Appv2-tabBar1-ParkingStatus-label{
+#m1-UNT-Appv2-tabBar-Map-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -451,21 +455,21 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-tabBar1-ParkingStatus-img{
+#m1-UNT-Appv2-tabBar-Map-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Appv2-tabBar1-ParkingStatus{
+#m1-UNT-Appv2-tabBar-Map{
   height: 43px;
   left: 3px;
   top: 3px;
   width: 100px;
 }
 
-#m1-UNT-Appv2-tabBar1{
+#m1-UNT-Appv2-tabBar{
   height: 49px;
   left: 0px;
   line-height: 49px;
@@ -490,7 +494,7 @@ body{
   width: 21px;
 }
 
-#m1-UNT-Appv2-listHeader1-label{
+#m1-UNT-Appv2-NotificationsHeader-label{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 45px;
@@ -501,7 +505,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-listHeader1{
+#m1-UNT-Appv2-NotificationsHeader{
   height: 45px;
   left: 0px;
   line-height: 29px;
@@ -510,7 +514,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-list1{
+#m1-UNT-Appv2-NotificationsList{
   height: 45px;
   left: 0px;
   line-height: 45px;
@@ -528,7 +532,7 @@ body{
   width: 76px;
 }
 
-#m1-UNT-Appv2-navigation1{
+#m1-UNT-Appv2-Navigation-Settings{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -622,69 +626,76 @@ body{
   width: 100.0%;
 }
 
-#m1-UNT-Appv2-map1{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 364px;
-  left: 0px;
-  line-height: 40px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-map1outer{
-  border-width: 1px 1px 1px 1px;
-  height: 368px;
-  left: 0px;
-  line-height: 366px;
-  top: 0px;
-  width: 320px;
-}
-
-#m1-UNT-Appv2-text2{
-  height: 23px;
-  left: 140px;
-  line-height: 23px;
+#m1-UNT-Appv2-text8{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
   text-align: center;
-  top: 10px;
-  width: 40px;
+  top: 20px;
+  width: 151px;
 }
 
-#m1-UNT-Appv2-navigation2{
-  height: 43px;
+#m1-UNT-Appv2-CurrentPrice5{
+  height: 56px;
   left: 0px;
-  line-height: 43px;
+  line-height: 56px;
   margin-right: 0px;
-  top: 0px;
+  top: 28px;
   width: auto;
 }
 
-#m1-UNT-Appv2-Map-box-scroller{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 411px;
+#m1-UNT-Appv2-text7{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
+  text-align: center;
+  top: 20px;
+  width: 151px;
+}
+
+#m1-UNT-Appv2-CurrentPrice4{
+  height: 56px;
   left: 0px;
-  line-height: 40px;
+  line-height: 56px;
   margin-right: 0px;
-  top: 0px;
+  top: 21px;
   width: auto;
 }
 
-#m1-UNT-Appv2-Map-box{
-  height: 411px;
+#m1-UNT-Appv2-text6{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
+  text-align: center;
+  top: 20px;
+  width: 151px;
+}
+
+#m1-UNT-Appv2-CurrentPrice3{
+  height: 56px;
   left: 0px;
-  line-height: 411px;
+  line-height: 56px;
   margin-right: 0px;
-  top: 0px;
+  top: 14px;
   width: auto;
 }
 
-#m1-UNT-Appv2-Map{
-  height: 100.0%;
+#m1-UNT-Appv2-text5{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
+  text-align: center;
+  top: 20px;
+  width: 151px;
+}
+
+#m1-UNT-Appv2-CurrentPrice2{
+  height: 56px;
   left: 0px;
-  top: 0px;
-  width: 100.0%;
+  line-height: 56px;
+  margin-right: 0px;
+  top: -56px;
+  width: auto;
 }
 
 #m1-UNT-Appv2-text4{
@@ -696,12 +707,12 @@ body{
   width: 151px;
 }
 
-#m1-UNT-Appv2-CurrentPrice{
+#m1-UNT-Appv2-CurrentPrice1{
   height: 56px;
   left: 0px;
   line-height: 56px;
   margin-right: 0px;
-  top: 82px;
+  top: 63px;
   width: auto;
 }
 
@@ -714,7 +725,7 @@ body{
   width: 136px;
 }
 
-#m1-UNT-Appv2-navigation3{
+#m1-UNT-Appv2-Navigation-ParkingStatus{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -744,6 +755,71 @@ body{
 }
 
 #m1-UNT-Appv2-ParkingStatus{
+  height: 100.0%;
+  left: 0px;
+  top: 0px;
+  width: 100.0%;
+}
+
+#m1-UNT-Appv2-MapOfGarage{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 364px;
+  left: 0px;
+  line-height: 40px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-UNT-Appv2-MapOfGarageouter{
+  border-width: 1px 1px 1px 1px;
+  height: 368px;
+  left: 0px;
+  line-height: 366px;
+  top: 0px;
+  width: 320px;
+}
+
+#m1-UNT-Appv2-text2{
+  height: 23px;
+  left: 140px;
+  line-height: 23px;
+  text-align: center;
+  top: 10px;
+  width: 40px;
+}
+
+#m1-UNT-Appv2-Navigation-map{
+  height: 43px;
+  left: 0px;
+  line-height: 43px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-UNT-Appv2-Map-box-scroller{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 411px;
+  left: 0px;
+  line-height: 40px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-UNT-Appv2-Map-box{
+  height: 411px;
+  left: 0px;
+  line-height: 411px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-UNT-Appv2-Map{
   height: 100.0%;
   left: 0px;
   top: 0px;
