@@ -17,8 +17,9 @@ import java.net.URL;
  */
 public class AsyncWeatherUpdate extends AsyncTask {
 
-    private static String TAG = "AsyncWeatherUpdate";
-    private static String WEATHER_URL = "api.openweathermap.org/data/2.5/weather?id=4685907";
+    private static final String TAG = "AsyncWeatherUpdate";
+    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?id=4685907";
+
     private ParkingActivity parentActivity;
     private String jSonWeather;
 
