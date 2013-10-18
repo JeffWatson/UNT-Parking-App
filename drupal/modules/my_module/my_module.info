@@ -1,0 +1,3 @@
+name = My module
+description = Module for form api tutorial
+core = 7.x

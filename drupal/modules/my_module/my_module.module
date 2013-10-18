@@ -1,0 +1,48 @@
+<?php
+/** 
+ * This function defines the URL to the page created etc.
+ * See <a href="http://api.drupal.org/api/function/hook_menu/6
+" title="http://api.drupal.org/api/function/hook_menu/6
+" rel="nofollow">http://api.drupal.org/api/function/hook_menu/6
+</a> */
+function my_module_menu() {
+  $items = array();
+  $items['my_module/form'] = array(
+    'title' => t('My form'),
+    'page callback' => 'my_module_form',
+    'access arguments' => array('access content'),
+    'description' => t('My form'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * This function gets called in the browser address bar for: 
+ * "http://yourhost/my_module/form" or 
+ * "http://yourhost/?q=my_module/form". It will generate
+ * a page with this form on it.
+ */
+function my_module_form() {
+
+  // This form calls the form builder function via the
+  // drupal_get_form() function which takes the name of this form builder
+  // function as an argument. It returns the results to display the form. 
+  return drupal_get_form('my_module_my_form');
+
+}
+
+/**
+ * This function is called the "form builder". It builds the form.
+ * Notice, it takes one argument, the $form_state
+ */
+function my_module_my_form($form_state) {
+    
+    // This is the first form element. It's a textfield with a label, "Name"
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+  );
+  return $form;
+}
+
