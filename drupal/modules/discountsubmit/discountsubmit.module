@@ -40,38 +40,72 @@ function discountsubmit_discount_form($form_state) {
 	// This is the first form element. It's a textfield with a label, "Name"
 	$form['name'] = array(
 		'#type' => 'textfield',
-		'#title' => t('Name of Discount:'),
+		'#title' => t('Name of Discount'),
 		'#required' => TRUE,
+	);
+
+	$form['description'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Discount Description'),
+		'#required' => TRUE,
+		'#resizable' => FALSE,
 	);
 	
 	// Provide a default date in the format YYYY-MM-DD HH:MM:SS.
-	$date = date('Y-m-d') . ' 00:00';
-	$format = 'Y-m-d H:i';
+	$date = date('Y-m-d h:i');
+	$format = 'Y-m-d h:i A';
 
-	$form['date2'] = array(
+	$form['startdate'] = array(
 		'#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
 		'#required' => TRUE,
 		'#title' => t('Starting Date'),
 		'#default_value' => $date, 
 		'#date_format' => $format,
+		'#date_type' => 'DATE_UNIX', //Output type
 		'#date_label_position' => 'within', // See other available attributes and what they do in date_api_elements.inc
 		'#date_increment' => 15, // Optional, used by the date_select and date_popup elements to increment minutes and seconds.
 		'#date_year_range' => '-0:+1', // Optional, used to set the year range (back 3 years and forward 3 years is the default).
 		'#datepicker_options' => array(), // Optional, as of 7.x-2.6+, used to pass in additional parameters from the jQuery Datepicker widget.
 
 	);
+	//Days of week it's active
+	$form['days'] = array(
+		'#type' => 'checkboxes',
+		'#options' => drupal_map_assoc(array(t('Su'), t('Mo'), t('Tu'), t('We'), t('Th'), t('Fr'), t('Sa'))),
+		'#title' => t('Days discount is active'),
+		'#required' => TRUE,
+
+	);
+	
+	$date = date('Y-m-d h:i');
+	//End Date information
+	$form['enddate'] = array(
+		'#type' => 'date_popup',
+		'#required' => TRUE,
+		'#title' => t('Ending Date'),
+		'#date_type' => 'DATE_UNIX',
+		'#default_value' => $date, 
+		'#date_format' => $format,
+		'#date_label_position' => 'within', 
+		'#date_increment' => 15, 
+		'#date_year_range' => '-0:+1', 
+		'#datepicker_options' => array(), 
+
+	);
 
 	$form['submit_button'] = array(
 		'#type' => 'submit',
-		'#value' => t('Click Here!'),
+		'#value' => t('Submit'),
 	);
 
 	return $form;
 }
 
 function discountsubmit_discount_form_validate($form, &$form_state) {
+
 }
 
 function discountsubmit_discount_form_submit($form, &$form_state) {
+
 }
 
