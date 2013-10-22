@@ -1,0 +1,77 @@
+<?php
+/** 
+ * This function defines the URL to the page created etc.
+ * See <a href="http://api.drupal.org/api/function/hook_menu/6
+" title="http://api.drupal.org/api/function/hook_menu/6
+" rel="nofollow">http://api.drupal.org/api/function/hook_menu/6
+</a> */
+function discountsubmit_menu() {
+  $items = array();
+  $items['discountsubmit/form'] = array(
+    'title' => t('Discount Submission Form'),
+    'page callback' => 'discountsubmit_form',
+    'access arguments' => array('access content'),
+    'description' => t('A form to submit a new discount.'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * This function gets called in the browser address bar for: 
+ * http://yourhost/?q=discountsubmit/form
+ * a page with this form on it.
+ */
+function discountsubmit_form() {
+
+  // This form calls the form builder function via the
+  // drupal_get_form() function which takes the name of this form builder
+  // function as an argument. It returns the results to display the form. 
+  return drupal_get_form('discountsubmit_discount_form');
+
+}
+
+/**
+ * This function is called the "form builder". It builds the form.
+ * Notice, it takes one argument, the $form_state
+ */
+function discountsubmit_discount_form($form_state) {
+
+	// This is the first form element. It's a textfield with a label, "Name"
+	$form['name'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Name of Discount:'),
+		'#required' => TRUE,
+	);
+	
+	// Provide a default date in the format YYYY-MM-DD HH:MM:SS.
+	$date = date('Y-m-d') . ' 00:00';
+	$format = 'Y-m-d H:i';
+
+	$form['date2'] = array(
+		'#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
+		'#required' => TRUE,
+		'#title' => t('Starting Date'),
+		'#default_value' => $date, 
+		'#date_format' => $format,
+		'#date_label_position' => 'within', // See other available attributes and what they do in date_api_elements.inc
+		'#date_increment' => 15, // Optional, used by the date_select and date_popup elements to increment minutes and seconds.
+		'#date_year_range' => '-0:+1', // Optional, used to set the year range (back 3 years and forward 3 years is the default).
+		'#datepicker_options' => array(), // Optional, as of 7.x-2.6+, used to pass in additional parameters from the jQuery Datepicker widget.
+
+	);
+
+	$form['submit_button'] = array(
+		'#type' => 'submit',
+		'#value' => t('Click Here!'),
+	);
+
+	return $form;
+}
+
+function discountsubmit_discount_form_validate($form, &$form_state) {
+}
+
+function discountsubmit_discount_form_submit($form, &$form_state) {
+}
+

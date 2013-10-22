@@ -1,0 +1,3 @@
+core = "7.x"
+description = "Submission form for discount squad"
+name = "Discount form submission"
