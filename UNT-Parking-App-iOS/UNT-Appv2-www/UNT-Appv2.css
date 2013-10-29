@@ -626,6 +626,13 @@ body{
   width: 100.0%;
 }
 
+#m1-UNT-Appv2-WeatherWidget{
+  height: 138px;
+  left: 0px;
+  top: -280px;
+  width: 320px;
+}
+
 #m1-UNT-Appv2-text8{
   height: 29px;
   left: 84px;
@@ -640,11 +647,11 @@ body{
   left: 0px;
   line-height: 56px;
   margin-right: 0px;
-  top: 28px;
+  top: 167px;
   width: auto;
 }
 
-#m1-UNT-Appv2-text7{
+#m1-UNT-Appv2-text5{
   height: 29px;
   left: 84px;
   line-height: 29px;
@@ -658,7 +665,25 @@ body{
   left: 0px;
   line-height: 56px;
   margin-right: 0px;
-  top: 21px;
+  top: 160px;
+  width: auto;
+}
+
+#m1-UNT-Appv2-text7{
+  height: 29px;
+  left: 84px;
+  line-height: 29px;
+  text-align: center;
+  top: 20px;
+  width: 151px;
+}
+
+#m1-UNT-Appv2-CurrentPrice32{
+  height: 56px;
+  left: 0px;
+  line-height: 56px;
+  margin-right: 0px;
+  top: 153px;
   width: auto;
 }
 
@@ -676,25 +701,7 @@ body{
   left: 0px;
   line-height: 56px;
   margin-right: 0px;
-  top: 14px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-text5{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
-}
-
-#m1-UNT-Appv2-CurrentPrice2{
-  height: 56px;
-  left: 0px;
-  line-height: 56px;
-  margin-right: 0px;
-  top: -56px;
+  top: 146px;
   width: auto;
 }
 
@@ -712,7 +719,7 @@ body{
   left: 0px;
   line-height: 56px;
   margin-right: 0px;
-  top: 63px;
+  top: 139px;
   width: auto;
 }
 
@@ -737,7 +744,7 @@ body{
 #m1-UNT-Appv2-ParkingStatus-box-scroller{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
-  height: 411px;
+  height: 511px;
   left: 0px;
   line-height: 40px;
   margin-right: 0px;
@@ -794,17 +801,6 @@ body{
   height: 43px;
   left: 0px;
   line-height: 43px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Map-box-scroller{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 411px;
-  left: 0px;
-  line-height: 40px;
   margin-right: 0px;
   top: 0px;
   width: auto;
