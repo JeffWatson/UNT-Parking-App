@@ -71,6 +71,7 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
     @Override
     protected void onPostExecute(Object o) {
 
+
         Log.i(TAG, response);
         PromotionDataSource datasource = new PromotionDataSource(parentActivity);
 
