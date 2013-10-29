@@ -42,8 +42,9 @@ public class PromotionDataSource {
         Log.i(TAG, "Closing database");
     }
 
-    public Promotion createPromotion(Promotion promo) {
+    public Promotion createOrUpdatePromotion(Promotion promo) {
         ContentValues values = new ContentValues();
+        values.put(PromotionSQLiteHelper.COLUMN_ID, promo.getId());
         values.put(PromotionSQLiteHelper.COLUMN_START_DATE, promo.getStart_date());
         values.put(PromotionSQLiteHelper.COLUMN_STOP_DATE, promo.getStop_date());
         values.put(PromotionSQLiteHelper.COLUMN_START_TIME, promo.getStart_time());
@@ -55,7 +56,8 @@ public class PromotionDataSource {
         values.put(PromotionSQLiteHelper.COLUMN_VENDOR, promo.getPromotion_vendor());
         values.put(PromotionSQLiteHelper.COLUMN_LINK, promo.getLink());
 
-        long insertId = database.insert(PromotionSQLiteHelper.TABLE_PROMOTIONS, null, values);
+        long insertId = database.insertWithOnConflict(PromotionSQLiteHelper.TABLE_PROMOTIONS, null,
+                values, SQLiteDatabase.CONFLICT_REPLACE);
 
         Cursor cursor = database.query(PromotionSQLiteHelper.TABLE_PROMOTIONS,
                 allColumns, PromotionSQLiteHelper.COLUMN_ID + " = " + insertId, null,

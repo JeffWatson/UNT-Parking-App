@@ -2,6 +2,7 @@ package com.ParkingSquad.ParkingApp;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
 import android.support.v4.app.Fragment;
@@ -34,11 +35,20 @@ public class ParkingActivity extends FragmentActivity {
      */
     ViewPager mViewPager;
 
+    PromotionStatusFragment mPromotionStatusFragment;
+    ParkingMapFragment mParkingMapFragment;
+    SettingsFragment mSettingsFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this.getApplicationContext();
+
+        mPromotionStatusFragment = new PromotionStatusFragment();
+        mParkingMapFragment = new ParkingMapFragment();
+        mSettingsFragment = new SettingsFragment();
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -89,13 +99,13 @@ public class ParkingActivity extends FragmentActivity {
             // Return a the applicable Fragment for each section
             switch (position) {
                 case 0: // Map Fragment
-                    return new ParkingMapFragment();
+                    return mParkingMapFragment;
 
                 case 1: // Parking status fragment
-                    return new PromotionStatusFragment();
+                    return mPromotionStatusFragment;
 
                 default: //Settings Fragment
-                    return new SettingsFragment();
+                    return mSettingsFragment;
             }
         }
 
@@ -122,5 +132,13 @@ public class ParkingActivity extends FragmentActivity {
 
     public void displayResponse(String s) {
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+    }
+
+    public void forceReload() {
+        Log.i(TAG, "Made it to force reload!");
+
+        mPromotionStatusFragment.forceReload();
+//        mParkingMapFragment.forceReload();
+
     }
 }

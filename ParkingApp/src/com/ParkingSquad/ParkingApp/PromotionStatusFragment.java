@@ -32,7 +32,6 @@ public class PromotionStatusFragment extends ListFragment {
 
         datasource = new PromotionDataSource(getActivity().getApplicationContext());
         datasource.open();
-        //datasource.createPromotion(new Promotion());
         mData = (ArrayList<Promotion>) datasource.getAllPromotions();
         datasource.close();
 
@@ -43,5 +42,21 @@ public class PromotionStatusFragment extends ListFragment {
         rootView = inflater.inflate(R.layout.current_promotions_layout, container, false);
 
         return rootView;
+    }
+
+    public void forceReload()
+    {
+        Log.i(TAG, "Forcing list view Refresh...");
+
+        datasource.open();
+        mData = (ArrayList<Promotion>) datasource.getAllPromotions();
+        datasource.close();
+
+        mAdapter = new PromotionListAdapter(getActivity().getApplicationContext(), R.layout.promotion_item, mData);
+
+        setListAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
+        Log.i(TAG, "finished reloading!");
     }
 }

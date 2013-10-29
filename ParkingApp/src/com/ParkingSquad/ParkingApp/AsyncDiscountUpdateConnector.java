@@ -1,17 +1,16 @@
 package com.ParkingSquad.ParkingApp;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Author: Jeff Watson
@@ -37,65 +36,30 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
 
             HttpURLConnection connection;
             URL url;
-//            String response = null;
-//            String parameters = "user="+ username +"&reg_id="+ regid;
 
             url = new URL(DISCOUNTS_URL);
             connection = (HttpURLConnection) url.openConnection();
-//            connection.setDoOutput(true);
-//            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             connection.setRequestMethod("GET");
 
-//            request = new OutputStreamWriter(connection.getOutputStream());
-//            request.write(parameters);
-//            request.flush();
-//            request.close();
-            String line = "";
+            String line;
             InputStreamReader isr = new InputStreamReader(connection.getInputStream());
             BufferedReader reader = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
+
             while ((line = reader.readLine()) != null)
             {
-                sb.append(line + "\n");
+                sb.append(line);
             }
+
             // Response from server after login process will be stored in response variable.
             response = sb.toString();
             Log.i(TAG, response);
 
             isr.close();
             reader.close();
-            // You can perform UI operations here
-                    /*parentActivity.runOnUiThread(new Runnable(){
-
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, "Message to server: " + parameters + "\nMessage from Server: \n" + response, Toast.LENGTH_SHORT).show();
-
-                            //try {
-                            //Flight f = (Flight) objects.get("flight");
-                            //Weather oWeather = (Weather) objects.get("oWeather");
-                            //Weather dWeather = (Weather) objects.get("dWeather");
-
-                            //View v = (View) lv.getChildAt(position);
-                            //TextView mTv = (TextView) v.findViewById(R.id.arrival_time);
-                            //String oldText = mTv.getText().toString();
-                            //if(!oldText.equals(f.getDestinationScheduled()))
-                            //{
-                            //    mTv.setBackgroundColor(R.color.red);
-                            //}
-                            //mTv.setText(f.getDestinationScheduled());
-                            //} catch (Exception e) {
-                            //    Log.i(TAG, "Error updating in Asynctask.", e);
-                            //}
-                        }
-                    }); */
-            //Toast.makeText(context, "Message from Server: \n" + response, Toast.LENGTH_SHORT).show();
-
-            // Save the regid - no need to register again.
-//            setRegistrationId(ctx, regid);
         } catch (IOException ex) {
             msg = "Error: " + ex.toString();
-            Log.e(TAG, "Error registering", ex);
+            Log.e(TAG, "Error registering: " + msg, ex);
         }
         return msg;
     }
@@ -107,7 +71,43 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
     @Override
     protected void onPostExecute(Object o) {
         Log.i(TAG, response);
+        PromotionDataSource datasource = new PromotionDataSource(parentActivity);
 
-        parentActivity.displayResponse(response);
+        try {
+            JSONArray array = new JSONArray(response);
+
+            JSONObject obj;
+            Promotion newPromo;
+            datasource.open();
+
+            for(int i = 0; i < array.length(); i++)
+            {
+                newPromo = new Promotion();
+                obj = (JSONObject) array.get(i);
+                Log.i(TAG, obj.toString());
+
+                newPromo.setId(obj.getLong("id"));
+                newPromo.setLon(obj.getDouble("lon"));
+                newPromo.setPromotion_value(obj.getString("promotion_value"));
+                newPromo.setStop_time(obj.getString("stop_time"));
+                newPromo.setPromotion_vendor(obj.getString("vendor"));
+                newPromo.setLink(obj.getString("link"));
+                newPromo.setPromotion_name("promotion_name");
+                newPromo.setStop_date(obj.getString("stop_date"));
+                newPromo.setStart_time(obj.getString("start_time"));
+                newPromo.setStart_date(obj.getString("start_date"));
+                newPromo.setLat(obj.getDouble("lat"));
+
+                datasource.createOrUpdatePromotion(newPromo);
+            }
+        } catch (JSONException e) {
+            Log.e(TAG, "Caught a JSONException in AsyncDiscountConnector.", e);
+        } finally {
+            Log.i(TAG, "finished web update :) " + datasource.getAllPromotions().size());
+
+            datasource.close();
+        }
+
+        parentActivity.forceReload();
     }
 }

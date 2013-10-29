@@ -9,6 +9,7 @@ package com.ParkingSquad.ParkingApp;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -17,22 +18,16 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
-public class PromotionListAdapter extends BaseAdapter{
-    @SuppressWarnings("unused")
+public class PromotionListAdapter extends ArrayAdapter {
     private final String TAG = "StatsListAdapter";
 
     // store the context (as an inflated layout)
     private LayoutInflater inflater;
     private int resource;
-    private ArrayList<Promotion> data;
+    private List<Promotion> data;
     private Context context;
-    //public ImageView iv;
 
     /**
      * Default constructor. Creates the new Adaptor object to
@@ -41,12 +36,23 @@ public class PromotionListAdapter extends BaseAdapter{
      * @param resource
      * @param data
      */
-    public PromotionListAdapter(Context context, int resource, ArrayList<Promotion> data) {
+    public PromotionListAdapter(Context context, int resource, List data) {
+        super(context, resource, data);
+
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.resource = resource;
         this.data = data;
         this.context = context;
     }
+    //public ImageView iv;
+
+
+//    public PromotionListAdapter(Context context, int resource, ArrayList<Promotion> data) {
+//        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        this.resource = resource;
+//        this.data = data;
+//        this.context = context;
+//    }
 
 
     public int getCount() {
@@ -87,6 +93,24 @@ public class PromotionListAdapter extends BaseAdapter{
         if (this.data.get(position) == null) {
             return view;
         }
+
+        Promotion item = this.data.get(position);
+
+        TextView mTV = (TextView) view.findViewById(R.id.promotion_vendor);
+        mTV.setText(item.getPromotion_name());
+
+        mTV = (TextView) view.findViewById(R.id.promotion_value);
+        mTV.setText(item.getPromotion_value());
+
+        mTV = (TextView) view.findViewById(R.id.promotion_timestamp);
+        // format the saved resource string.
+        String running = context.getResources().getString(R.string.running_string);
+        running = String.format(running, item.getStart_date(), item.getStop_date(), item.getStart_time(), item.getStop_time());
+        mTV.setText(running);
+
+//        promotion_header
+//                promotion_value
+//                promotion_timestamp
 
 /*        // pull out the object
         ClockPunch item = this.data.get(position);

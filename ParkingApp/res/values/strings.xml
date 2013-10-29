@@ -6,7 +6,7 @@
     <string name="title_map">Map</string>
     <string name="title_setting">Settings</string>
     <string name="current_price">Current Price</string>
-    <string name="last_updated">Last Updated: </string>
+    <string name="running_string">Available: %1$s-%2$s From %3$s-%4$s</string>
     <string name="positive">Continue</string>           <!-- ok button for gps alert dialog KS -->
     <string name="negative">Cancel</string>     <!-- cancel button for gps alert dialog  KS -->
 </resources>
