@@ -38,24 +38,32 @@ function discountsubmit_form() {
 function discountsubmit_discount_form($form_state) {
 
 	// This is the first form element. It's a textfield with a label, "Name"
-	$form['name'] = array(
+	$form['promotion_name'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Name of Discount'),
 		'#required' => TRUE,
 	);
 
-	$form['description'] = array(
-		'#type' => 'textarea',
-		'#title' => t('Discount Description'),
+	$form['promotion_value'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Value of discount'),
 		'#required' => TRUE,
-		'#resizable' => FALSE,
 	);
 	
+	$form['link'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Link to discount website'),
+		'#required' => TRUE,
+	);
+		
+	
 	// Provide a default date in the format YYYY-MM-DD HH:MM:SS.
-	$date = date('Y-m-d h:i');
-	$format = 'Y-m-d h:i A';
+	//$date = date('Y-m-d h:i');
+	//$format = 'Y-m-d h:i A';
+	$date = (str_replace("-","/", date('Y-m-d')));
+	$format = 'Y/m/d';
 
-	$form['startdate'] = array(
+	$form['start_date'] = array(
 		'#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
 		'#required' => TRUE,
 		'#title' => t('Starting Date'),
@@ -77,9 +85,8 @@ function discountsubmit_discount_form($form_state) {
 
 	);
 	
-	$date = date('Y-m-d h:i');
 	//End Date information
-	$form['enddate'] = array(
+	$form['stop_date'] = array(
 		'#type' => 'date_popup',
 		'#required' => TRUE,
 		'#title' => t('Ending Date'),
@@ -93,6 +100,18 @@ function discountsubmit_discount_form($form_state) {
 
 	);
 
+	$form['lat'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Latitude'),
+	);
+
+	$form['lon'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Longitude'),
+	);
+
 	$form['submit_button'] = array(
 		'#type' => 'submit',
 		'#value' => t('Submit'),
@@ -102,10 +121,42 @@ function discountsubmit_discount_form($form_state) {
 }
 
 function discountsubmit_discount_form_validate($form, &$form_state) {
-
+	
+	//TODO: Calculate days of week and put in several database entries between two dates, this is a specific note.
+	//TODO: Split start date and stop date into date and time
+	//TODO: String typcast date and time Unnecessary?
 }
 
 function discountsubmit_discount_form_submit($form, &$form_state) {
+	//Table: Promotions
+	//File: promotions.db (?)
+	/* Keys:
+	start_date and stop_date MM\/DD\/YY
+	start_time and stop_time HH:MM
+	promotion_name string
+	promotion_value string
+	lat and lon numbers,
+	vendor string
+	link string
+	*/
+	
+	//Create an array that holds all of our calculated values at the proper keys
+	$fields = array(
+		'start_date' => $form_state['values']['start_date'],
+		'stop_date' => $form_state['values']['stop_date'],
+		'start_time' => NULL,
+		'stop_time' => NULL,
+		'promotion_name' => $form_state['values']['promotion_name'],
+		'promotion_value' => $form_state['values']['promotion_value'],
+		'lat' => $form_state['values']['lat'],
+		'lon' => $form_state['values']['lon'],
+		'vendor' => 'Test Devs',
+		'link' => $form_state['values']['link'],
+	);
 
+	//Insert this as a new row into the database
+	$query = db_insert('promotions')->fields($fields)->execute();
+
+	drupal_set_message(t('Ok!'));
 }
 
