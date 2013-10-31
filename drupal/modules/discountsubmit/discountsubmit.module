@@ -60,8 +60,8 @@ function discountsubmit_discount_form($form_state) {
 	// Provide a default date in the format YYYY-MM-DD HH:MM:SS.
 	//$date = date('Y-m-d h:i');
 	//$format = 'Y-m-d h:i A';
-	$date = (str_replace("-","/", date('Y-m-d')));
-	$format = 'Y/m/d';
+	$date = date('Y-m-d');
+	$format = 'Y-m-d';
 
 	$form['start_date'] = array(
 		'#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
