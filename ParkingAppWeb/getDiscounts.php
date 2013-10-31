@@ -28,9 +28,11 @@
    * $row is each discount row from database
    * @var associative array
    */
-  while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+  $i = 0;
+  while ( $row = $result->fetchArray( SQLITE3_ASSOC ) ) {
     // print the array in JSON format
-    echo json_encode($row);
+    $rows[$i] = $row;
+    $i++;
   }
 
 /* prettier formatting in a table witout JSON, possibly use to display discounts on main page
