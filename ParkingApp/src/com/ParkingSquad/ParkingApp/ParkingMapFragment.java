@@ -27,6 +27,7 @@ import java.util.List;
  * Time: 3:01 PM
  */
 
+
 public class ParkingMapFragment extends SupportMapFragment {
     private static final LatLng DENTON = new LatLng(33.211763,-97.14779);
     private GoogleMap googleMap;
