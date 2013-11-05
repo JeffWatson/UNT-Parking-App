@@ -20,13 +20,14 @@ import java.net.URL;
 public class AsyncDiscountUpdateConnector extends AsyncTask{
     private static final String TAG = "AsyncDiscountUpdateConnector";
     private static final String DISCOUNTS_URL = "http://students.cse.unt.edu/~rlb0336/getDiscounts.php";
-
+                                                //"http://students.cse.unt.edu/?=jcw0227/apps/UNT-Parking_App/getDiscounts.php";
     private ParkingActivity parentActivity;
     private String response;
 
     public AsyncDiscountUpdateConnector(ParkingActivity a) {
         parentActivity = a;
     }
+
 
     @Override
     protected Object doInBackground(Object... params) {
@@ -98,6 +99,8 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
                 newPromo.setStart_date(obj.getString("start_date"));
                 newPromo.setLat(obj.getDouble("lat"));
 
+                parentActivity.mParkingMapFragment.setPromotionLocations (newPromo.getLat(), newPromo.getLon(), newPromo.getPromotion_vendor());
+
                 datasource.createOrUpdatePromotion(newPromo);
             }
         } catch (JSONException e) {
@@ -106,6 +109,7 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
             Log.i(TAG, "finished web update :) " + datasource.getAllPromotions().size());
 
             datasource.close();
+
         }
 
         parentActivity.forceReload();

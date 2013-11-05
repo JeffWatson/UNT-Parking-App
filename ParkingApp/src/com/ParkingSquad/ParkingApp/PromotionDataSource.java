@@ -19,6 +19,7 @@ import android.util.Log;
 public class PromotionDataSource {
 
     private static final String TAG = "PromotionDataSource";
+
     // Database fields
     private SQLiteDatabase database;
     private PromotionSQLiteHelper dbHelper;

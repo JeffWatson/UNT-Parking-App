@@ -97,7 +97,10 @@ public class AsyncWeatherUpdate extends AsyncTask {
     protected void onPostExecute(Object o) {
         Log.i(TAG, jSonWeather);
 
-        parentActivity.displayResponse(jSonWeather);
+
+
+
+        //parentActivity.displayResponse(jSonWeather);        // This is to test getting the data from the web - it worked!  KS
     }
 
 }
