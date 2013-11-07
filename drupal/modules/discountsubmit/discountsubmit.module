@@ -37,126 +37,195 @@ function discountsubmit_form() {
  */
 function discountsubmit_discount_form($form_state) {
 
-	// This is the first form element. It's a textfield with a label, "Name"
-	$form['promotion_name'] = array(
-		'#type' => 'textfield',
-		'#title' => t('Name of Discount'),
-		'#required' => TRUE,
-	);
+  // This is the first form element. It's a textfield with a label, "Name"
+  $form['promotion_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name of Discount'),
+    '#required' => TRUE,
+  );
 
-	$form['promotion_value'] = array(
-		'#type' => 'textfield',
-		'#title' => t('Value of discount'),
-		'#required' => TRUE,
-	);
-	
-	$form['link'] = array(
-		'#type' => 'textfield',
-		'#title' => t('Link to discount website'),
-		'#required' => TRUE,
-	);
-		
-	
-	// Provide a default date in the format YYYY-MM-DD HH:MM:SS.
-	//$date = date('Y-m-d h:i');
-	//$format = 'Y-m-d h:i A';
-	$date = date('Y-m-d');
-	$format = 'Y-m-d';
+  $form['promotion_value'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Value of discount'),
+    '#required' => TRUE,
+  );
+  
+  $form['link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Link to discount website'),
+    '#required' => TRUE,
+  );
+    
+  
+  // Provide a default date in the format YYYY-MM-DD HH:MM:SS.
+  //$date = date('Y-m-d h:i');
+  //$format = 'Y-m-d h:i A';
+  $date = date('Y-m-d');
+  $format = 'Y-m-d';
 
-	$form['start_date'] = array(
-		'#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
-		'#required' => TRUE,
-		'#title' => t('Starting Date'),
-		'#default_value' => $date, 
-		'#date_format' => $format,
-		'#date_type' => 'DATE_UNIX', //Output type
-		'#date_label_position' => 'within', // See other available attributes and what they do in date_api_elements.inc
-		'#date_increment' => 15, // Optional, used by the date_select and date_popup elements to increment minutes and seconds.
-		'#date_year_range' => '-0:+1', // Optional, used to set the year range (back 3 years and forward 3 years is the default).
-		'#datepicker_options' => array(), // Optional, as of 7.x-2.6+, used to pass in additional parameters from the jQuery Datepicker widget.
+  $form['start_date'] = array(
+    '#type' => 'date_popup', // types 'date_popup', 'date_text' and 'date_timezone' are also supported. See .inc file.
+    '#required' => TRUE,
+    '#title' => t('Starting Date'),
+    '#default_value' => $date, 
+    '#date_format' => $format,
+    '#date_type' => 'DATE_UNIX', //Output type
+    '#date_label_position' => 'within', // See other available attributes and what they do in date_api_elements.inc
+    '#date_increment' => 15, // Optional, used by the date_select and date_popup elements to increment minutes and seconds.
+    '#date_year_range' => '-0:+1', // Optional, used to set the year range (back 3 years and forward 3 years is the default).
+    '#datepicker_options' => array(), // Optional, as of 7.x-2.6+, used to pass in additional parameters from the jQuery Datepicker widget.
 
-	);
-	//Days of week it's active
-	$form['days'] = array(
-		'#type' => 'checkboxes',
-		'#options' => drupal_map_assoc(array(t('Su'), t('Mo'), t('Tu'), t('We'), t('Th'), t('Fr'), t('Sa'))),
-		'#title' => t('Days discount is active'),
-		'#required' => TRUE,
+  );
+  //Days of week it's active
+  $form['days'] = array(
+    '#type' => 'checkboxes',
+    '#options' => drupal_map_assoc(array(t('Su'), t('Mo'), t('Tu'), t('We'), t('Th'), t('Fr'), t('Sa'))),
+    '#title' => t('Days discount is active'),
+    '#required' => TRUE,
 
-	);
-	
-	//End Date information
-	$form['stop_date'] = array(
-		'#type' => 'date_popup',
-		'#required' => TRUE,
-		'#title' => t('Ending Date'),
-		'#date_type' => 'DATE_UNIX',
-		'#default_value' => $date, 
-		'#date_format' => $format,
-		'#date_label_position' => 'within', 
-		'#date_increment' => 15, 
-		'#date_year_range' => '-0:+1', 
-		'#datepicker_options' => array(), 
+  );
+  
+  //End Date information
+  $form['stop_date'] = array(
+    '#type' => 'date_popup',
+    '#required' => TRUE,
+    '#title' => t('Ending Date'),
+    '#date_type' => 'DATE_UNIX',
+    '#default_value' => $date, 
+    '#date_format' => $format,
+    '#date_label_position' => 'within', 
+    '#date_increment' => 15, 
+    '#date_year_range' => '-0:+1', 
+    '#datepicker_options' => array(), 
 
-	);
+  );
 
-	$form['lat'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Latitude'),
-	);
+  // $form['lat'] = array(
+  //   '#type' => 'textfield',
+  //   '#required' => TRUE,
+  //   '#title' => t('Latitude'),
+  // );
 
-	$form['lon'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Longitude'),
-	);
+  // $form['lon'] = array(
+  //   '#type' => 'textfield',
+  //   '#required' => TRUE,
+  //   '#title' => t('Longitude'),
+  // );
 
-	$form['submit_button'] = array(
-		'#type' => 'submit',
-		'#value' => t('Submit'),
-	);
+  $form['addr'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('address'),
+    );
 
-	return $form;
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+
+  return $form;
 }
 
 function discountsubmit_discount_form_validate($form, &$form_state) {
-	
-	//TODO: Calculate days of week and put in several database entries between two dates, this is a specific note.
-	//TODO: Split start date and stop date into date and time
-	//TODO: String typcast date and time Unnecessary?
+  
+  //TODO: Calculate days of week and put in several database entries between two dates, this is a specific note.
+  //TODO: Split start date and stop date into date and time
+  //TODO: String typcast date and time Unnecessary?
 }
 
 function discountsubmit_discount_form_submit($form, &$form_state) {
-	//Table: Promotions
-	//File: promotions.db (?)
-	/* Keys:
-	start_date and stop_date MM\/DD\/YY
-	start_time and stop_time HH:MM
-	promotion_name string
-	promotion_value string
-	lat and lon numbers,
-	vendor string
-	link string
-	*/
-	
-	//Create an array that holds all of our calculated values at the proper keys
-	$fields = array(
-		'start_date' => $form_state['values']['start_date'],
-		'stop_date' => $form_state['values']['stop_date'],
-		'start_time' => '00:00',
-		'stop_time' => '24:00',
-		'promotion_name' => $form_state['values']['promotion_name'],
-		'promotion_value' => $form_state['values']['promotion_value'],
-		'lat' => $form_state['values']['lat'],
-		'lon' => $form_state['values']['lon'],
-		'vendor' => 'Debug Vendor',
-		'link' => $form_state['values']['link'],
-	);
+  //Table: Promotions
+  //File: promotions.db (?)
+  /* Keys:
+  start_date and stop_date MM\/DD\/YY
+  start_time and stop_time HH:MM
+  promotion_name string
+  promotion_value string
+  lat and lon numbers,
+  vendor string
+  link string
+  */
 
-	//Insert this as a new row into the database
-	$query = db_insert('promotions')->fields($fields)->execute();
+/**
+ * uses Google geocoding api to convert user entered address
+ * to latitude & longitude
+ * https://developers.google.com/maps/documentation/geocoding/#JSON
+ * @param  string $string is a user entered address
+ * @return array         containing 'lat', 'lon'
+ */
+function addressConvert($string){
 
-	drupal_set_message(t('Ok!'));
+  /**
+   * building address string for query to Google geocoding api
+   * @var string
+   */
+  $geocodeURL = "http://maps.googleapis.com/maps/api/geocode/json?address=";
+  //remove whitespaces
+  $geocodeURL .= preg_replace('/\s/', '', $string);
+  $geocodeURL .= "&sensor=false";
+
+  // testing url
+  // echo $geocodeURL . '<br /><br />';
+
+  /**
+   * fetch the JSON map information
+   * @var [type]
+   */
+  $ch = curl_init();
+  // sets URL to fetch
+  curl_setopt($ch, CURLOPT_URL, $geocodeURL);
+  // supress printing query results
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+  /**
+   * array containing Google geocoding data for submitted address
+   * execute curl command storing as array
+   * @var array
+   */
+  $response = json_decode(curl_exec($ch), TRUE);
+
+  // If Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST
+  if ($response['status'] != 'OK') {
+    return NULL;
+  }
+
+  // access lat & lon
+  $location = $response['results'][0]['geometry']['location'];
+  $latitude = $location['lat'];
+  $longitude = $location['lng'];
+
+  // FOR DEBUGGING ONLY
+  //echo 'lat: ' . $latitude;
+  //echo '<br /> <br />';
+  //echo 'lon: ' . $longitude;
+
+  $array = array(
+    'lat' => $latitude,
+    'lon' => $longitude,
+  );
+
+  return $array;
+}
+
+  $cordinates = addressConvert($form_state['values']['addr']);
+
+  //Create an array that holds all of our calculated values at the proper keys
+  $fields = array(
+    'start_date' => $form_state['values']['start_date'],
+    'stop_date' => $form_state['values']['stop_date'],
+    'start_time' => '00:00',
+    'stop_time' => '24:00',
+    'promotion_name' => $form_state['values']['promotion_name'],
+    'promotion_value' => $form_state['values']['promotion_value'],
+    'lat' => $cordinates['lat'],
+    'lon' => $cordinates['lon'],
+    'vendor' => 'Debug Vendor',
+    'link' => $form_state['values']['link'],
+  );
+
+  //Insert this as a new row into the database
+  $query = db_insert('promotions')->fields($fields)->execute();
+
+  drupal_set_message(t('Ok!'));
 }
 
