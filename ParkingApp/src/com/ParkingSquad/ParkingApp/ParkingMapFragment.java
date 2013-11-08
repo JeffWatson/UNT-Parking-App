@@ -1,16 +1,16 @@
 package com.ParkingSquad.ParkingApp;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.AlertDialog;
-import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -32,8 +32,7 @@ import java.util.List;
 public class ParkingMapFragment extends SupportMapFragment {
     private static final LatLng DENTON = new LatLng(33.211763,-97.14779);
     private GoogleMap googleMap;
-    LocationManager locationManager;
-    String gps = "GPS_PROVIDER";
+    public Context mapContext;
 
     List<Marker> PromoMarkers = new ArrayList<Marker>();
 
@@ -60,24 +59,14 @@ public class ParkingMapFragment extends SupportMapFragment {
 
                 // create an alert dialog for user to turn on GPS
                 AlertDialog.Builder builder1 = new AlertDialog.Builder (getActivity());                                     // create an alert dialog builder   KS
+                builder1.setTitle ("GPS is turned off");
                 builder1.setMessage ("Make sure to turn on GPS to get directions from your current location.");             // give user a message      KS
 
                 builder1.setPositiveButton (R.string.positive, new DialogInterface.OnClickListener() {                      // Positive button          KS
                     public void onClick (DialogInterface choice, int chosenButton) {
-
-                        String mapsURL = String.format ("http://maps.google.com/maps?f=d&daddr=%f,%f",
-                                myMarker.getPosition().latitude, myMarker.getPosition().longitude);   // object oriented way to put coordinates into map app  KS
-                        Intent OpenGoogleMapsApp = new Intent(Intent.ACTION_VIEW, Uri.parse(mapsURL));                      // startup intent to open google maps app       KS
-                        startActivity(OpenGoogleMapsApp);
-
+                    Intent OpenLocationSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity (OpenLocationSettings);
                     }
-                });
-
-                builder1.setNeutralButton (R.string.neutral, new DialogInterface.OnClickListener() {
-                    public void onClick (DialogInterface choice, int buttonPressed) {
-
-                    }
-
                 });
 
                 builder1.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {                       // Negative button          KS
@@ -87,8 +76,16 @@ public class ParkingMapFragment extends SupportMapFragment {
                 });
 
                 AlertDialog GPS_alert = builder1.create();                   // Instantiate the alert dialog box    KS
-                if (!locationManager.isProviderEnabled(gps))
+
+                if (!ParkingActivity.getGPSstatus (mapContext)) {            // if gps is not on, show the alert dialog to the user   KS
                     GPS_alert.show();                                            // actually show the alert     KS
+                }
+                else {                                                                                           // else just pull it up in the map application  KS
+                    String mapsURL = String.format ("http://maps.google.com/maps?f=d&daddr=%f,%f",
+                            myMarker.getPosition().latitude, myMarker.getPosition().longitude);                 // object oriented way to put coordinates into map app  KS
+                    Intent OpenGoogleMapsApp = new Intent(Intent.ACTION_VIEW, Uri.parse(mapsURL));                      // startup intent to open google maps app       KS
+                    startActivity (OpenGoogleMapsApp);
+                }
 
             }
         });

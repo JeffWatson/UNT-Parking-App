@@ -1,6 +1,7 @@
 package com.ParkingSquad.ParkingApp;
 
 import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,11 @@ import java.util.Locale;
 public class ParkingActivity extends FragmentActivity {
     private static final String TAG = "ParkingActivity";
     private Context context;
+
+    public static boolean getGPSstatus (Context parkingContext) {
+        LocationManager locationManager = (LocationManager) parkingContext.getSystemService (LOCATION_SERVICE);
+        return (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER));
+    }
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -47,6 +53,7 @@ public class ParkingActivity extends FragmentActivity {
 
         mPromotionStatusFragment = new PromotionStatusFragment();
         mParkingMapFragment = new ParkingMapFragment();
+            mParkingMapFragment.mapContext = context;
         mSettingsFragment = new SettingsFragment();
 
 
