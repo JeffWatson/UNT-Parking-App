@@ -6,14 +6,14 @@
 " rel="nofollow">http://api.drupal.org/api/function/hook_menu/6
 </a> */
 function discountsubmit_menu() {
-  $items = array();
-  $items['discountsubmit/form'] = array(
-    'title' => t('Discount Submission Form'),
-    'page callback' => 'discountsubmit_form',
-    'access arguments' => array('access content'),
-    'description' => t('A form to submit a new discount.'),
-    'type' => MENU_CALLBACK,
-  );
+    $items = array();
+    $items['discountsubmit/form'] = array(
+      'title' => t('Discount Submission Form'),
+      'page callback' => 'discountsubmit_form',
+      'access arguments' => array('access content'),
+      'description' => t('A form to submit a new discount.'),
+      'type' => MENU_CALLBACK,
+    );
   return $items;
 }
 
@@ -36,7 +36,11 @@ function discountsubmit_form() {
  * Notice, it takes one argument, the $form_state
  */
 function discountsubmit_discount_form($form_state) {
-
+  //If user is not logged in throw an error.
+  if (!$GLOBALS["user"]->uid) {
+    drupal_set_message(t('Error please log in!'), $type = 'error', $repeat = FALSE);
+    return NULL;
+  }
   // This is the first form element. It's a textfield with a label, "Name"
   $form['promotion_name'] = array(
     '#type' => 'textfield',
@@ -115,7 +119,7 @@ function discountsubmit_discount_form($form_state) {
   $form['addr'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
-    '#title' => t('address'),
+    '#title' => t('Address'),
     );
 
   $form['submit_button'] = array(
@@ -219,7 +223,7 @@ function addressConvert($string){
     'promotion_value' => $form_state['values']['promotion_value'],
     'lat' => $cordinates['lat'],
     'lon' => $cordinates['lon'],
-    'vendor' => 'Debug Vendor',
+    'vendor' => $GLOBALS["user"]->name,
     'link' => $form_state['values']['link'],
   );
 
