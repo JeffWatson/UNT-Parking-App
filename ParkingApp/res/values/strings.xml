@@ -9,4 +9,6 @@
     <string name="running_string">Available: %1$s-%2$s From %3$s-%4$s</string>
     <string name="positive">Continue</string>           <!-- ok button for gps alert dialog KS -->
     <string name="negative">Cancel</string>     <!-- cancel button for gps alert dialog  KS -->
+    <string name="neutral">Go to Settings</string>      <!-- button to go to settings to turn on gps    KS -->
+    <string name="gpsProvide">GPS_PROVIDER</string>        <!-- string to check if gps is on in alert dialog   KS -->
 </resources>

@@ -2,6 +2,7 @@ package com.ParkingSquad.ParkingApp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,15 +32,17 @@ import java.util.List;
 public class ParkingMapFragment extends SupportMapFragment {
     private static final LatLng DENTON = new LatLng(33.211763,-97.14779);
     private GoogleMap googleMap;
+    LocationManager locationManager;
+    String gps = "GPS_PROVIDER";
 
     List<Marker> PromoMarkers = new ArrayList<Marker>();
+
 
     public void setPromotionLocations (double x, double y, String z) {
 
         LatLng positionOnMap = new LatLng(x, y);
 
-        // Create a marker that shows the parking garage on the map
-
+        // Create a marker that shows the locations on the map
         final Marker myMarker = googleMap.addMarker(new MarkerOptions().position(positionOnMap)
                 .title(z)
                 .snippet("Tap to get directions from current location."));  // give a Title and snippet to the garage marker     KS
@@ -70,6 +73,13 @@ public class ParkingMapFragment extends SupportMapFragment {
                     }
                 });
 
+                builder1.setNeutralButton (R.string.neutral, new DialogInterface.OnClickListener() {
+                    public void onClick (DialogInterface choice, int buttonPressed) {
+
+                    }
+
+                });
+
                 builder1.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {                       // Negative button          KS
                     public void onClick(DialogInterface choice, int choseButton) {
                         // do nothing        KS
@@ -77,7 +87,8 @@ public class ParkingMapFragment extends SupportMapFragment {
                 });
 
                 AlertDialog GPS_alert = builder1.create();                   // Instantiate the alert dialog box    KS
-                GPS_alert.show();                                            // actually show the alert     KS
+                if (!locationManager.isProviderEnabled(gps))
+                    GPS_alert.show();                                            // actually show the alert     KS
 
             }
         });
