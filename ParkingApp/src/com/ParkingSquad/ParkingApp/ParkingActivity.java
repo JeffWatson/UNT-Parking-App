@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -81,6 +82,16 @@ public class ParkingActivity extends FragmentActivity {
         //String response = updater.getResponse();
 
         //Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:  mViewPager.setCurrentItem(2, true);
+                                        return true;
+            default: return super.onOptionsItemSelected (item);
+        }
     }
 
     @Override
