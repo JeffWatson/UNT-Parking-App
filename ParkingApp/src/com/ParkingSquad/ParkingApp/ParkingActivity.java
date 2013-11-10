@@ -22,6 +22,20 @@ public class ParkingActivity extends FragmentActivity {
     private static final String TAG = "ParkingActivity";
     private Context context;
 
+    /**
+     * Change the activity's page to the one supplied
+     * @param page the page we want to go to
+     */
+    public void changePage(int page)
+    {
+        mViewPager.setCurrentItem(page);
+    }
+
+    public ParkingMapFragment getMapFragment()
+    {
+        return mParkingMapFragment;
+    }
+
     public static boolean getGPSstatus (Context parkingContext) {
         LocationManager locationManager = (LocationManager) parkingContext.getSystemService (LOCATION_SERVICE);
         return (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER));
@@ -52,9 +66,9 @@ public class ParkingActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         context = this.getApplicationContext();
 
-        mPromotionStatusFragment = new PromotionStatusFragment();
+        mPromotionStatusFragment = new PromotionStatusFragment(this);
         mParkingMapFragment = new ParkingMapFragment();
-            mParkingMapFragment.mapContext = context;
+        mParkingMapFragment.mapContext = context;
         mSettingsFragment = new SettingsFragment();
 
 
@@ -156,7 +170,6 @@ public class ParkingActivity extends FragmentActivity {
         Log.i(TAG, "Made it to force reload!");
 
         mPromotionStatusFragment.forceReload();
-//        mParkingMapFragment.forceReload();
 
     }
 }

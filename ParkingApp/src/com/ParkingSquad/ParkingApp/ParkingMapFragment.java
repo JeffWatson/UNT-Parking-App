@@ -104,7 +104,40 @@ public class ParkingMapFragment extends SupportMapFragment {
 
         googleMap.setMyLocationEnabled(false);        // enable or disable my location layer for map to access user's location. KS
                                                       //  true  or false
+
+
+        /*
+            Get the Promotions stored in the database on the device,
+            Iterate through them and set up the Markers.
+
+            JW
+         */
+        PromotionDataSource datasource = new PromotionDataSource(inflater.getContext());
+        datasource.open();
+        List<Promotion> promotions = datasource.getAllPromotions();
+        datasource.close();
+
+        for(Promotion promo: promotions)
+        {
+            setPromotionLocations(promo.getLat(), promo.getLon(), promo.getPromotion_vendor());
+        }
+
+
         return view;
+
+    }
+
+    /**
+     *  Moves the map to the location of the supplied promotion
+     *
+     * @param promo the promotion we want to move to.
+     * @return whether or not the map moved
+     */
+    public void moveMapToPromotion(Promotion promo)
+    {
+        LatLng newLocation = new LatLng(promo.getLat(),promo.getLon());
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, (float) 14.50));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ParkingSquad.ParkingApp;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -7,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,13 +20,19 @@ import java.util.ArrayList;
  * Time: 3:23 PM
  */
 
-public class PromotionStatusFragment extends ListFragment {
+public class PromotionStatusFragment extends ListFragment implements AdapterView.OnItemClickListener {
     private static final String TAG = "PromotionStatusFragment";
 
     private View rootView;
     private static PromotionListAdapter mAdapter;
     private ArrayList<Promotion> mData;
     private PromotionDataSource datasource;
+    private ParkingActivity activity;
+
+    public PromotionStatusFragment(ParkingActivity act)
+    {
+        this.activity = act;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,11 +51,18 @@ public class PromotionStatusFragment extends ListFragment {
 
         rootView = inflater.inflate(R.layout.current_promotions_layout, container, false);
 
+
         return rootView;
     }
 
-    public void forceReload()
+    @Override
+    public void onResume()
     {
+        super.onResume();
+        getListView().setOnItemClickListener(this);
+    }
+
+    public void forceReload() {
         Log.i(TAG, "Forcing list view Refresh...");
 
         datasource.open();
@@ -58,5 +75,17 @@ public class PromotionStatusFragment extends ListFragment {
         mAdapter.notifyDataSetChanged();
 
         Log.i(TAG, "finished reloading!");
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.i(TAG, "click on view " + position);
+
+        //get our promotion
+        Promotion promo = (Promotion) parent.getItemAtPosition(position);
+
+        // change the page of the activity and show the new promotion
+        activity.changePage(0);
+        activity.getMapFragment().moveMapToPromotion(promo);
     }
 }

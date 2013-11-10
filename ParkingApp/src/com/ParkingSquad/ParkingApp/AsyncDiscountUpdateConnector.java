@@ -19,8 +19,7 @@ import java.net.URL;
  */
 public class AsyncDiscountUpdateConnector extends AsyncTask{
     private static final String TAG = "AsyncDiscountUpdateConnector";
-    private static final String DISCOUNTS_URL = "http://students.cse.unt.edu/~rlb0336/getDiscounts.php";
-                                                //"http://students.cse.unt.edu/?=jcw0227/apps/UNT-Parking_App/getDiscounts.php";
+    private static final String DISCOUNTS_URL = "http://students.cse.unt.edu/~jcw0227/apps/UNT-Parking-App/getdiscounts.php";
     private ParkingActivity parentActivity;
     private String response;
 
@@ -93,13 +92,11 @@ public class AsyncDiscountUpdateConnector extends AsyncTask{
                 newPromo.setStop_time(obj.getString("stop_time"));
                 newPromo.setPromotion_vendor(obj.getString("vendor"));
                 newPromo.setLink(obj.getString("link"));
-                newPromo.setPromotion_name("promotion_name");
+                newPromo.setPromotion_name(obj.getString("promotion_name"));
                 newPromo.setStop_date(obj.getString("stop_date"));
                 newPromo.setStart_time(obj.getString("start_time"));
                 newPromo.setStart_date(obj.getString("start_date"));
                 newPromo.setLat(obj.getDouble("lat"));
-
-                parentActivity.mParkingMapFragment.setPromotionLocations (newPromo.getLat(), newPromo.getLon(), newPromo.getPromotion_vendor());
 
                 datasource.createOrUpdatePromotion(newPromo);
             }
