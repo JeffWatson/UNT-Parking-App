@@ -100,9 +100,9 @@ public class ParkingActivity extends FragmentActivity {
 
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
+    public boolean onOptionsItemSelected (MenuItem item) {                           //  This is for the menu of options actually being clicked by the user    KS
         switch (item.getItemId()) {
-            case R.id.action_settings:  mViewPager.setCurrentItem(2, true);
+            case R.id.action_settings:  mViewPager.setCurrentItem(2, true);          //  int 2 is for the page of the settings view-we will need to change it if we add more fragments   KS
                                         return true;
             default: return super.onOptionsItemSelected (item);
         }
