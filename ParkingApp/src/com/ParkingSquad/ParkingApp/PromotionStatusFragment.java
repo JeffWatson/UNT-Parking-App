@@ -90,6 +90,7 @@ public class PromotionStatusFragment extends ListFragment implements AdapterView
         activity.getMapFragment().moveMapToPromotion(promo);
     }
 
+
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         //get our promotion
