@@ -1,6 +1,8 @@
 package com.ParkingSquad.ParkingApp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
  * Time: 3:23 PM
  */
 
-public class PromotionStatusFragment extends ListFragment implements AdapterView.OnItemClickListener {
+public class PromotionStatusFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
     private static final String TAG = "PromotionStatusFragment";
 
     private View rootView;
@@ -29,8 +31,7 @@ public class PromotionStatusFragment extends ListFragment implements AdapterView
     private PromotionDataSource datasource;
     private ParkingActivity activity;
 
-    public PromotionStatusFragment(ParkingActivity act)
-    {
+    public PromotionStatusFragment(ParkingActivity act) {
         this.activity = act;
     }
 
@@ -56,10 +57,10 @@ public class PromotionStatusFragment extends ListFragment implements AdapterView
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
         getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
     }
 
     public void forceReload() {
@@ -87,5 +88,21 @@ public class PromotionStatusFragment extends ListFragment implements AdapterView
         // change the page of the activity and show the new promotion
         activity.changePage(0);
         activity.getMapFragment().moveMapToPromotion(promo);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        //get our promotion
+        Promotion promo = (Promotion) parent.getItemAtPosition(position);
+
+        try {
+            String linkURL = promo.getLink();
+            Intent OpenGoogleMapsApp = new Intent(Intent.ACTION_VIEW, Uri.parse(linkURL));                      // startup intent to open google maps app       KS
+            startActivity(OpenGoogleMapsApp);
+        } catch (Exception e) {
+            Log.e(TAG, "Unable to open browser.", e);
+        }
+
+        return true;
     }
 }
