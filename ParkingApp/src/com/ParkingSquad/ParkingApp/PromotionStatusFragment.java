@@ -79,7 +79,7 @@ public class PromotionStatusFragment extends ListFragment implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.i(TAG, "click on view " + position);
+//        Log.i(TAG, "click on view " + position);
 
         //get our promotion
         Promotion promo = (Promotion) parent.getItemAtPosition(position);
