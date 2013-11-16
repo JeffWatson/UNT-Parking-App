@@ -4,7 +4,9 @@
  * See <a href="http://api.drupal.org/api/function/hook_menu/6
 " title="http://api.drupal.org/api/function/hook_menu/6
 " rel="nofollow">http://api.drupal.org/api/function/hook_menu/6
-</a> */
+</a> 
+**/
+
 function discountsubmit_menu() {
     $items = array();
     $items['discountsubmit/form'] = array(
@@ -50,13 +52,13 @@ function discountsubmit_discount_form($form_state) {
 
   $form['promotion_value'] = array(
     '#type' => 'textfield',
-    '#title' => t('Value of discount'),
+    '#title' => t('Value of Discount'),
     '#required' => TRUE,
   );
   
   $form['link'] = array(
     '#type' => 'textfield',
-    '#title' => t('Link to discount website'),
+    '#title' => t('Link to Discount Website'),
     '#required' => TRUE,
   );
     
@@ -84,7 +86,7 @@ function discountsubmit_discount_form($form_state) {
   $form['days'] = array(
     '#type' => 'checkboxes',
     '#options' => drupal_map_assoc(array(t('Su'), t('Mo'), t('Tu'), t('We'), t('Th'), t('Fr'), t('Sa'))),
-    '#title' => t('Days discount is active'),
+    '#title' => t('Days Discount is Active'),
     '#required' => TRUE,
 
   );
