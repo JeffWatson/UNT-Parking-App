@@ -3,3 +3,4 @@ CREATE TABLE promotions (id INTEGER PRIMARY KEY, start_date text, stop_date text
 SELECT * FROM promotions;
 
 INSERT INTO promotions(null, 'start_date','stop_date','start_time','stop_time','promotion_name','value',lat, lon, 'link');
+
