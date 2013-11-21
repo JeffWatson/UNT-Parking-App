@@ -1,0 +1,76 @@
+<?php
+/**
+ * This function defines the URL to the page created etc.
+ * See <a href="http://api.drupal.org/api/function/hook_menu/6
+" title="http://api.drupal.org/api/function/hook_menu/6
+" rel="nofollow">http://api.drupal.org/api/function/hook_menu/6
+</a>
+*/
+
+function viewcurrent_menu() {
+    $items = array();
+    $items['viewcurrent'] = array(
+      'title' => t('View Current Discounts'),
+      'page callback' => 'viewcurrent_form',
+      'access arguments' => array('access content'),
+      'description' => t('View current discounts.'),
+      'type' => MENU_CALLBACK,
+    );
+  return $items;
+}
+
+/**
+ * This function gets called in the browser address bar for:
+ * http://yourhost/?q=viewcurrent
+ * a page with this form on it.
+ */
+function viewcurrent_form() {
+
+$query = "SELECT * FROM promotions";
+$query_result = db_query($query);
+$header = array(
+  'Start Date',
+  'Stop Date',
+  'Start Time',
+  'Stop Time',
+  'Promotion Name',
+  'Promotion Value',
+  'Latitude',
+  'Longitiude',
+  'Vendor',
+  'Link',
+);
+
+//$query_result->fetchAll();
+
+
+$table = array(
+  '#theme' => 'table',
+  '#header' => array(
+    t('Vendor'),
+    t('Start Date'),
+    t('Stop Date'),
+    t('Start Time'),
+    t('Stop Time'),
+    t('Promotion Name'),
+    t('Promotion Value'),
+    t('Edit'),
+  ),
+  '#rows' => array(),
+);
+
+foreach ($query_result as $row){
+  $table['#rows'][] = array(
+    $row->vendor,
+    $row->start_date,
+    $row->stop_date,
+    $row->start_time,
+    $row->stop_time,
+    $row->promotion_name,
+    $row->promotion_value,
+  );
+}
+
+return $table;
+
+}
