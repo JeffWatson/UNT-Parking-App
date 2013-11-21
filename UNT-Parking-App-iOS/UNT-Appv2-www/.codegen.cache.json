@@ -2,7 +2,8 @@
   "actionsIdCache": {
     "m1_UNT_Appv2_tabBar_Map:click": "action0",
     "m1_UNT_Appv2_tabBar_ParkingStatus:click": "action1",
-    "m1_UNT_Appv2_tabBar_Settings:click": "action2"
+    "m1_UNT_Appv2_tabBar_Settings:click": "action2",
+    "m1_UNT_Appv2_tabBar_DiscountStatus:click": "action3"
   },
   "splashScreenHashes": {}
 }

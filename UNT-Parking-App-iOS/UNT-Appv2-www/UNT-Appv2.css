@@ -314,20 +314,29 @@ li > .m1-list .m1-text{
   border-style: solid;
 }
 
-.m1-background-4{
-  background-color: rgb(0,0,0);
-  background-image: none;
+
+  .m1-list.m1-plain-list > li.m1-clicked.m1-highlight.m1-background-5,.m1-list.m1-plain-list > li.m1-unclicked.m1-highlight.m1-background-6
+  {
+  background-color: rgba(0,0,0,0);
+  background-image: 
+    -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(79,141,237)), to(rgb(2,91,230)));
 }
 
 .m1-font-2{
-  color: rgb(5,144,51);
-  font-family: Arial;
-  font-size: 24px;
+  color: rgb(0,0,0);
+  font-family: Helvetica;
+  font-size: 17px;
   font-weight: bold;
   text-decoration: none;
 }
 
-.m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-5{
+.m1-list > li.m1-clicked.m1-highlight div.m1-active-color-1{
+  color: rgb(255,255,255);
+}
+
+
+  .m1-background-2,.m1-list.m1-plain-list > .m1-list-header.m1-background-7,.m1-list.m1-plain-list > li.m1-background-4
+  {
   background-color: rgb(255,255,255);
   background-image: none;
 }
@@ -344,7 +353,7 @@ li > .m1-list .m1-text{
   text-shadow: rgb(64,64,64) 1px 1px 1px;
 }
 
-.m1-list.m1-plain-list > .m1-list-header.m1-background-6{
+.m1-list.m1-plain-list > .m1-list-header.m1-background-8{
   background-color: rgba(0,0,0,0);
   background-image: 
     -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(177,188,205)), to(rgb(109,131,161)));
@@ -370,7 +379,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-background-3,.m1-selected.m1-background-7{
+.m1-background-3,.m1-selected.m1-background-9{
   background-color: rgb(5,144,51);
   background-image: none;
 }
@@ -423,7 +432,7 @@ body{
   width: 100px;
 }
 
-#m1-UNT-Appv2-tabBar-ParkingStatus-label{
+#m1-UNT-Appv2-tabBar-DiscountStatus-label{
   height: 12px;
   left: 0px;
   line-height: 12px;
@@ -432,14 +441,14 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-tabBar-ParkingStatus-img{
+#m1-UNT-Appv2-tabBar-DiscountStatus-img{
   height: 16px;
   left: 42px;
   top: 7px;
   width: 16px;
 }
 
-#m1-UNT-Appv2-tabBar-ParkingStatus{
+#m1-UNT-Appv2-tabBar-DiscountStatus{
   height: 43px;
   left: 109px;
   top: -40px;
@@ -486,7 +495,7 @@ body{
   width: 21px;
 }
 
-#m1-UNT-Appv2-Parking2{
+#m1-UNT-Appv2-Parking{
   height: 21px;
   left: 284px;
   line-height: 21px;
@@ -561,7 +570,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-Parking{
+#m1-UNT-Appv2-Discounts{
   height: 30px;
   left: 0px;
   line-height: 30px;
@@ -626,113 +635,79 @@ body{
   width: 100.0%;
 }
 
-#m1-UNT-Appv2-WeatherWidget{
-  height: 138px;
-  left: 0px;
-  top: -280px;
-  width: 320px;
+#m1-UNT-Appv2-TextList2{
+  height: 23px;
+  left: 5px;
+  line-height: 23px;
+  text-align: left;
+  top: -3px;
+  width: 84px;
 }
 
-#m1-UNT-Appv2-text8{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
+#m1-UNT-Appv2-accessoryImage2{
+  height: 13px;
+  line-height: 13px;
+  margin-left: auto;
+  right: 5px;
+  top: 15px;
+  width: 9px;
 }
 
-#m1-UNT-Appv2-CurrentPrice5{
-  height: 56px;
+#m1-UNT-Appv2-listItem2{
+  height: 44px;
   left: 0px;
-  line-height: 56px;
+  line-height: 44px;
   margin-right: 0px;
-  top: 167px;
+  top: 0px;
   width: auto;
 }
 
-#m1-UNT-Appv2-text5{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
+#m1-UNT-Appv2-TextList1{
+  height: 23px;
+  left: 5px;
+  line-height: 23px;
+  text-align: left;
+  top: -3px;
+  width: 84px;
 }
 
-#m1-UNT-Appv2-CurrentPrice4{
-  height: 56px;
+#m1-UNT-Appv2-accessoryImage1{
+  height: 13px;
+  line-height: 13px;
+  margin-left: auto;
+  right: 5px;
+  top: 15px;
+  width: 9px;
+}
+
+#m1-UNT-Appv2-listItem1{
+  height: 44px;
   left: 0px;
-  line-height: 56px;
+  line-height: 44px;
   margin-right: 0px;
-  top: 160px;
+  top: 0px;
   width: auto;
 }
 
-#m1-UNT-Appv2-text7{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
-}
-
-#m1-UNT-Appv2-CurrentPrice32{
-  height: 56px;
+#m1-UNT-Appv2-list1{
+  height: 88px;
   left: 0px;
-  line-height: 56px;
+  line-height: 88px;
   margin-right: 0px;
-  top: 153px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-text6{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
-}
-
-#m1-UNT-Appv2-CurrentPrice3{
-  height: 56px;
-  left: 0px;
-  line-height: 56px;
-  margin-right: 0px;
-  top: 146px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-text4{
-  height: 29px;
-  left: 84px;
-  line-height: 29px;
-  text-align: center;
-  top: 20px;
-  width: 151px;
-}
-
-#m1-UNT-Appv2-CurrentPrice1{
-  height: 56px;
-  left: 0px;
-  line-height: 56px;
-  margin-right: 0px;
-  top: 139px;
+  top: 0px;
   width: auto;
 }
 
 #m1-UNT-Appv2-text3{
   height: 23px;
-  left: 92px;
+  left: 86px;
   line-height: 23px;
   text-align: center;
   top: 10px;
-  width: 136px;
+  width: 147px;
 }
 
-#m1-UNT-Appv2-Navigation-ParkingStatus{
+#m1-UNT-Appv2-Navigation-DiscountStatus{
   height: 43px;
   left: 0px;
   line-height: 43px;
@@ -741,7 +716,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-ParkingStatus-box-scroller{
+#m1-UNT-Appv2-DiscountStatus-box-scroller{
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
   height: 511px;
@@ -752,7 +727,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-ParkingStatus-box{
+#m1-UNT-Appv2-DiscountStatus-box{
   height: 411px;
   left: 0px;
   line-height: 411px;
@@ -761,7 +736,7 @@ body{
   width: auto;
 }
 
-#m1-UNT-Appv2-ParkingStatus{
+#m1-UNT-Appv2-DiscountStatus{
   height: 100.0%;
   left: 0px;
   top: 0px;
