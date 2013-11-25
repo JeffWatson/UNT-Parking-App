@@ -1,6 +1,6 @@
 /*
  *  MobiOne PhoneUI Framework - Map Implementation
- *  version 2.3.2.201304250842
+ *  version 2.5.0.201311011215
  *  <http://genuitec.com/mobile/resources/phoneui>
  *  (c) Copyright 2010-2012 Genuitec, LLC
  *
@@ -60,7 +60,7 @@
 	}
 	
 	phoneui._extraPageInitializers.push(function(context) {
-		var uninitmaps = $('.' + m1Design.css("map") + ":not(" + m1Design.css("map-initialized") + ")", context);
+		var uninitmaps = $('.' + m1Design.css("map") + ":not(." + m1Design.css("map-initialized") + ")", context);
 		
 		if (uninitmaps.length > 0) {
 			// Vadim.Ridosh: setTimeout is required here, otherwise you're getting problems like

@@ -1,6 +1,6 @@
 /*
  *  MobiOne PhoneUI Framework
- *  version 2.3.2.201304250842
+ *  version 2.5.0.201311011215
  *  <http://genuitec.com/mobile/resources/phoneui>
  *  (c) Copyright 2010-2012 Genuitec, LLC
  *
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// 
 
 var phoneui = {};
 
@@ -152,7 +153,6 @@ $(document).ready(function() {
 					phoneui.showURL(videoUrl, '_self');
 				}
 			},
-			usePhoneGapPlayer : function() { return false; },
 			forceRemoteAudioRestart: false
 	};
 	
@@ -216,7 +216,7 @@ $(document).ready(function() {
 				var p = (window.orientation % 180) == 0;
 
 				// Take statusbar into account
-				var bb = 20;
+				var bb = m1Design.fullScreenMode ? 0 : 20;
 				var bbVisible =
 					!(phoneui.cordovaAvailable()) &&
 					!window.navigator.standalone;
@@ -252,7 +252,12 @@ $(document).ready(function() {
 
 					// Wait for some time and resize page then. This should fix 22194
 					setTimeout(function() {
-						handleResizing();
+						// handleResizing();
+						var activeTag = document.activeElement ? document.activeElement.tagName.toLower() : ""; 
+						if (activeTag != "input" && activeTag != "textarea" && activeTag != "select") {
+							// Return body to it's original state
+							handleResizing();
+						}
 					}, 50);
 				});
 				// Fix for Bug 19213
@@ -355,7 +360,6 @@ $(document).ready(function() {
 
 						if (browserData().maxHeight - window.outerHeight > 150) {
 							if (!that.keybIsOn) {
-								// debug.log('Virtual keyboard is shown');
 								var that = phoneui._platform;
 
 								//
@@ -396,14 +400,12 @@ $(document).ready(function() {
 									el.style.top = top + "px";
 									el.style.left = left + "px";
 									// el.offsetHeight;
-									// debug.log("NO -webkit-transition!");
 
 									that.restoreFunctions.push(function() {
 										el.style.top = 0;
 										el.style.left = 0;
 										el.style.webkitTransform = strTransform;
 										el.style.webkitTransition = strTransition;
-										// debug.log("Restore -webkit-transition!");
 									});
 								});
 
@@ -423,7 +425,7 @@ $(document).ready(function() {
 							that.keybIsOn = true;
 						} else {
 							if (that.keybIsOn) {
-								// debug.log('Virtual keyboard is hidden');
+								// 
 
 								// $("." + m1Design.css('top-root')).scrollTop = 0;
 								$("." + m1Design.css('top-root')).css('top', 0);
@@ -462,7 +464,7 @@ $(document).ready(function() {
 				var s = phoneui._platform.docsize();
 				var prevDocSize = phoneui._platform.docsize();
 				var prevDocSizeTime = attempt;
-			    setTimeout(function() {
+				var fnPeriod = function() {
 			    	var e;
 			    	try {
 				    	var wait = true;
@@ -482,7 +484,7 @@ $(document).ready(function() {
 
 							if (wait) {
 								attempt++;
-								setTimeout(arguments.callee, 100);
+								setTimeout(fnPeriod, 100);
 							} else {
 								fnEnd();
 							}
@@ -492,7 +494,8 @@ $(document).ready(function() {
 			    	} catch (e) {
 			    		console.error(e);
 			    	}
-			    }, 50);
+			    }
+			    setTimeout(fnPeriod, 50);
 
 			},
 			hideAddressBar : function(fnAfter) {
@@ -531,7 +534,30 @@ $(document).ready(function() {
 			translateTransition : realTranslateTransition,
 			alternateTransition : silk || version.match(/^4\./),
 			showURLInMainWindowUsing : doWindowOpen,
-			usePhoneGapPlayer : function() { return phoneui.cordovaAvailable(); },
+			playVideoImplementation : function(videoUrl) {
+				var a = document.createElement('a');
+				a.href = videoUrl;
+				var absoluteUrl = a.href;
+
+				if (phoneui.cordovaAvailable()) {
+					phoneui.cordova.exec(
+						function(result) {
+							if (result === "true")
+								phoneui.cordova.exec(null, null, "MobiOne", "playVideo", [absoluteUrl]);
+							else
+								phoneui.showURL(videoUrl, '_system');
+						},
+						function(error) {
+							phoneui.showURL(videoUrl, '_system');
+						},
+						"MobiOne",
+						"useNativeVideoPlayer",
+						[]);
+				} else {
+					// AY: webapp: Android forbids popups by default and have 4 tabs limit, so use self
+					phoneui.showURL(videoUrl, '_self');
+				}
+			},
 			forceRemoteAudioRestart: true
 		});
 	} else {
@@ -586,7 +612,6 @@ $(document).ready(function() {
 		handleResizing();
 	}
 
-	var isSliding = false;
 	var firstScreenTime = 1;
 	var defAncPars = [m1Design.root(), 'NONE', firstScreenTime];
 	var currentScreen = parseAnchor('');
@@ -597,9 +622,25 @@ $(document).ready(function() {
 
 	handleResizing();
 
+	/**
+	 * This method decides whether we need to do AJAX request for the next page
+	 */
+	function needToLoadAjaxPage(currentScreen, nextScreen, back) {
+		return ('html_url' in nextScreen) &&
+			($(nextScreen.anchor_id).length == 0 || m1Design.ajaxPageReloadApproach == 'ALWAYS') &&
+			// following case is special one - returning back from static page
+			// to dynamic one shouldn't cause reload, otherwise our SLM pages
+			// stops to work
+			!(back && currentScreen && !('html_url' in currentScreen));
+	}
+
+	function createAnchor(screen, transition, time) {
+		return screen.id + ":" + transition + ":" + time;
+	}
+	
 	// FORMAT: page_id:transition:time
 	function parseAnchor(str) {
-		var spl = str == "" ? [] : str.substr(1).split(':');
+		var spl = str == "" ? [] : str.substr(1).split(":");
 
 		// Append default params
 		if (spl.length < defAncPars.length) {
@@ -620,7 +661,6 @@ $(document).ready(function() {
 		ret.equals = function(el) {
 			return !el || (this.anchor_id == el.anchor_id);
 		};
-		ret.toString = function() { return this.anchor_id + ":" + this.transition; };
 
 		return ret;
 	}
@@ -651,11 +691,15 @@ $(document).ready(function() {
 	checkNewScreen();
 
 	var prevHref;
+	var prevHash;
+
 	function checkNewScreen() {
 		var initialCall = !prevHref;
 		if (prevHref != window.location.href) {
+			var prevExistingHash = prevHash;
 			var prevExistingHref = prevHref;
 			prevHref = window.location.href;
+			prevHash = window.location.hash;
 
 			var nextScreen = parseAnchor(window.location.hash);
 
@@ -669,36 +713,47 @@ $(document).ready(function() {
 					back = true;
 				}
 
-				if (('html_url' in nextScreen) &&
-						($(nextScreen.anchor_id).length == 0 || m1Design.ajaxPageReloadApproach == 'ALWAYS') &&
-						// following case is special one - returning back from static page
-						// to dynamic one shouldn't cause reload, otherwise our SLM pages
-						// stops to work
-						!(back && currentScreen && !('html_url' in currentScreen))) {
-					
-					// Load page first
-					var url = nextScreen.html_url();
-					phoneui.showActivityDialog();
-					
-					var req = new XMLHttpRequest();
-					req.open("GET", url, true);
-					// req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
-					var timer = setTimeout(function() {
-						   req.abort();
-						 }, 10000);
-					req.onreadystatechange = function() {
-						if (req.readyState == req.DONE) {
-							var ok = (req.status >= 200 && req.status < 300) || (req.status == 0 && req.responseText.length > 0);
-							if (ok) {
-								clearTimeout(timer);
-
-								parseDPIPageData(req.responseText, trans, back, nextScreen.time);
-							} else {
-								phoneui.hideActivityDialog();
-							}
+				if (needToLoadAjaxPage(currentScreen, nextScreen, back)) {
+					// call "prePageLoad" hook
+					var allowedToLoad = true;
+					if ('prePageLoad' in phoneui) {
+						allowedToLoad =
+							!!runUserCode(phoneui.prePageLoad, null, [nextScreen.anchor_id], true);
+						if (!allowedToLoad) {
+							console.log('Page ' + nextScreen.anchor_id + ' prePageLoad veto');
 						}
 					}
-					req.send(null);
+
+					if (allowedToLoad) {
+						// Load page first
+						var url = nextScreen.html_url();
+						phoneui.showActivityDialog();
+						
+						var req = new XMLHttpRequest();
+						req.open("GET", url, true);
+						// req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
+						var timer = setTimeout(function() {
+							   req.abort();
+							 }, 10000);
+						req.onreadystatechange = function() {
+							if (req.readyState == req.DONE) {
+								var ok = (req.status >= 200 && req.status < 300) || (req.status == 0 && req.responseText.length > 0);
+								if (ok) {
+									clearTimeout(timer);
+	
+									parseDPIPageData(req.responseText, trans, back, nextScreen.time);
+								} else {
+									phoneui.hideActivityDialog();
+								}
+							}
+						}
+						req.send(null);
+					} else {
+						// revert location
+						window.location.hash = prevHash = prevExistingHash;
+						prevHref = window.location.href;
+						return;
+					}
 				} else {
 					// Animate!
 					var $next = $(nextScreen.anchor_id);
@@ -707,7 +762,8 @@ $(document).ready(function() {
 					// back, calling pretransition event and check whether user
 					// cancelled transition.
 					if (back && !callPreTransition(nextScreen)) {
-						window.location.href = prevHref = prevExistingHref;
+						window.location.hash = prevHash = prevExistingHash;
+						prevHref = window.location.href;
 						return;
 					} else {
 						// calling "back" handler
@@ -739,7 +795,7 @@ $(document).ready(function() {
 			// First page description is a page we need to switch at
 			var pageObject = pageObjects[0];
 
-			var nextScreen = parseAnchor("#" + pageObject.id + ":" + transition);
+			var nextScreen = parseAnchor("#" + createAnchor(pageObject, transition, currentScreen.time));
 
 			if (callPreTransition(nextScreen)) {
 				resizeScreen(nextScreen, back);
@@ -750,7 +806,7 @@ $(document).ready(function() {
 						transition, back, function(transition) {
 							nextScreen.time = currentScreen.time + 1;
 							if (!nextScreen.equals(parseAnchor(window.location.hash))) {
-								window.location.hash = nextScreen.id + ":" + transition + ":" + nextTimeId;
+								window.location.hash = createAnchor(nextScreen, transition, nextTimeId);
 							}
 							currentScreen = nextScreen;
 							callPostTransition();
@@ -798,7 +854,7 @@ $(document).ready(function() {
 			  error: onok // Call onok anyway, we don't care about failed JS loading
 			});
 	}
-
+		
 	// AY TODO: review this code
 	phoneui.__postPageTransitionHandlers = [];
 	phoneui.addPostPageTransitionHandler = function(fu) {
@@ -891,12 +947,18 @@ $(document).ready(function() {
 	    var method = $form.attr('method');
 	    var restype = $form.attr('data-resulttype');
 	    var transition = $form.attr('data-transition');
-	    
-        // Drop placeholders before serialization
+		var result = false;
+
+		// call preSubmit method right now, may be user want to modify fields here
+	    if (presubmitName in phoneui) {
+	      result = !!runUserCode(phoneui[presubmitName], this, [form], true);
+	      if (!result) return false;
+	    }
+
+        // Drop placeholders before serialization and do serialize
 	    var str = doWhilePlaceholdersDropped(function() { return $form.serialize() });
 	    
 	    var aftersubmitName = "postSubmitForm_" + form.name;		
-		var result = false;
 
 	    var path = $form.attr('action');
 	    //validate non-empty path
@@ -905,11 +967,6 @@ $(document).ready(function() {
 	    path = $.trim(path);
 	    //validate non-empty path
 	    if (path.length == 0) return false; //no path provided	    	    
-
-	    if (presubmitName in phoneui) {
-	      result = !!runUserCode(phoneui[presubmitName], this, [form], true);
-	      if (!result) return false;
-	    }
 	    	    
 	    //mailto: protocol issues on iOS:
 	    // 1) fails on iOS3 standalone webapp
@@ -1071,11 +1128,6 @@ $(document).ready(function() {
     		console.error(e);
     		return false;
     	}	
-    		    	
-        // XXX: why do we need this?
-//        if (result && urlToGoAfter) {
-//              setNewLocation(urlToGoAfter);
-//        }
 
         return true;		
 	}
@@ -1119,10 +1171,13 @@ $(document).ready(function() {
 			console.error('Page ' + pageId + ' not found');
 			return;
 		}
-		if (callPreTransition(newScreen)) {
-			window.location.hash = newScreen.id + ":" +
-				(transition || phoneui.transitions.slideLeft) +
-				(currentScreen ? ":" + ((+currentScreen.time) + 1) : "");
+
+		// Here we want to call PreTransition only if no need to load ajax page
+		// otherwise, it will be called later, after page loading.
+		if (needToLoadAjaxPage(currentScreen, newScreen, false) || callPreTransition(newScreen)) {
+			window.location.hash = createAnchor(newScreen,
+				(transition || phoneui.transitions.slideLeft),
+				(currentScreen ? ((+currentScreen.time) + 1) : "0"));
 		}
 	}
 
@@ -1170,7 +1225,7 @@ $(document).ready(function() {
 		$.each(phoneui._extraPageInitializers, function(i, f) {
 			f(newSelected);
 		});
-
+		
 		animateNavigation(newSelected, oldSelected, transition, false, function() {			
 			var changedAction = widget.attr("data-action-changed-id");
 			if (changedAction) {
@@ -1187,7 +1242,11 @@ $(document).ready(function() {
 	}
 
 	function animateNavigation($new, $old, transition, revertTransition, fnAfterTransition) {
-		if(isSliding === false && ($new.attr('id') != $old.attr('id')))  {
+		if (document && document.activeElement && ('blur' in document.activeElement)) {
+			document.activeElement.blur(); // Unfocus currently active document.
+		}
+
+		if ($new.attr('id') != $old.attr('id'))  {
 			if ($new.length == 0) {
 				console.error("Animation target page is not found");
 				return; // Target page is not found
@@ -1210,19 +1269,24 @@ $(document).ready(function() {
 			var trSlideDown = transition == tr.slideDown;
 			var trSlideLeft = transition == tr.slideLeft;
 
-			isSliding = true;
-
 			$new.css('pointer-events', 'none');
 			$old.css('pointer-events', 'none');
+			
+			// Stop all scrollers - we don't want them to process when sliding
+			$('.' + m1Design.css("iscroll-scroller"), $old).each(function() {
+				if (this.myScroll) {
+					this.myScroll.stop();
+				}
+			});
 
 			var afterTransition = function() {
 				$new.css('pointer-events', 'auto');
-				isSliding = false;
+				// clickbuster.preventGhostClickAfterTransition();
 				fnAfterTransition(transition);
 				reinitscrollers($(currentScreen.anchor_id), revertTransition);
 			}
 			
-			function doTransition(transitionDesc, next) {
+			var doTransition = function(transitionDesc, next) {
 				var d = transitionDesc.shift();
 
 				d.from.forEach(function(e) {				
@@ -1423,10 +1487,10 @@ $(document).ready(function() {
 		doHref(url);
 	}
 
-	function runUserCode(f, _this, arguments, defRetVal) {
+	function runUserCode(f, _this, args, defRetVal) {
 		var ex;
 		try {
-			var val = f.apply(_this, arguments);
+			var val = f.apply(_this, args);
 			// Special case: user didn't provide return value, let's return default one
 			return (typeof val === 'undefined') ? defRetVal : val;
 		} catch (ex) {
@@ -1486,6 +1550,13 @@ $(document).ready(function() {
 	phoneui.showURL = function(url, openIn, options) {
 		openIn = openIn || "_self";
 		
+		options = options || {
+			showLocationBar: true,
+			showNavigationBar: true,
+			showAddress: true,
+			patchWindowClose: false
+		};
+		
 		// Android web view doesn't support PDF files, so adding a hack here
 		if (phoneui.cordovaAvailable() && 
 			device.platform === "Android" && 
@@ -1500,18 +1571,36 @@ $(document).ready(function() {
 				if (ChildBrowser.install)
 					ChildBrowser.install();
 			if (window.plugins && window.plugins.childBrowser) {
-				if (openIn === "_blank") {
-					if (device.platform === "Android") {
-						// open url in a browser, i.e. not using phonegap
-						window.plugins.childBrowser.openExternal(url, false);
-					} else {
-						window.open(url, "_blank");
-					}
+				if (openIn === "_system") {
+					return window.plugins.childBrowser.openExternal(url, false);
 				} else {
-					window.plugins.childBrowser.showWebPage(url, options);
+					var ref = window.plugins.childBrowser.showWebPage(url, options);
+					
+					if (options.patchWindowClose) {
+						var loadStopHandler = function() {
+							ref.removeEventListener("loadstop", loadStopHandler);
+						 	ref.executeScript({code: "window.close = function() { window.location = '/mobione/closeinappbrowser'; }; "}, function(dummy) {});
+						}
+						var loadStartHandler = function(event) {
+							if (event.url.match("mobione/closeinappbrowser")) {
+								ref.close();
+							}	 
+						}
+						var closeHandler = function() {
+							ref.removeEventListener("loadstart", loadStartHandler);
+							ref.removeEventListener("exit", closeHandler);
+						}
+						
+ 						ref.addEventListener("loadstart", loadStartHandler);
+						ref.addEventListener("loadstop", loadStopHandler);
+						ref.addEventListener("exit", closeHandler);						
+					}
+					
+					return ref;
 				}
 			} else {
-				window.open(url, "_blank");
+				// fallback, shouldn't happen
+				return window.open(url, "_blank");
 			}			
 		} else {
 			var win = window.open(url, "_blank");
@@ -1520,6 +1609,7 @@ $(document).ready(function() {
 					alert('Can not complete this action. Please disable the "Block Pop-ups" setting for your browser and try again.');
 				}
 			}
+			return win;
 		}
 	}
 	
@@ -1585,7 +1675,7 @@ $(document).ready(function() {
 		if (phoneui.cordovaAvailable() && window.plugins.emailComposer) {
 			window.plugins.emailComposer.showEmailComposer(subject, body, to, cc, bcc, isHTML);
 		} else {
-			phoneui.showURL("mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body));
+			phoneui.showURL("mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_system");
 		}
 	}	
 	
@@ -1597,7 +1687,7 @@ $(document).ready(function() {
 		if (!nextScreen.equals(currentScreen)) {
 			if (callPreTransition(nextScreen)) {
 				// Add timestamp
-				window.location.hash = nextScreen.id + ":" + ((+currentScreen.time) + 1);
+				window.location.hash = createAnchor(nextScreen, "NONE", ((+currentScreen.time) + 1));
 			}
 		}
 	}
@@ -1632,83 +1722,8 @@ $(document).ready(function() {
 	}
 
 	// === TC <audio> hack
-	var usePhoneGapAudio = phoneui._platform.usePhoneGapPlayer();
-
-	if (window['__tc_native_player'] || usePhoneGapAudio) {
-		var audioPlayer = usePhoneGapAudio ? {
-				createAudioElement : function() {
-					return {
-						canPlayType : function() {
-							return true;
-						},
-						play : function(id, src) {
-							this.media.play();
-							this.callbacks.onEvent("playing");
-							var lm;
-							var self = this;
-							this.playerTimer = setInterval(function() {
-								self.media.getCurrentPosition(function(pos) {
-									self.callbacks.timeupdate(pos, self.media._duration);
-									if (!lm) {
-										self.callbacks.onEvent("loadedmetadata");
-										lm = true;
-									}
-								});
-							}, 1000);
-						},
-						pause : function(id) {
-							this.media.pause();
-							this.callbacks.onEvent("pause");
-							clearInterval(this.playerTimer);
-						},
-						load : function(id, src) {
-							var self = this;
-							// hack for a hack:
-							document.addEventListener("deviceready", 
-								function() {
-									try 
-									{
-										var source = src.indexOf("file://") == 0 ? decodeURIComponent(src.substring(7)) : src;
-										var status = 0;
-										
-										self.media = new Media(
-											source, 
-											function() {
-												self.callbacks.onEvent("ended");
-												clearInterval(self.playerTimer);
-											}, 
-											function(error) {
-												if (phoneui.cordovaAvailable() && device.platform === "Android") {
-													if (status != Media.MEDIA_STOPPED) { // ENDED
-														// workaround for error:
-														// D/AudioPlayer(): AudioPlayer Error: pausePlaying() called during invalid state: 4
-														self.callbacks.onEvent("error");
-													}
-												} else {
-													self.callbacks.onEvent("error");	
-												}													
-											}, 
-											function(s) {
-												status = s;
-												console.log("Media status: " + s);
-											});
-									} catch (e) {
-										console.error(e);
-										//throw e;
-									}								
-								}, false); // deviceready
-
-						},
-						seek : function(t) {
-							this.media.seekTo(t * 1000);
-						},
-						init : function(id, callbacks) {
-							this.id = id;
-							this.callbacks = callbacks;
-						}
-					};
-				},
-			} : window['__tc_native_player'];
+	if (window['__tc_native_player']) {
+		var audioPlayer = window['__tc_native_player'];
 
 		// we're in TC
 		var createAudioElement = function() {
@@ -1754,7 +1769,7 @@ $(document).ready(function() {
 		// intercept creation of an audio element, patch it with our functions
 		document.__oldCreateElement = document.createElement;
 		document.createElement = function(el) {
-			if (el == 'audio') {
+			if (el.toLowerCase() == 'audio') {
 				return createAudioElement();
 			} else {
 				return document.__oldCreateElement(el);
@@ -1782,6 +1797,44 @@ $(document).ready(function() {
 		return fn.apply(this);
 	};
 	var preprocessTextAreas = FN_EMPTY; 
+	
+	var coordinates = [];
+	var lastTransition = 0;
+	var maxMoveX = screen.availWidth/10;
+	var maxMoveY = screen.availHeight/10;
+	var clickbuster = {
+		preventGhostClick: function(x, y) {
+			coordinates.push(x, y);
+			window.setTimeout(clickbuster.pop, 500);
+		},
+
+		/*
+		preventGhostClickAfterTransition: function() {
+			// lastTransition = timeMs();
+		},
+		*/
+
+		pop: function() {
+			coordinates.splice(0, 2);
+		},
+		
+		needToIgnore: function(eventX, eventY) {
+			if (timeMs() - lastTransition < 500) {
+				return true;
+			}
+			
+			var ignore = false;
+			for (var i = 0; i < coordinates.length; i += 2) {
+				var x = coordinates[i];
+				var y = coordinates[i + 1];
+				if (Math.abs(eventX - x) < maxMoveX && Math.abs(eventY - y) < maxMoveY) {
+					ignore = true;
+				}
+			}
+
+			return ignore;
+		}
+	};
 
 	// Check whether placeholders are supported for textarea
     if (!('placeholder' in $('<textarea>')[0])) {
@@ -1836,159 +1889,57 @@ $(document).ready(function() {
 	        }
 		});
 		
-		var playerId = "data-m1-audio-player";
-		
-		if ($(document).jPlayer && $("#" + playerId).size() == 0) {			
-			// first time call, lets create player node
-	
-			var playerNode = document.createElement("div");
-			playerNode.id = playerId;
-			$("body").append(playerNode);
-			var $player = $(playerNode); 
-			
-			function getPlayerContainer(p) {
-				return $(p.jPlayer("option", "cssSelectorAncestor"));
-			}
-			function getPlayerMedia(p) {
-				return getPlayerContainer(p).attr("data-m1-audio-url");
-			}
-			
-			$(document).ready(function(){
-				$player.jPlayer({
-				  ready: function () {
-					try {
-						var p = $(this);
-						p.bind($.jPlayer.event.error, function(e) {
-							console.log(e);
-							var $shader = $(document.createElement("DIV"));
-							$shader.css({
-								'position': 'absolute',
-								'width': '100%',
-								'height': '100%',
-								'background-color': 'rgb(200, 0, 0)',
-								'z-index': '1',
-								'opacity': '0.7',
-								'top': '0',
-								'left': '0'
-							});
-							$shader.appendTo(getPlayerContainer($player));
-							$shader.animate({ opacity: 0.075 }, 800, function() { $shader.remove(); });
-						});
-						p.bind($.jPlayer.event.warning, function(w) {
-							//console.log("warning: ");
-							//console.log(w);
-						});
-
-						p.bind($.jPlayer.event.ended, function(e) {
-							try {
-								var url = getPlayerMedia(p);
-								if (phoneui._platform.forceRemoteAudioRestart && url.indexOf(':') >= 0) {
-									p.jPlayer("setMedia", { mp3: url });								
-									
-									if (p.jPlayer("option", "loop")) {
-										p.jPlayer("play");
-									}
-								}
-							} catch (e) {
-								console.log("Error while resetting media.");
-								console.log(e);
-							}
-						});
-						
-						// 
-
-						// disable progress bar for infinite streams
-						p.bind($.jPlayer.event.loadedmetadata, function(e) {
-							var d = e.jPlayer.status.duration;
-							var $pb = getPlayerContainer($player).find(".jp-progress");
-							var $lt = getPlayerContainer($player).find(".jp-repeat");
-
-							if (d == Infinity || isNaN(d)) {
-								p.jPlayer("option", "loopEnabled", false);
-								$pb.addClass("jp-standard-progress-disabled");
-								$lt.addClass("jp-standard-loop-disabled");
+		// Init audio players ui
+		$(document).ready(function(){
+			if (typeof AudioPlayerWidget != "undefined") {
+				var initPlayers = function() {
+					$("div[data-m1-audio-url]", context).each(function() {
+						new AudioPlayerWidget($(this).attr("id"), true);				
+					});
+					
+					// compat layer
+					phoneui.activeAudioPlayer = function(widgetId) {
+						var player = widgetId  ? AudioPlayerWidget.fromWidget("#" + widgetId) : AudioPlayerWidget.active;
+						return {
+							jPlayer: function(verb, param1, param2) {
+								console.warn("jPlayer API is DEPRECATED and will be removed in future. Please use AudioPlayerWidget and phoneui.createMedia()");
 								
-								
-							} else {
-								p.jPlayer("option", "loopEnabled", true);
-								$pb.removeClass("jp-standard-progress-disabled");
-								$lt.removeClass("jp-standard-loop-disabled");
-
+								if (verb === "play") {
+									player.play();
+								} else if (verb === "pause") {
+									player.pause();
+								} else if (verb === "stop") {
+									player.getMedia().stop();
+								} else if (verb === "setMedia") {
+									player.setMedia(param1.mp3);
+								} else {
+									throw Error("Illegal command: " + verb);
+								} 
 							}
-						});
-
-						phoneui.addPostPageTransitionHandler(function() {
-				    		if (getPlayerContainer($player).attr("data-m1-audio-autostop") == "on")
-				    			$player.jPlayer("pause");
-				    	});
-					} catch (e) {
-						console.error(e);
-					}
-				  },
-				  errorAlerts: false,
-				  warningAlerts: false,
-				  supplied: "mp3",
-				  loop: false,
-				  cssSelectorAncestor: "#deadbeef",
-				  solution: "html",
-				  wmode: "window"
-				});
-			
-				function switchPlayerUI(p, container, play) {
-					var $currentContainer = getPlayerContainer(p);
-					if ($currentContainer.attr("id") != container.attr("id")) {
-						p.jPlayer("pause");						
-						//p.unbind(".jPlayerRepeat");
-						//p.unbind($.jPlayer.event.repeat + ".jPlayer");
-						
-						var currentTime = p.data("jPlayer").status.currentTime;
-						
-						$currentContainer.attr("data-m1-currentTime", currentTime);
-						$currentContainer.attr("data-m1-audio-repeat", p.jPlayer("option", "loop") ? "on" : "off");
-						
-						setTimeout(function() {
-							p.jPlayer("option", "cssSelectorAncestor", "#" + container.attr("id"));
-							p.jPlayer("option", "loopEnabled", true);
-							p.jPlayer("option", "loop", container.attr("data-m1-audio-repeat") === "on");
-							p.jPlayer("setMedia", { mp3: getPlayerMedia(p)});
-							
-							if (play) {
-								p.jPlayer("play", Number(container.attr("data-m1-currentTime")));
-							}
-						}, 0);
-					} else {
-						//if (play) {
-						//	p.jPlayer("play");
-					}
-					return $currentContainer;
-				}
+						};
+					};
+					
+					if (phoneui.cordovaAvailable() && device.platform === "Android") {
+						document.addEventListener("pause", function() {
+							AudioPlayerWidget.active.pause();
+						}, false);
+					}					
+				};
 				
-				var playerSet = false;
-			
-				// Init audio players
-				$("div[data-m1-audio-player-id]", context).each(function() {
-					try {					
-						var $playerContainer = $(this);
-						var url = $playerContainer.attr("data-m1-audio-url");
-						var autostart = $playerContainer.attr("data-m1-audio-autostart") == "on";
-	
-						if (!playerSet || autostart) {
-							switchPlayerUI($player, $playerContainer, autostart);
-							playerSet = true;
-						}
-												
-						$(".jp-play", $playerContainer).click(function() {
-							switchPlayerUI($player, $playerContainer, true);
-						});
-						$(".jp-pause", $playerContainer).css("display", "none");
-						$(".jp-repeat-off", $playerContainer).css("display", "none");
-						
-					} catch (e) {
-						console.error(e);
-					}
-				});
-			});
-		}
+				if (phoneui.cordovaAvailable()) {
+					document.addEventListener("deviceready", function() { initPlayers(); }, false);					
+				} else {
+					// we don't need to wait in web app
+					initPlayers();
+				}
+
+				phoneui.addPostPageTransitionHandler(function() {
+		    		if (AudioPlayerWidget.active.autostop)
+		    			AudioPlayerWidget.active.pause();
+		    	});
+
+			} // if AudioPlayerWidget != undefined
+		});		
 
 		// Video Players TC hack
 		if (window['__tc_native_player']) {
@@ -2024,21 +1975,21 @@ $(document).ready(function() {
 			var $thatRoot = $(this);
 			$thatRoot.bind("click", function(e) {
 				var $that = $(this);
-				var last = $that.data('lastClick');
-				if (!last || (last + 300) < timeMs()) {
+				if (!clickbuster.needToIgnore(e.clientX, e.clientY)) {
 					var inp = $("input", $that)[0];
 					if ($thatRoot.is("." + m1Design.css("radiobutton"))) {
 						inp.checked = true;
-						doClick($thatRoot);
+						doClick($thatRoot, event.clientX, event.clientY);
 					} else {
 						inp.checked = !inp.checked;
 					}
+					// Prevent host clicks - we've changed the state already 
+					clickbuster.preventGhostClick(e.clientX, e.clientY);
 	
 					// Fire "change" event manually
 					var evt = inp.ownerDocument.createEvent('HTMLEvents');
 					evt.initEvent('change', true, true);
 					inp.dispatchEvent(evt);
-					$that.data('lastClick', timeMs());
 				}
 			});
 		});
@@ -2054,6 +2005,7 @@ $(document).ready(function() {
 					vScroll : true,
 					hScrollbar : false,
 					vScrollbar : true,
+					// handleClick: false,
 					bounce: $(el).attr('data-bounce') == 'true',
 					// desktopCompatibility : true,
 					onBeforeScrollStart : function(e) {
@@ -2071,11 +2023,23 @@ $(document).ready(function() {
 							e.preventDefault();
 						}
 					},
-					onScrollMove : function(s) {
+					onScrollMove : function(e) {						
 						lastScrollTime = timeMs();
+
+						var sx, sy;
+						if (event.type === 'touchmove') {
+							sx = event.changedTouches[0].clientX;
+							sy = event.changedTouches[0].clientY;
+						} else {
+							sx = event.clientX;
+							sy = event.clientY;
+						}
+
+						if (el.myScroll.move) {
+							clickbuster.preventGhostClick(sx, sy);
+						}
 					},
 					onBeforeScrollMove : function(that, e) {
-						// debug.log(e.target);
 						clickeable = $('.' + m1Design.css("clickable"), context);
 
 						// Vadim.Ridosh: I can't remove "filter", otherwise bouncing effect is broken.
@@ -2099,31 +2063,29 @@ $(document).ready(function() {
 		/**
 		 * @return true if event is not processed and should be bubbled, false otherwise
 		 */
-		var doClick = function($that) {
-			var last = $that.data('lastClick');
-			if ((!last || (last + 300) < timeMs()) && ((lastScrollTime + 100) < timeMs())) {
+		var doClick = function($that, sx, sy) {
+			var ret = true;
+
+			if (!clickbuster.needToIgnore(sx, sy)) {
 				// Instead of firing doclick event just call doclick handler manually
 				var actionId = $that.attr('data-action-click-id');
-				if (actionId) {
-					runUserCode(m1Design.actions[actionId], $that, []);
-				}				
-				return !actionId;
-			}
-			return true;
-		}
-
-		var createEventSunbscription = function(evName, attrId) {
-			var elements = $("[" + attrId + "]", context);
-
-			eventHandlers[attrId] = eventHandlers[attrId] || function(event) {
-				var $that = $(this);
-				var actionId = $that.attr(attrId);
-				if (actionId) {
+				if (!!actionId) {
 					runUserCode(m1Design.actions[actionId], $that, []);
 				}
-			};
+				ret = !actionId;
+			}
+			
+			if (!ret) {
+				clickbuster.preventGhostClick(sx, sy);
+			}
 
-			elements.each(function(i, v) {
+			return ret;
+		}
+
+		function doBind(evName, $elements, attrId, fn) {
+			eventHandlers[attrId] = eventHandlers[attrId] || fn;
+
+			$elements.each(function(i, v) {
 				var element = $(this);
 				if (!element.data("m1-initialized-event-" + evName)) {
 					var ex;
@@ -2137,11 +2099,21 @@ $(document).ready(function() {
 			});
 		}
 
+		var createEventSunbscription = function(evName, attrId) {
+			doBind(evName, $("[" + attrId + "]", context), attrId, function(event) {
+				var $that = $(this);
+				var actionId = $that.attr(attrId);
+				if (actionId) {
+					runUserCode(m1Design.actions[actionId], $that, []);
+				}
+			});
+		}
+
 		createEventSunbscription('doclick', 'data-action-click-id');
 		createEventSunbscription('click', 'data-action-hard-click-id');
 		createEventSunbscription('change', 'data-action-change-id');
 
-		$("." + m1Design.css("hyperlink"), context).bind("doclick", function(event) {
+		doBind("click", $('.' + m1Design.css("hyperlink") + '.' + m1Design.css("clickable"), context), "hyperlinkClick", function(event) {		
 			var href = $(event.target).attr('href');
 			if (href) {
 				setNewLocation(href);
@@ -2149,11 +2121,11 @@ $(document).ready(function() {
 		});
 
 		// Support for elements that contain links but not clickable
-		$('.' + m1Design.css("hyperlink") + ':not(' + '.' + m1Design.css("clickable") + ')', context).click(function(event) {
+		doBind("click", $('.' + m1Design.css("hyperlink") + ':not(' + '.' + m1Design.css("clickable") + ')', context), "hlinkClickAction", function(event) {
 			event.preventDefault();
 			event.stopPropagation();
 
-			doClick($(this));
+			doClick($(event.target), event.clientX, event.clientY);
 		});
 
 		clickeable.each(function(i, v) {
@@ -2161,9 +2133,8 @@ $(document).ready(function() {
 			
 			if (!$this.data('m1-clickeable-initialized')) {
 				$this.bind((phoneui._platform.touchevents() ? "touchstart" : "mousedown"), function(event) {
-					if (!isSliding && !(event.originalEvent && event.originalEvent.phoneuiprocessed)) {
+					if (!(event.originalEvent && event.originalEvent.phoneuiprocessed)) {
 						var $that = $(this);
-						$that.data('ignoreNextClick', false);
 	
 						if (!$that.data('warmupStartTime') ||
 								(lastScrollTime >= + ($that.data('warmupStartTime')))) {
@@ -2182,15 +2153,7 @@ $(document).ready(function() {
 				});
 	
 				$this.bind("click", function(event) {
-					var $that = $(this);
-					if (!$that.data('ignoreNextClick')) {
-						return doClick($that);
-					}  else {
-						// clear this flag for future click event
-						$that.data('ignoreNextClick', false);
-						// doesn't bubble exactly this event, since its ignored
-						return false; 
-					}
+					return doClick($(this), event.clientX, event.clientY);
 				});
 	
 				$this.bind((phoneui._platform.touchevents() ? "touchcancel touchend" : "mouseleave mouseup"), function(event) {
@@ -2229,15 +2192,17 @@ $(document).ready(function() {
 	
 							if (click) {
 								if (!$that.hasClass(m1Design.css("iscroll-no-prevent-default"))) {
-									if (doClick($that)) {
-										// event was not processed, allow bubbling & 'click'
-										$that.data('ignoreNextClick', false);
-										return true;
-									} else {								
-										// we've processed event disable upcoming 'click' event and dissallow bubbling 
-										$that.data('ignoreNextClick', true);
-										return false;
+									var ret;
+									var sx, sy;
+									if (event.type === 'touchend') {
+										sx = event.originalEvent.changedTouches[0].clientX;
+										sy = event.originalEvent.changedTouches[0].clientY;
+									} else {
+										sx = event.originalEvent.clientX;
+										sy = event.originalEvent.clientY;
 									}
+
+									return doClick($(event.target), sx, sy);
 								}
 							}
 						}
@@ -2590,6 +2555,171 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
+
+/**
+ * Cordova Media API implementation using <audio> HTML5 tag.
+ */
+(function(parent) {
+	var MediaAudioImpl = function(mediaUrl, onEndedHandler, onErrorHandler, onStatusChangeHandler) {
+		this._audio = document.createElement("AUDIO");
+		this._audio.src = mediaUrl;
+		
+		var self = this;
+		
+		// mapping
+		
+		this.onPlay = function() {
+			self.onStatusChange(MediaAudioImpl.MEDIA_STARTING);
+		}
+		this.onPlaying = function() {
+			self.onStatusChange(MediaAudioImpl.MEDIA_RUNNING);
+		}
+		this.onPause = function() {
+			self.onStatusChange(MediaAudioImpl.MEDIA_PAUSED);
+		}
+
+		// external 
+		
+		this.onEnded = function() {
+			onEndedHandler && onEndedHandler();
+		}
+		
+		this.onError = function(error) {
+			onErrorHandler&& onErrorHandler(error);
+		}
+		
+		this.onStatusChange = function(status) {
+			onStatusChangeHandler && onStatusChangeHandler(status);
+		}
+		
+		this.onDurationChange = function() {
+			self.onStatusChange(MediaAudioImpl.MEDIA_DURATION_UPDATED);
+		}
+
+		this._audio.addEventListener("ended", this.onEnded);
+		this._audio.addEventListener("error", this.onError);
+		
+		this._audio.addEventListener("play", this.onPlay);
+		this._audio.addEventListener("playing", this.onPlaying);
+		this._audio.addEventListener("pause", this.onPause);
+		
+		this._audio.addEventListener("durationchange", this.onDurationChange);
+	}
+
+	MediaAudioImpl.prototype.play = function() {
+		this._audio.play();
+	}
+
+	MediaAudioImpl.prototype.pause = function() {
+		this._audio.pause();
+	}
+	
+	MediaAudioImpl.prototype.stop = function() {
+		// this doesn't work for network streams
+		//this.pause();
+		//this._audio.currentTime = 0;
+		
+		var src = this._audio.src;
+		this._audio.src = src;
+		
+		// emulating an event
+		var self = this;
+		setTimeout(function() {
+			self.onStatusChange(MediaAudioImpl.MEDIA_STOPPED);
+		}, 0);
+	}
+	
+	MediaAudioImpl.prototype.setVolume = function(vol) {
+		this._audio.volume = vol;
+	}	
+
+	MediaAudioImpl.prototype.seekTo = function(milliseconds) {
+		this._audio.currentTime = milliseconds / 1000;
+	}
+
+	MediaAudioImpl.prototype.getDuration = function() {
+		return this._audio.duration;
+	}
+
+	MediaAudioImpl.prototype.getCurrentPosition = function(succ, err) {	
+		succ(this._audio.currentTime);
+	}
+
+	MediaAudioImpl.prototype.release = function() {
+		this.pause();
+		
+		this._audio.removeEventListener("ended", this.onEnded);
+		this._audio.removeEventListener("error", this.onError);
+		
+		this._audio.removeEventListener("play", this.onPlay);
+		this._audio.removeEventListener("playing", this.onPlaying);
+		this._audio.removeEventListener("pause", this.onPause);
+		
+		this._audio.removeEventListener("durationchange", this.onDurationChange);
+		
+		this._audio = null;
+	}
+
+	// Media states
+	MediaAudioImpl.MEDIA_NONE = 0;
+	MediaAudioImpl.MEDIA_STARTING = 1;
+	MediaAudioImpl.MEDIA_RUNNING = 2;
+	MediaAudioImpl.MEDIA_PAUSED = 3;
+	MediaAudioImpl.MEDIA_STOPPED = 4;
+	MediaAudioImpl.MEDIA_DURATION_UPDATED = 5; // MobiOne Only!
+	MediaAudioImpl.MEDIA_MSG = ["None", "Starting", "Running", "Paused", "Stopped", "Duration Updated"];
+
+	// Media messages
+	MediaAudioImpl.MEDIA_STATE = 1;
+	MediaAudioImpl.MEDIA_DURATION = 2;
+	MediaAudioImpl.MEDIA_POSITION = 3;
+	MediaAudioImpl.MEDIA_ERROR = 9;
+
+	parent.MediaAudioImpl = MediaAudioImpl;
+	
+})(phoneui);
+
+/**
+ * Note: This API is provisional and might be changed in upcoming releases.
+ * 
+ * Create Media object (see Cordova Media API scecification) which works both on iOS and Android platforms.
+ * 
+ * @param {string} [mediaUrl] relative or absolute file/http url to the media.
+ * @param {function} [onSuccess] called when audio succesfully played to the end.
+ * @param {function} [onError] called in case of any error.
+ * @param {function} [onStatus] called on status changed.
+ * 
+ * @see http://cordova.apache.org/docs/en/2.9.0/cordova_media_media.md.html
+ */
+phoneui.createMedia = function(mediaUrl, onSuccess, onError, onStatus) {
+	if (phoneui.cordovaAvailable() && device.platform === "Android") {
+		var qualifyURL = function(url) {
+			var a = document.createElement('a');
+			a.href = url;
+			return a.href;
+		}
+
+		mediaUrl = qualifyURL(mediaUrl);
+		
+		// this is for /android_asset urls, TODO: make sure it works for sdcard
+		if (mediaUrl.indexOf("file://") == 0) {
+			mediaUrl = decodeURIComponent(mediaUrl.substring(7));
+		}
+		
+		return new Media(mediaUrl, onSuccess, onError, onStatus);
+	} else {
+		return new phoneui.MediaAudioImpl(mediaUrl, onSuccess, onError, onStatus);
+	}
+}
+
+/**
+ * Translates object ID, jQuery object selector, DOM object or jQuery object into jQuery object.
+ */
+phoneui.jqeval = function(selectorOrId) {
+	return (typeof(selectorOrId) == 'string' && selectorOrId.charAt(0) != '#') ? $("#" + selectorOrId) : $(selectorOrId);
+}
+
+
 /**
  * Page Transition Effects
  */
@@ -2726,7 +2856,7 @@ phoneui.showActivityDialog = function (text) {
 		var bars = 12;
 		var currOffs = 0;
 
-		function draw(ctx, offset) {
+		var draw = function(ctx, offset) {
 			clearFrame(ctx);
 			ctx.save();
 			ctx.translate(15, 15); // Center coordinates
@@ -2745,10 +2875,10 @@ phoneui.showActivityDialog = function (text) {
 			}
 			ctx.restore();
 		}
-		function clearFrame() {
+		var clearFrame = function() {
 			ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 		}
-		function nextAnimation(){
+		var nextAnimation = function(){
 			currOffs = (currOffs + 1) % bars;
 			draw(ctx, currOffs);
 		}
@@ -2817,8 +2947,8 @@ phoneui._extraPageInitializers = [];
  */
 phoneui.version = {
 	major : 2,
-	minor : 3,
-	maintenance : 2,
+	minor : 5,
+	maintenance : 0,
 	toString : function() {
 		return this.major + "." + this.minor + "." + this.maintenance;
 	}

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# hash LoT0b+KhhLQ9LgXSyXhTKFSJlDo=
+# hash QFb0XwAINVgarX70mKCymNj1Lko=
 # uuid 9e6f24fc7d0849cbb72dde0ec07da447
 
 images/Default.png
@@ -25,6 +25,9 @@ res/phoneui-map.js
 res/phoneui.js
 res/spinningwheel.css
 res/spinningwheel.js
+rte/cordova.js
+rte/readme.txt
+rte/rte.js
 UNT-Appv2.css
 UNT-Appv2.html
 UNT-Appv2.js
