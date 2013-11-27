@@ -342,15 +342,11 @@ li > .m1-list .m1-text{
 }
 
 .m1-font-3{
-  color: rgb(255,255,255);
+  color: rgb(0,0,0);
   font-family: Helvetica;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
-}
-
-.m1-shadow-1{
-  text-shadow: rgb(64,64,64) 1px 1px 1px;
 }
 
 .m1-list.m1-plain-list > .m1-list-header.m1-background-8{
@@ -367,7 +363,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-shadow-2{
+.m1-shadow-1{
   text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 

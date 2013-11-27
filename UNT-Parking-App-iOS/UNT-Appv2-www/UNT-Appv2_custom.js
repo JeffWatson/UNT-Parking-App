@@ -20,6 +20,7 @@ var directionsDisplay = null;
 var end = "33.208666,-97.145877";
 var directionsService = null;
 var mapPos = null;
+var id, start_date, stop_date, start_time, stop_time, promotion_name, promotion_value, lat, lon, vendor, link;
 phoneui.prePageTransition = function(currentScreenId,targetScreenId) {
   // add custom pre-transition code here
   // return false to terminate transition
@@ -43,6 +44,53 @@ phoneui.postPageTransition = function(newScreenId) {
 phoneui.postOrientationChange = function(newOrientation) {
   
 }
+//
+function loadJSONdoc(db) {
+    var xmlhttp;
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		
+		var JSONdata = JSON.parse(xmlhttp.responseText);
+		
+		for (var i in JSONdata)
+		{
+		var x = JSON.parse(i);
+		 id = JSONdata[x].id
+		 start_date = JSONdata[x].start_date;
+		 stop_date = JSONdata[x].stop_date;
+		 start_time = JSONdata[x].start_time;
+		 stop_time = JSONdata[x].stop_time;
+		 promotion_name = JSONdata[x].promotion_name;
+		 promotion_value = JSONdata[x].promotion_value;
+		 lat = JSONdata[x].lat;
+		 lon = JSONdata[x].lon;
+		 vendor = JSONdata[x].vendor;
+		 link = JSONdata[x].link;
+		 
+		 db.transaction(populateDB, errorCB, successCB);
+		
+		alert(id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link);
+		
+		//+ id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link
+		}
+	//	alert(xmlhttp.responseText);
+		//return xmlhttp.responseText;
+           // document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+        }
+    }
+
+    xmlhttp.open("GET", "http://students.cse.unt.edu/~jcw0227/apps/UNT-Parking-App/getdiscounts.php", true);
+    xmlhttp.send();
+}
 
 
     
@@ -52,7 +100,7 @@ phoneui.postOrientationChange = function(newOrientation) {
 function populateDB(tx) {
         //tx.executeSql('DROP TABLE IF EXISTS DEMO');
      tx.executeSql('CREATE TABLE IF NOT EXISTS  PROMOTIONS (id INTEGER PRIMARY KEY, start_date text, stop_date text, start_time text, stop_time text, promotion_name text, value text, lat number, lon number, link text);');
-    tx.executeSql("INSERT INTO PROMOTIONS values(null, 'start_date','stop_date','start_time','stop_time','promotion_name','value', 10, 25, 'link');");
+    tx.executeSql("INSERT OR REPLACE INTO PROMOTIONS values("+id+", '"+start_date+"','"+stop_date+"','"+start_time+"','"+stop_time+"','"+promotion_name+"','"+promotion_value+"', "+lat+", "+lon+", '"+link+"');");
     }
 
     // Query the database
@@ -64,8 +112,15 @@ function populateDB(tx) {
     // Query the success callback
     //
     function querySuccess(tx, results) {
-		alert("querySucess Function entered");
-        alert("Returned rows = " + results.rows.length);
+	//	alert("querySucess Function entered");
+		for(var j=0; j<results.rows.length; j++)
+		{
+		
+		// build List here
+		
+		// gets each longitude
+        alert("Returned rows = " + results.rows.item(j).lon);
+		}
         // this will be true since it was a select statement and so rowsAffected was 0
         if (!results.rowsAffected) {
             alert('No rows affected!');
@@ -141,7 +196,14 @@ var db = window.openDatabase("Promotions", "1.0", "Cordova Demo", 200000);
 
 // DB testing
 
- db.transaction(populateDB, errorCB, successCB);
+ 
+ //var JSON = loadJSONdoc();
+ loadJSONdoc(db);
+ //alert(JSON);
+ 
+ 
+ 
+ 
 		db.transaction(queryDB, errorCB);
 		
 		alert("DB query complete!");
