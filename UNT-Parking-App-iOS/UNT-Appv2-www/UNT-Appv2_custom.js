@@ -87,8 +87,11 @@ function loadJSONdoc(db) {
 		 promotion_nameArray[counter] = promotion_name;
 		 promotion_valueArray[counter] = promotion_value;
 		 
+<<<<<<< HEAD
 		// alert(promotion_nameArray[counter]);
 		 
+=======
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 		 
 		 
 		 
@@ -100,6 +103,7 @@ function loadJSONdoc(db) {
 		
 		//+ id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link
 		}
+<<<<<<< HEAD
 		//after JSON parsing
 		
 		
@@ -180,6 +184,10 @@ function loadJSONdoc(db) {
 	 
 });
 		
+=======
+		
+		//after JSON parsing
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 		
 		
 		
@@ -262,16 +270,98 @@ phoneui.documentReadyHandler = function() {
 //alert("pre DB open");
 var db = window.openDatabase("Promotions", "1.0", "Promotionsdb", 200000);
 alert("db opened");
+<<<<<<< HEAD
 
 loadJSONdoc(db);
+=======
+ 
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
  
 
  
  // route calculation
  
  
+<<<<<<< HEAD
  
 
+=======
+ alert("Calculating Route");
+ $('[id$=MapOfGarage]').gmapready(function(gmap) {
+ 
+ // initializing markers on map
+ 
+	
+	
+ 
+     
+  
+	
+	
+	for (var k=0; k<counter; k++){
+	
+		if (k==0) // sets current location marker first time through
+			{
+			if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showPosition)
+          };
+      function showPosition(position){
+		 myPos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		
+		var myPosMarker = new google.maps.Marker({ 
+		position:  myPos,
+        map: gmap,
+        title: 'Your Current Location', 
+        clickable: true
+		}); 
+		
+		
+        gmap.setCenter(myPos, 12);
+		//gmap.setCenter(posArray[3]);
+		};  
+			} 
+		
+		
+		markerArray[k] = new google.maps.Marker({ 
+        position:  posArray[k],
+        map: gmap,
+        title: "Promotion Name = " + promotion_nameArray[k] + "\nCurrent Promotion = " + promotion_valueArray[k], 
+        clickable: true
+		}); 
+		
+		/*infoWindowArray[k] = new google.maps.InfoWindow({
+		content: "Promotion Value = " + promotion_valueArray[k]
+		});
+		
+		alert(promotion_valueArray[k]);
+		
+	//	tempWindow = infoWindowArray[k];
+		//tempMarker = markerArray[k];
+		
+		google.maps.event.addListener(markerArray[k], 'click', function() {
+		infoWindowArray[k].open(gmap,markerArray[k]);
+		});*/
+		
+		
+		
+		}// end of for loop  
+		
+
+  
+
+
+ 
+  
+ 
+
+
+  
+   //gmap.setCenter(posArray[5]);
+ 
+ 
+ 
+ 
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 /*Old Route drawing function
  
       directionsDisplay = new google.maps.DirectionsRenderer();
@@ -298,11 +388,34 @@ loadJSONdoc(db);
         }); 
                
      };  */
+<<<<<<< HEAD
+=======
+	 
+	 
+
+	 
+	 
+});
+
+
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 
 // DB testing
 
  
  //var JSON = loadJSONdoc();
+<<<<<<< HEAD
+=======
+ loadJSONdoc(db);
+ //alert(JSON);
+ 
+ 
+ 
+ 
+		db.transaction(queryDB, errorCB);
+		
+		//alert("DB query complete!");
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 
 		
 		//alert("DB query complete!");

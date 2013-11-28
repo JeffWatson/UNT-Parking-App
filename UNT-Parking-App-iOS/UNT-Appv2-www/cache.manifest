@@ -1,6 +1,11 @@
 CACHE MANIFEST
+<<<<<<< HEAD
 # hash prsSv9LT8/lW3Q7qzjxTNnOJfdU=
 # uuid 9e6f24fc7d0849cbb72dde0ec07da447
+=======
+# hash EkokV8HUQDNNqhx+EXj/TFzES3Q=
+# uuid 0d7b8039416b47b0ae792673224aca01
+>>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
 
 images/Default.png
 images/pinstripes.png
