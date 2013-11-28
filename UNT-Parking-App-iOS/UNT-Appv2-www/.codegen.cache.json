@@ -5,7 +5,10 @@
     "m1_UNT_Appv2_tabBar_Settings:click": "action2",
     "m1_UNT_Appv2_tabBar_DiscountStatus:click": "action3",
     "m1_landing_back1:click": "action4",
-    "m1_UNT_Appv2_listItem1:click": "action5"
+    "m1_UNT_Appv2_listItem1:click": "action5",
+    "m1_list_listItem1:click": "action6",
+    "m1_list_back1:click": "action7",
+    "m1_UNT_Appv2_custom1:click": "action8"
   },
   "splashScreenHashes": {}
 }

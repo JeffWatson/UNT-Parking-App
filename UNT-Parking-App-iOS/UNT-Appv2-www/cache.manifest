@@ -1,14 +1,18 @@
 CACHE MANIFEST
-# hash CgUvBw94CrqG8jYq7nVH2ErEs/4=
+# hash 85e1Hpbq8v/ypu9Qh9VZnBL6knE=
 # uuid 9e6f24fc7d0849cbb72dde0ec07da447
 
 images/Default.png
 images/pinstripes.png
+res/images/backButton1.png
+res/images/backButton2.png
+res/images/backButton3.png
 res/images/checkboxOff.png
 res/images/checkboxOn.png
 res/images/homescreenPrompt.png
 res/images/icon.png
-res/images/marker1.png
+res/images/marker4.png
+res/images/marker5.png
 res/images/navigationBar.png
 res/images/sw-alpha-multi.png
 res/images/sw-alpha.png

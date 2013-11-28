@@ -85,11 +85,7 @@
     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="null"/>
     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
       <ComponentRef name="default"/>
-=======
-      <ComponentRef name="null"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
     </Property>
   </AccessibilityProperties>
   <AuxValues>
@@ -263,11 +259,7 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                 <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                 <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
                   <ComponentRef name="null"/>
-=======
-                  <ComponentRef name="default"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                 </Property>
               </AccessibilityProperties>
               <actual-rect x="284" y="155" width="21" height="21"/>
@@ -288,11 +280,7 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                 <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                 <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
                   <ComponentRef name="null"/>
-=======
-                  <ComponentRef name="default"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                 </Property>
               </AccessibilityProperties>
               <actual-rect x="284" y="125" width="21" height="21"/>
@@ -425,11 +413,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Settings"/>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
                       <ComponentRef name="null"/>
-=======
-                      <ComponentRef name="default"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                     </Property>
                   </AccessibilityProperties>
                   <actual-rect x="122" y="10" width="76" height="23"/>
@@ -597,9 +581,9 @@
               <Image content="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ&#xd;&#xa;bWFnZVJlYWR5ccllPAAAAdhJREFUeNqMU79LI0EU/ubtbnKlVbQ/9B/wmohiYWUnauGJESwPlDuw&#xd;&#xa;shESe1G5gyvs1D08NQmSFDaCf8hxGtKEKxJh119Jdnwzu5PskgP9wsvL++bNm/crQkoJhctKpdnp&#xd;&#xa;dodkECBkAIE+hBBK/s3PzWUMp++qLyUXpZJ8C41GQ54Xi248ACWiMf7e3rHUcHtXQ71eRy5/ovlj&#xd;&#xa;10Umk8FkNvv5vFT6Ze7ZvQCGsC2TLiwS2P0yo3kiQrvTwfDICKYmJpaK5bLD9CL1q5SRow3LYiEL&#xd;&#xa;NuvNn9eaHxsdxe+zMxxFmXDGC4kMTAqOQ9w8/pDKgPDj6yyenh7xaXxci0EQlUzxLiuknBQHcVg7&#xd;&#xa;SLN8+36FbruN+1YLzWZTS3xCsRJCrO9V8CFts64inVLlENsONg6qod6vJi+YMfJ49Kh8z5ee58mH&#xd;&#xa;B1++PD/KtR1Xa2UrXp0rRP6DY5RC6vxk1JbDrYXeb80LmfAfKIEERRI2MVc41VrZ5iwOeyAA2fq9&#xd;&#xa;cBcIJ/kVBN2AeRG9KpL+sWWPxmjB4WVSC0WWheXtI62VrXh1Hve3+y9TQhu4hdX/8sbuBfA974bX&#xd;&#xa;czoI/2GJ3Yg3DboXAr7v32hT9p0/shrC+9Hiu39eBRgASwD6XGjtw48AAAAASUVORK5CYII=&#xd;&#xa;" iconType="4" name="../AppData/Local/MobiOne Studio/MobiOne 2.3.2 (hot-fix 1)/Default.png"/>
             </Property>
             <Property name="Label" type="java.lang.String" value="Discount Status"/>
-            <Property name="Vertical Scrollbar" type="boolean" value="true"/>
-            <Property name="Content Area Height" type="int" value="511"/>
-            <Property name="Scroll Background" type="boolean" value="true"/>
+            <Property name="Vertical Scrollbar" type="boolean" value="false"/>
+            <Property name="Content Area Height" type="int" value="411"/>
+            <Property name="Scroll Background" type="boolean" value="false"/>
             <Property name="Bounce Effect" type="boolean" value="true"/>
             <Property name="Gradient" type="boolean" value="false"/>
             <Property name="Transparent" type="boolean" value="true"/>
@@ -609,288 +593,95 @@
             <AbsoluteConstraints CONSTRAINTS="N:0.0px:100.0%:0.0px|N:0.0px:100.0%:0.0px"/>
           </Constraints>
           <SubComponents>
-            <Container class="com.genuitec.mobione.designer.comp.iphone.PlainTable" name="list1">
+            <Container class="com.genuitec.mobione.designer.comp.iphone.CustomButton" name="custom1">
               <Properties>
-                <Property name="Id" type="java.lang.String" value="list1"/>
+                <Property name="Id" type="java.lang.String" value="custom1"/>
+                <Property name="Active Background Style" type="java.lang.String" value="GLOSS_EFFECT"/>
+                <Property name="Active Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="e1" red="0" type="rgb"/>
+                </Property>
+                <Property name="Active Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="c8" red="0" type="rgb"/>
+                </Property>
+                <Property name="Active Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 0%]"/>
+                </Property>
+                <Property name="Active Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="e1" red="0" type="rgb"/>
+                </Property>
+                <Property name="Active Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 100%]"/>
+                </Property>
+                <Property name="Active Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="e1" red="0" type="rgb"/>
+                </Property>
+                <Property name="Active Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 0]"/>
+                </Property>
+                <Property name="Active Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 100%]"/>
+                </Property>
+                <Property name="Text" type="java.lang.String" value="Click To Load Discounts"/>
+                <Property name="Font" type="java.awt.Font" editor="sun.beans.editors.FontEditor">
+                  <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,-64,0,0,0,0,0,24,0,0,0,1,112,116,0,9,72,101,108,118,101,116,105,99,97,120"/>
+                </Property>
+                <Property name="Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="Text Underline" type="boolean" value="false"/>
+                <Property name="Text Shadow Enabled" type="boolean" value="false"/>
+                <Property name="Text Shadow Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="40" green="40" red="40" type="rgb"/>
+                </Property>
+                <Property name="Text Shadow Offset" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
+                  <Point value="[0, -1]"/>
+                </Property>
+                <Property name="Active Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="Background Style" type="java.lang.String" value="SOLID"/>
+                <Property name="Background Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="6" green="be" red="6" type="rgb"/>
+                </Property>
+                <Property name="Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 0%]"/>
+                </Property>
+                <Property name="Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="6e" red="0" type="rgb"/>
+                </Property>
+                <Property name="Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 100%]"/>
+                </Property>
+                <Property name="Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="0" green="80" red="0" type="rgb"/>
+                </Property>
+                <Property name="Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 0]"/>
+                </Property>
+                <Property name="Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
+                  <Point value="[50%, 100%]"/>
+                </Property>
+                <Property name="Border Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color alpha="ff" blue="76" green="bb" red="7d" type="rgb"/>
+                </Property>
+                <Property name="Border Radius" type="int" value="8"/>
+                <Property name="Border Width" type="int" value="0"/>
+                <Property name="On Click" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
+                  <action className="com.genuitec.mobione.designer.comp.iphone.actions.ShowPageAction" link="relfile:list.mobi" title="Load URL" transition="DEFAULT"/>
+                </Property>
+                <Property name="Form Action" type="int" value="0"/>
+                <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
+                  <Link urlPath=""/>
+                </Property>
+                <Property name="Link Transition" type="int" value="6"/>
               </Properties>
-<<<<<<< HEAD
-              <actual-rect x="0" y="43" width="320" height="44"/>
-=======
-              <actual-rect x="0" y="43" width="320" height="88"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
+              <actual-rect x="0" y="43" width="320" height="369"/>
               <Constraints>
-                <AbsoluteConstraints CONSTRAINTS="N:0.0px:100.0%:0.0px|AL:43.0px"/>
+                <AbsoluteConstraints CONSTRAINTS="N:0.0px:320.0px:100.0%|N:43.0px:369.0px:100.0%"/>
               </Constraints>
-              <SubComponents>
-                <Container class="com.genuitec.mobione.designer.comp.iphone.TableRowStyled" name="listItem1">
-                  <Properties>
-                    <Property name="Id" type="java.lang.String" value="listItem1"/>
-                    <Property name="Highlight when active" type="boolean" value="true"/>
-                    <Property name="Active Background Style" type="java.lang.String" value="GRADIENT"/>
-                    <Property name="Active Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="e6" green="5b" red="2" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ed" green="8d" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Active Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="e6" green="5b" red="2" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Active Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="e6" green="5b" red="2" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Active Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Background Style" type="java.lang.String" value="SOLID"/>
-                    <Property name="Background Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="f5" green="f5" red="f5" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="f0" green="f0" red="f0" type="rgb"/>
-                    </Property>
-                    <Property name="Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0]"/>
-                    </Property>
-                    <Property name="Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="On Click" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
-                      <action title="(none)"/>
-                    </Property>
-                    <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-                      <Link urlPath="relfile:"/>
-                    </Property>
-                    <Property name="Link Transition" type="int" value="6"/>
-                  </Properties>
-                  <actual-rect x="0" y="0" width="320" height="44"/>
-                  <Constraints>
-                    <TableConstraints height="-42"/>
-                  </Constraints>
-                  <SubComponents>
-<<<<<<< HEAD
-                    <Component class="com.genuitec.mobione.designer.comp.iphone.Text" name="text4">
-                      <Properties>
-                        <Property name="Id" type="java.lang.String" value="text4"/>
-                        <Property name="Text" type="java.lang.String" value="Item"/>
-=======
-                    <Component class="com.genuitec.mobione.designer.comp.iphone.Text" name="TextList1">
-                      <Properties>
-                        <Property name="Id" type="java.lang.String" value="TextList1"/>
-                        <Property name="Text" type="java.lang.String" value="Discount 1"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
-                        <Property name="Font" type="java.awt.Font" editor="sun.beans.editors.FontEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,-120,0,0,0,0,0,17,0,0,0,1,112,116,0,9,72,101,108,118,101,116,105,99,97,120"/>
-                        </Property>
-                        <Property name="Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="Text Underline" type="boolean" value="false"/>
-                        <Property name="Text Shadow Enabled" type="boolean" value="false"/>
-                        <Property name="Text Shadow Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="40" green="40" red="40" type="rgb"/>
-                        </Property>
-                        <Property name="Text Shadow Offset" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-                          <Point value="[0, -1]"/>
-                        </Property>
-                        <Property name="Alignment" type="int" value="2"/>
-                        <Property name="Active Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
-                      <AccessibilityProperties>
-<<<<<<< HEAD
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Item"/>
-=======
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Discount 1"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
-                        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
-                        <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </AccessibilityProperties>
-<<<<<<< HEAD
-                      <actual-rect x="5" y="10" width="33" height="23"/>
-=======
-                      <actual-rect x="5" y="10" width="84" height="23"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
-                      <Constraints>
-                        <TableRowConstraints token="label" width="-42" height="-42" flexleft="false" flexright="true" flexwidth="false" flextop="true" flexbottom="true" flexheight="false"/>
-                      </Constraints>
-                    </Component>
-                    <Container class="com.genuitec.mobione.designer.comp.iphone.AccessoryImage" name="accessoryImage1">
-                      <Properties>
-                        <Property name="Id" type="java.lang.String" value="accessoryImage1"/>
-                        <Property name="On Click" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
-                          <action title="(none)"/>
-                        </Property>
-                        <Property name="Image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image content="" iconType="0" name="null"/>
-                        </Property>
-                        <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-                          <Link urlPath="relfile:"/>
-                        </Property>
-                        <Property name="Link Transition" type="int" value="6"/>
-                        <Property name="accessoryKindOrdinal" type="int" value="1"/>
-                        <Property name="stockIconName" type="java.lang.String" value="tableRowDisclosureIndicator.png"/>
-                      </Properties>
-                      <actual-rect x="306" y="15" width="9" height="13"/>
-                      <Constraints>
-                        <TableRowConstraints token="rightAccessory" width="-42" height="-42" flexleft="true" flexright="false" flexwidth="false" flextop="true" flexbottom="true" flexheight="false"/>
-                      </Constraints>
-                    </Container>
-                  </SubComponents>
-                </Container>
-<<<<<<< HEAD
-=======
-                <Container class="com.genuitec.mobione.designer.comp.iphone.TableRowStyled" name="listItem2">
-                  <Properties>
-                    <Property name="Id" type="java.lang.String" value="listItem2"/>
-                    <Property name="Highlight when active" type="boolean" value="true"/>
-                    <Property name="Active Background Style" type="java.lang.String" value="GRADIENT"/>
-                    <Property name="Active Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ed" green="8d" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Active Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="e6" green="5b" red="2" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Active Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="e6" green="5b" red="2" type="rgb"/>
-                    </Property>
-                    <Property name="Active Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Active Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Background Style" type="java.lang.String" value="SOLID"/>
-                    <Property name="Background Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient Start Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="f5" green="f5" red="f5" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0%]"/>
-                    </Property>
-                    <Property name="Gradient End Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="Gradient End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="Gloss Base Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color alpha="ff" blue="f0" green="f0" red="f0" type="rgb"/>
-                    </Property>
-                    <Property name="Gloss Start Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 0]"/>
-                    </Property>
-                    <Property name="Gloss End Point" type="com.genuitec.mobione.designer.comp.iphone.DimensionPoint" editor="com.genuitec.mobione.designer.formeditor.DimensionPointEditor">
-                      <Point value="[50%, 100%]"/>
-                    </Property>
-                    <Property name="On Click" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
-                      <action title="(none)"/>
-                    </Property>
-                    <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-                      <Link urlPath="relfile:"/>
-                    </Property>
-                    <Property name="Link Transition" type="int" value="6"/>
-                  </Properties>
-                  <actual-rect x="0" y="44" width="320" height="44"/>
-                  <Constraints>
-                    <TableConstraints height="-42"/>
-                  </Constraints>
-                  <SubComponents>
-                    <Component class="com.genuitec.mobione.designer.comp.iphone.Text" name="TextList2">
-                      <Properties>
-                        <Property name="Id" type="java.lang.String" value="TextList2"/>
-                        <Property name="Text" type="java.lang.String" value="Discount 2"/>
-                        <Property name="Font" type="java.awt.Font" editor="sun.beans.editors.FontEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,13,106,97,118,97,46,97,119,116,46,70,111,110,116,-59,-95,53,-26,-52,-34,86,115,3,0,6,73,0,25,102,111,110,116,83,101,114,105,97,108,105,122,101,100,68,97,116,97,86,101,114,115,105,111,110,70,0,9,112,111,105,110,116,83,105,122,101,73,0,4,115,105,122,101,73,0,5,115,116,121,108,101,76,0,20,102,82,101,113,117,101,115,116,101,100,65,116,116,114,105,98,117,116,101,115,116,0,21,76,106,97,118,97,47,117,116,105,108,47,72,97,115,104,116,97,98,108,101,59,76,0,4,110,97,109,101,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,0,0,0,1,65,-120,0,0,0,0,0,17,0,0,0,1,112,116,0,9,72,101,108,118,101,116,105,99,97,120"/>
-                        </Property>
-                        <Property name="Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="Text Underline" type="boolean" value="false"/>
-                        <Property name="Text Shadow Enabled" type="boolean" value="false"/>
-                        <Property name="Text Shadow Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="40" green="40" red="40" type="rgb"/>
-                        </Property>
-                        <Property name="Text Shadow Offset" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-                          <Point value="[0, -1]"/>
-                        </Property>
-                        <Property name="Alignment" type="int" value="2"/>
-                        <Property name="Active Text Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color alpha="ff" blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Discount 2"/>
-                        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
-                        <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </AccessibilityProperties>
-                      <actual-rect x="5" y="10" width="84" height="23"/>
-                      <Constraints>
-                        <TableRowConstraints token="label" width="-42" height="-42" flexleft="false" flexright="true" flexwidth="false" flextop="true" flexbottom="true" flexheight="false"/>
-                      </Constraints>
-                    </Component>
-                    <Container class="com.genuitec.mobione.designer.comp.iphone.AccessoryImage" name="accessoryImage2">
-                      <Properties>
-                        <Property name="Id" type="java.lang.String" value="accessoryImage2"/>
-                        <Property name="On Click" type="com.genuitec.mobione.designer.comp.iphone.actions.IAction" editor="com.genuitec.mobione.designer.comp.iphone.actions.ActionEditor">
-                          <action title="(none)"/>
-                        </Property>
-                        <Property name="Image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image content="" iconType="0" name="null"/>
-                        </Property>
-                        <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-                          <Link urlPath="relfile:"/>
-                        </Property>
-                        <Property name="Link Transition" type="int" value="6"/>
-                        <Property name="accessoryKindOrdinal" type="int" value="1"/>
-                        <Property name="stockIconName" type="java.lang.String" value="tableRowDisclosureIndicator.png"/>
-                      </Properties>
-                      <actual-rect x="306" y="15" width="9" height="13"/>
-                      <Constraints>
-                        <TableRowConstraints token="rightAccessory" width="-42" height="-42" flexleft="true" flexright="false" flexwidth="false" flextop="true" flexbottom="true" flexheight="false"/>
-                      </Constraints>
-                    </Container>
-                  </SubComponents>
-                </Container>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
-              </SubComponents>
             </Container>
             <Container class="com.genuitec.mobione.designer.comp.iphone.NavigationBar" name="Navigation-DiscountStatus">
               <Properties>
@@ -957,11 +748,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Parking Status"/>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
                       <ComponentRef name="null"/>
-=======
-                      <ComponentRef name="default"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                     </Property>
                   </AccessibilityProperties>
                   <actual-rect x="86" y="10" width="147" height="23"/>
@@ -1024,11 +811,7 @@
             <Container class="com.genuitec.mobione.designer.comp.iphone.Map" name="MapOfGarage">
               <Properties>
                 <Property name="Id" type="java.lang.String" value="MapOfGarage"/>
-<<<<<<< HEAD
                 <Property name="address" type="java.lang.String" value="Denver, colorado"/>
-=======
-                <Property name="address" type="java.lang.String" value="Denver, Colorado"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                 <Property name="showPin" type="boolean" value="false"/>
                 <Property name="pinColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color alpha="ff" blue="33" green="90" red="5" type="rgb"/>
@@ -1118,11 +901,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Map"/>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-<<<<<<< HEAD
                       <ComponentRef name="null"/>
-=======
-                      <ComponentRef name="default"/>
->>>>>>> 4506dc9b111b248a95a860ee12381376d5a2251b
                     </Property>
                   </AccessibilityProperties>
                   <actual-rect x="140" y="10" width="40" height="23"/>
