@@ -1,0 +1,307 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6b7dec59, pid=4868, tid=2240
+#
+# Java VM: Java HotSpot(TM) Client VM (11.2-b01 mixed mode windows-x86)
+# Problematic frame:
+# C  [cefjni.dll+0xec59]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0219a000):  JavaThread "main" [_thread_in_native, id=2240, stack(0x00090000,0x00190000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x000000c8
+
+Registers:
+EAX=0x6b7f5000, EBX=0x00000000, ECX=0x00000000, EDX=0x6bede004
+ESP=0x0018dfac, EBP=0x0018dfb8, ESI=0x00000000, EDI=0x00000000
+EIP=0x6b7dec59, EFLAGS=0x00210202
+
+Top of Stack: (sp=0x0018dfac)
+0x0018dfac:   4de921f8 47d199c4 0018dfd8 0018e05c
+0x0018dfbc:   6b7f50bb 456a0fe0 00000000 456a0fd0
+0x0018dfcc:   05f30401 00001d79 00001d78 0018dff8
+0x0018dfdc:   6b7ef9ea 4de8f198 00000001 4de92190
+0x0018dfec:   0018e004 7765e023 4de92198 456a0fe0
+0x0018dffc:   456a0fd0 4de92190 0018e018 76d314ad
+0x0018e00c:   36710000 00000000 4de92198 0018e058
+0x0018e01c:   6bdaab55 36710000 00000000 6bdaab74 
+
+Instructions: (pc=0x6b7dec59)
+0x6b7dec49:   5e 8b e5 5d c3 cc cc 55 8b ec 83 ec 08 57 8b f9
+0x6b7dec59:   83 bf c8 00 00 00 00 74 07 b0 01 5f 8b e5 5d c3 
+
+
+Stack: [0x00090000,0x00190000],  sp=0x0018dfac,  free space=1015k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [cefjni.dll+0xec59]
+C  [cefjni.dll+0x250bb]
+C  [cefjni.dll+0x1a03de]
+C  [cefjni.dll+0x1a0613]
+C  [cefjni.dll+0x37b081]
+C  [cefjni.dll+0x3a7ed9]
+C  [cefjni.dll+0x2c936b]
+C  [cefjni.dll+0x2c9523]
+C  [cefjni.dll+0x2c9e3b]
+C  [cefjni.dll+0x3180e5]
+C  [cefjni.dll+0x2c6c6f]
+C  [cefjni.dll+0x26ec73]
+C  [cefjni.dll+0x26efc4]
+C  [cefjni.dll+0x31b961]
+C  [cefjni.dll+0x31c6bb]
+C  [cefjni.dll+0x3f9795]
+C  [cefjni.dll+0x229caf]
+C  [cefjni.dll+0x22ac6a]
+C  [cefjni.dll+0x1adad6]
+C  [cefjni.dll+0x44b464]
+C  0x3bcc0227
+C  [cefjni.dll+0x5071f9]
+C  [cefjni.dll+0x512c9d]
+C  [cefjni.dll+0x50eaa4]
+C  [cefjni.dll+0x5366f1]
+C  0x3bcc0227
+C  [cefjni.dll+0x5071f9]
+C  [cefjni.dll+0x512c9d]
+C  [cefjni.dll+0x50eaa4]
+C  [cefjni.dll+0x38dc54]
+C  [cefjni.dll+0x38dd60]
+C  [cefjni.dll+0x38dde2]
+C  [cefjni.dll+0x265236]
+C  [cefjni.dll+0x35dc74]
+C  [cefjni.dll+0x35dd6f]
+C  [cefjni.dll+0x5405e]
+C  [cefjni.dll+0x54b69]
+C  [cefjni.dll+0x57442]
+C  [USER32.dll+0x162fa]
+C  [USER32.dll+0x16d3a]
+C  [USER32.dll+0x177c4]
+C  [USER32.dll+0x1788a]
+C  [swt-win32-3557.dll+0x3790]
+J  org.eclipse.swt.internal.win32.OS.DispatchMessageW(Lorg/eclipse/swt/internal/win32/MSG;)I
+J  org.eclipse.swt.widgets.Display.readAndDispatch()Z
+j  org.eclipse.swt.widgets.Display.release()V+67
+j  org.eclipse.swt.graphics.Device.dispose()V+50
+j  com.genuitec.mobione.developer.rcp.MobiOneApplication.start(Lorg/eclipse/equinox/app/IApplicationContext;)Ljava/lang/Object;+688
+j  org.eclipse.equinox.internal.app.EclipseAppHandle.run(Ljava/lang/Object;)Ljava/lang/Object;+135
+j  org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(Ljava/lang/Object;)Ljava/lang/Object;+103
+j  org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(Ljava/lang/Object;)Ljava/lang/Object;+29
+j  org.eclipse.core.runtime.adaptor.EclipseStarter.run(Ljava/lang/Object;)Ljava/lang/Object;+149
+j  org.eclipse.core.runtime.adaptor.EclipseStarter.run([Ljava/lang/String;Ljava/lang/Runnable;)Ljava/lang/Object;+183
+v  ~StubRoutines::call_stub
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J  org.eclipse.swt.internal.win32.OS.DispatchMessageW(Lorg/eclipse/swt/internal/win32/MSG;)I
+J  org.eclipse.swt.widgets.Display.readAndDispatch()Z
+j  org.eclipse.swt.widgets.Display.release()V+67
+j  org.eclipse.swt.graphics.Device.dispose()V+50
+j  com.genuitec.mobione.developer.rcp.MobiOneApplication.start(Lorg/eclipse/equinox/app/IApplicationContext;)Ljava/lang/Object;+688
+j  org.eclipse.equinox.internal.app.EclipseAppHandle.run(Ljava/lang/Object;)Ljava/lang/Object;+135
+j  org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(Ljava/lang/Object;)Ljava/lang/Object;+103
+j  org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(Ljava/lang/Object;)Ljava/lang/Object;+29
+j  org.eclipse.core.runtime.adaptor.EclipseStarter.run(Ljava/lang/Object;)Ljava/lang/Object;+149
+j  org.eclipse.core.runtime.adaptor.EclipseStarter.run([Ljava/lang/String;Ljava/lang/Runnable;)Ljava/lang/Object;+183
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+87
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+161
+j  org.eclipse.equinox.launcher.Main.invokeFramework([Ljava/lang/String;[Ljava/net/URL;)V+211
+j  org.eclipse.equinox.launcher.Main.basicRun([Ljava/lang/String;)V+114
+j  org.eclipse.equinox.launcher.Main.run([Ljava/lang/String;)I+4
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x36dc7800 JavaThread "Inactive RequestProcessor thread [Was:Default RequestProcessor/org.openide.explorer.propertysheet.PropertySheet$4]" daemon [_thread_blocked, id=524, stack(0x68470000,0x68570000)]
+  0x36dc8c00 JavaThread "Spinner Animation" daemon [_thread_blocked, id=1856, stack(0x558e0000,0x559e0000)]
+  0x36dc6800 JavaThread "Inactive RequestProcessor thread [Was:Default RequestProcessor/org.openide.explorer.propertysheet.PropertySheet$3]" daemon [_thread_blocked, id=3284, stack(0x443b0000,0x444b0000)]
+  0x36dc9400 JavaThread "Chromium Message Thread" daemon [_thread_in_native, id=4260, stack(0x3f4d0000,0x3f5d0000)]
+  0x02141800 JavaThread "Provisioning Event Dispatcher" daemon [_thread_blocked, id=3520, stack(0x392c0000,0x393c0000)]
+  0x36dc8000 JavaThread "Bundle File Closer" daemon [_thread_blocked, id=1048, stack(0x379c0000,0x37ac0000)]
+  0x36dc7400 JavaThread "Worker-2" [_thread_blocked, id=2688, stack(0x3d9a0000,0x3daa0000)]
+  0x36dc6c00 JavaThread "Worker-1" [_thread_blocked, id=188, stack(0x3cf40000,0x3d040000)]
+  0x36dc6000 JavaThread "Timer-1" daemon [_thread_blocked, id=5672, stack(0x3c690000,0x3c790000)]
+  0x02142c00 JavaThread "AWT-EventQueue-1" [_thread_blocked, id=5576, stack(0x3c550000,0x3c650000)]
+  0x02142400 JavaThread "Thread-11" [_thread_blocked, id=5416, stack(0x3c410000,0x3c510000)]
+  0x02142000 JavaThread "Thread-10" [_thread_blocked, id=4552, stack(0x3c310000,0x3c410000)]
+  0x0213fc00 JavaThread "TimerQueue" daemon [_thread_blocked, id=4776, stack(0x3c010000,0x3c110000)]
+  0x02140800 JavaThread "AWT-Shutdown" [_thread_blocked, id=4448, stack(0x39540000,0x39640000)]
+  0x0213f800 JavaThread "Active Reference Queue Daemon" daemon [_thread_blocked, id=2268, stack(0x39400000,0x39500000)]
+  0x34edc000 JavaThread "AWT-Windows" daemon [_thread_in_native, id=3144, stack(0x37880000,0x37980000)]
+  0x34edb400 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=2896, stack(0x37600000,0x37700000)]
+  0x35cf1400 JavaThread "com.jniwrapper.NativeResourceCollector" daemon [_thread_blocked, id=996, stack(0x36a20000,0x36b20000)]
+  0x35c77800 JavaThread "Native resource collecting loop" daemon [_thread_blocked, id=1584, stack(0x36720000,0x36820000)]
+  0x35c35400 JavaThread "CommandLineArgsServer" [_thread_in_native, id=5748, stack(0x35fb0000,0x360b0000)]
+  0x34f11000 JavaThread "Framework Event Dispatcher" daemon [_thread_blocked, id=6008, stack(0x35870000,0x35970000)]
+  0x34f19800 JavaThread "Start Level Event Dispatcher" daemon [_thread_blocked, id=4388, stack(0x35770000,0x35870000)]
+  0x34eb4000 JavaThread "State Data Manager" daemon [_thread_blocked, id=2776, stack(0x35670000,0x35770000)]
+  0x02115800 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=3108, stack(0x34bf0000,0x34cf0000)]
+  0x0210f000 JavaThread "CompilerThread0" daemon [_thread_blocked, id=3736, stack(0x34ab0000,0x34bb0000)]
+  0x0210e800 JavaThread "Attach Listener" daemon [_thread_blocked, id=4948, stack(0x34970000,0x34a70000)]
+  0x02103000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5016, stack(0x34830000,0x34930000)]
+  0x020ee000 JavaThread "Finalizer" daemon [_thread_blocked, id=2740, stack(0x346f0000,0x347f0000)]
+  0x020ecc00 JavaThread "Reference Handler" daemon [_thread_blocked, id=5508, stack(0x345b0000,0x346b0000)]
+=>0x0219a000 JavaThread "main" [_thread_in_native, id=2240, stack(0x00090000,0x00190000)]
+
+Other Threads:
+  0x020e8000 VMThread [stack: 0x344b0000,0x345b0000] [id=5024]
+  0x0211e000 WatcherThread [stack: 0x34d30000,0x34e30000] [id=1128]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 6784K, used 558K [0x041a0000, 0x048f0000, 0x06900000)
+  eden space 6080K,   5% used [0x041a0000, 0x041ee418, 0x04790000)
+  from space 704K,  34% used [0x04840000, 0x0487d7c8, 0x048f0000)
+  to   space 704K,   0% used [0x04790000, 0x04790000, 0x04840000)
+ tenured generation   total 88740K, used 85885K [0x06900000, 0x0bfa9000, 0x241a0000)
+   the space 88740K,  96% used [0x06900000, 0x0bcdf478, 0x0bcdf600, 0x0bfa9000)
+ compacting perm gen  total 52736K, used 52601K [0x241a0000, 0x27520000, 0x341a0000)
+   the space 52736K,  99% used [0x241a0000, 0x274fe5a8, 0x274fe600, 0x27520000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x0040d000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\mobione.exe
+0x77630000 - 0x777b0000 	C:\Windows\SysWOW64\ntdll.dll
+0x76d20000 - 0x76e30000 	C:\Windows\syswow64\kernel32.dll
+0x76690000 - 0x766d7000 	C:\Windows\syswow64\KERNELBASE.dll
+0x755f0000 - 0x756f0000 	C:\Windows\syswow64\USER32.dll
+0x763f0000 - 0x76480000 	C:\Windows\syswow64\GDI32.dll
+0x77600000 - 0x7760a000 	C:\Windows\syswow64\LPK.dll
+0x76ee0000 - 0x76f7d000 	C:\Windows\syswow64\USP10.dll
+0x76af0000 - 0x76b9c000 	C:\Windows\syswow64\msvcrt.dll
+0x76f80000 - 0x77020000 	C:\Windows\syswow64\ADVAPI32.dll
+0x76e30000 - 0x76e49000 	C:\Windows\SysWOW64\sechost.dll
+0x76c20000 - 0x76d10000 	C:\Windows\syswow64\RPCRT4.dll
+0x75090000 - 0x750f0000 	C:\Windows\syswow64\SspiCli.dll
+0x75080000 - 0x7508c000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x702a0000 - 0x7043e000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x76a80000 - 0x76ad7000 	C:\Windows\syswow64\SHLWAPI.dll
+0x75730000 - 0x75790000 	C:\Windows\system32\IMM32.DLL
+0x75350000 - 0x7541c000 	C:\Windows\syswow64\MSCTF.dll
+0x72000000 - 0x7200d000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\Common\plugins\org.eclipse.equinox.launcher.i18n.win32.win32.x86_4.2.0.v201201111650\eclipse_4201.dll
+0x748e0000 - 0x748e9000 	C:\Windows\system32\VERSION.dll
+0x6d800000 - 0x6da56000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\client\jvm.dll
+0x74860000 - 0x74892000 	C:\Windows\system32\WINMM.dll
+0x7c340000 - 0x7c396000 	C:\Windows\system32\MSVCR71.dll
+0x715d0000 - 0x7161c000 	C:\Windows\system32\apphelp.dll
+0x6d290000 - 0x6d298000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\hpi.dll
+0x77020000 - 0x77025000 	C:\Windows\syswow64\PSAPI.DLL
+0x6d7b0000 - 0x6d7bc000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\verify.dll
+0x6d330000 - 0x6d34f000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\java.dll
+0x6d7f0000 - 0x6d7ff000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\zip.dll
+0x728c0000 - 0x728d6000 	C:\Windows\system32\CRYPTSP.dll
+0x72880000 - 0x728bb000 	C:\Windows\system32\rsaenh.dll
+0x749d0000 - 0x749e7000 	C:\Windows\system32\USERENV.dll
+0x749c0000 - 0x749cb000 	C:\Windows\system32\profapi.dll
+0x6d610000 - 0x6d623000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\net.dll
+0x771f0000 - 0x77225000 	C:\Windows\syswow64\WS2_32.dll
+0x752e0000 - 0x752e6000 	C:\Windows\syswow64\NSI.dll
+0x738a0000 - 0x738dc000 	C:\Windows\system32\mswsock.dll
+0x737c0000 - 0x737c6000 	C:\Windows\System32\wship6.dll
+0x704e0000 - 0x704f0000 	C:\Windows\system32\NLAapi.dll
+0x74f80000 - 0x74f90000 	C:\Windows\system32\napinsp.dll
+0x74dd0000 - 0x74de2000 	C:\Windows\system32\pnrpnsp.dll
+0x73740000 - 0x73784000 	C:\Windows\system32\DNSAPI.dll
+0x74f70000 - 0x74f78000 	C:\Windows\System32\winrnr.dll
+0x704b0000 - 0x704d7000 	C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live\WLIDNSP.DLL
+0x70480000 - 0x704a1000 	C:\Program Files (x86)\Bonjour\mdnsNSP.dll
+0x73870000 - 0x7388c000 	C:\Windows\system32\Iphlpapi.DLL
+0x73860000 - 0x73867000 	C:\Windows\system32\WINNSI.DLL
+0x73890000 - 0x73895000 	C:\Windows\System32\wshtcpip.dll
+0x70470000 - 0x70476000 	C:\Windows\system32\rasadhlp.dll
+0x72240000 - 0x72278000 	C:\Windows\System32\fwpuclnt.dll
+0x6d630000 - 0x6d639000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\nio.dll
+0x72740000 - 0x7274f000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\configuration\org.eclipse.osgi\bundles\70\1\.cp\jWinHttp-1.0.0.dll
+0x72a90000 - 0x72ae8000 	C:\Windows\system32\WINHTTP.dll
+0x72a40000 - 0x72a8f000 	C:\Windows\system32\webio.dll
+0x75180000 - 0x752dc000 	C:\Windows\syswow64\ole32.dll
+0x737a0000 - 0x737b2000 	C:\Windows\system32\dhcpcsvc.DLL
+0x73790000 - 0x7379d000 	C:\Windows\system32\dhcpcsvc6.DLL
+0x723d0000 - 0x723d8000 	C:\Windows\system32\credssp.dll
+0x76a50000 - 0x76a77000 	C:\Windows\syswow64\CFGMGR32.dll
+0x360b0000 - 0x36109000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\configuration\org.eclipse.osgi\bundles\131\1\.cp\swt-win32-3557.dll
+0x77040000 - 0x770cf000 	C:\Windows\syswow64\OLEAUT32.dll
+0x76ba0000 - 0x76c1b000 	C:\Windows\syswow64\comdlg32.dll
+0x757a0000 - 0x763ea000 	C:\Windows\syswow64\SHELL32.dll
+0x76880000 - 0x76a38000 	C:\Windows\syswow64\WININET.dll
+0x75720000 - 0x75724000 	C:\Windows\syswow64\api-ms-win-downlevel-user32-l1-1-0.dll
+0x75790000 - 0x75795000 	C:\Windows\syswow64\api-ms-win-downlevel-advapi32-l1-1-0.dll
+0x76a40000 - 0x76a44000 	C:\Windows\syswow64\api-ms-win-downlevel-shlwapi-l1-1-0.dll
+0x76ae0000 - 0x76ae4000 	C:\Windows\syswow64\api-ms-win-downlevel-version-l1-1-0.dll
+0x76680000 - 0x76683000 	C:\Windows\syswow64\api-ms-win-downlevel-normaliz-l1-1-0.dll
+0x76d10000 - 0x76d13000 	C:\Windows\syswow64\normaliz.DLL
+0x76480000 - 0x76678000 	C:\Windows\syswow64\iertutil.dll
+0x70ed0000 - 0x70f50000 	C:\Windows\system32\uxtheme.dll
+0x723f0000 - 0x72403000 	C:\Windows\system32\dwmapi.dll
+0x00550000 - 0x00564000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\configuration\org.eclipse.osgi\bundles\131\1\.cp\swt-gdip-win32-3557.dll
+0x71870000 - 0x71a00000 	C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.18120_none_72d2e82386681b36\gdiplus.dll
+0x6afd0000 - 0x6b100000 	C:\Windows\system32\WindowsCodecs.dll
+0x4ad00000 - 0x4b547000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\Common\plugins\com.genuitec.mobione.webkit.swt_2.3.2.201304250842\icudt38.dll
+0x6b7d0000 - 0x6c0e2000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\Common\plugins\com.genuitec.mobione.webkit.swt_2.3.2.201304250842\cefjni.dll
+0x71fa0000 - 0x71ff1000 	C:\Windows\system32\WINSPOOL.DRV
+0x766e0000 - 0x76800000 	C:\Windows\syswow64\CRYPT32.dll
+0x75340000 - 0x7534c000 	C:\Windows\syswow64\MSASN1.dll
+0x723c0000 - 0x723c8000 	C:\Windows\system32\Secur32.dll
+0x72720000 - 0x7273e000 	C:\Windows\system32\t2embed.dll
+0x770d0000 - 0x771f0000 	C:\Windows\syswow64\urlmon.dll
+0x77030000 - 0x77034000 	C:\Windows\syswow64\api-ms-win-downlevel-ole32-l1-1-0.dll
+0x35090000 - 0x3509c000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\configuration\org.eclipse.osgi\bundles\10\1\.cp\lib\jniwrap.dll
+0x750f0000 - 0x75173000 	C:\Windows\syswow64\CLBCatQ.DLL
+0x6d000000 - 0x6d14a000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\awt.dll
+0x6d230000 - 0x6d284000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\fontmanager.dll
+0x36170000 - 0x36183000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\configuration\org.eclipse.osgi\bundles\6\1\.cp\lib\storage32.dll
+0x720e0000 - 0x7211c000 	C:\Windows\system32\oleacc.dll
+0x72870000 - 0x7287e000 	C:\Windows\system32\RpcRtRemote.dll
+0x72690000 - 0x726be000 	C:\Windows\system32\mlang.dll
+0x398c0000 - 0x39a83000 	C:\Windows\system32\d3d9.dll
+0x72750000 - 0x72756000 	C:\Windows\system32\d3d8thk.dll
+0x716f0000 - 0x717a9000 	C:\Windows\system32\aticfx32.dll
+0x72710000 - 0x7271b000 	C:\Windows\system32\atiu9pag.dll
+0x688b0000 - 0x68ccf000 	C:\Windows\system32\atiumdag.dll
+0x6c830000 - 0x6cc34000 	C:\Windows\system32\atiumdva.dll
+0x6d1a0000 - 0x6d1c3000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\dcpr.dll
+0x6d790000 - 0x6d798000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\MobiOne 2.3.2 (hot-fix 1)\jre\bin\sunmscapi.dll
+0x37d10000 - 0x37d31000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\Common\plugins\com.genuitec.pulse.client.common.shortcut.win32_4.3.0.v201205081320\jshortcut_3213.dll
+0x6b280000 - 0x6b29d000 	C:\Users\Hayden\AppData\Local\MobiOne Studio\Common\plugins\com.genuitec.pulse.client.common.shortcut.win32_4.3.0.v201205081320\jregistrykey_3213.dll
+0x70700000 - 0x70779000 	C:\Windows\system32\mscms.dll
+0x72090000 - 0x720c8000 	C:\Windows\system32\icm32.dll
+0x71bc0000 - 0x71bc5000 	C:\Windows\system32\msimg32.dll
+
+VM Arguments:
+jvm_args: -Xmx512m -XX:MaxPermSize=256m -Dosgi.instance.area.default=@user.home\.mobione\runtime 
+java_command: <unknown>
+Launcher Type: generic
+
+Environment Variables:
+CLASSPATH=.;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip
+PATH=C:/Users/Hayden/AppData/Local/MobiOne Studio/MobiOne 2.3.2 (hot-fix 1)/jre/bin/client;C:/Users/Hayden/AppData/Local/MobiOne Studio/MobiOne 2.3.2 (hot-fix 1)/jre/bin;C:/Users/Hayden/AppData/Local/MobiOne Studio/MobiOne 2.3.2 (hot-fix 1)/jre/lib/i386;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\12.0\DLLShared\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\QuickTime\QTSystem\;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\
+USERNAME=Hayden
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 18 Model 1 Stepping 0, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.1 Build 7601 Service Pack 1
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 18 model 1 stepping 0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, mmxext, 3dnow, 3dnowext, sse4a
+
+Memory: 4k page, physical 3648416k(1455760k free), swap 4194303k(4194303k free)
+
+vm_info: Java HotSpot(TM) Client VM (11.2-b01) for windows-x86 JRE (1.6.0_12-b04), built on Jan 17 2009 09:57:14 by "java_re" with MS VC++ 7.1
+
+time: Thu Nov 21 12:34:36 2013
+elapsed time: 2200 seconds
+

@@ -342,11 +342,15 @@ li > .m1-list .m1-text{
 }
 
 .m1-font-3{
-  color: rgb(0,0,0);
+  color: rgb(255,255,255);
   font-family: Helvetica;
   font-size: 15px;
   font-weight: bold;
   text-decoration: none;
+}
+
+.m1-shadow-1{
+  text-shadow: rgb(64,64,64) 1px 1px 1px;
 }
 
 .m1-list.m1-plain-list > .m1-list-header.m1-background-8{
@@ -363,7 +367,7 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-shadow-1{
+.m1-shadow-2{
   text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
@@ -631,40 +635,13 @@ body{
   width: 100.0%;
 }
 
-#m1-UNT-Appv2-TextList2{
+#m1-UNT-Appv2-text4{
   height: 23px;
   left: 5px;
   line-height: 23px;
   text-align: left;
   top: -3px;
-  width: 84px;
-}
-
-#m1-UNT-Appv2-accessoryImage2{
-  height: 13px;
-  line-height: 13px;
-  margin-left: auto;
-  right: 5px;
-  top: 15px;
-  width: 9px;
-}
-
-#m1-UNT-Appv2-listItem2{
-  height: 44px;
-  left: 0px;
-  line-height: 44px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-TextList1{
-  height: 23px;
-  left: 5px;
-  line-height: 23px;
-  text-align: left;
-  top: -3px;
-  width: 84px;
+  width: 33px;
 }
 
 #m1-UNT-Appv2-accessoryImage1{
@@ -686,9 +663,9 @@ body{
 }
 
 #m1-UNT-Appv2-list1{
-  height: 88px;
+  height: 44px;
   left: 0px;
-  line-height: 88px;
+  line-height: 44px;
   margin-right: 0px;
   top: 0px;
   width: auto;

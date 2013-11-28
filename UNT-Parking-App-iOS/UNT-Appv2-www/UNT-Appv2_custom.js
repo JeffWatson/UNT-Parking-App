@@ -14,16 +14,23 @@
  
  
 
-
+var dataReady = 0;
  var directions = null;
 var directionsDisplay = null;
 var end = "33.208666,-97.145877";
 var directionsService = null;
 var mapPos = null;
+var counter=0;
+var posArray = new Array(80);
+var markerArray = new Array(80);
+var infoWindowArray = new Array(80);
+var promotion_nameArray = new Array(80);
+var promotion_valueArray = new Array(80);
+var tempWindow;
+var tempMarker;
+var myPos;
 var id, start_date, stop_date, start_time, stop_time, promotion_name, promotion_value, lat, lon, vendor, link;
 phoneui.prePageTransition = function(currentScreenId,targetScreenId) {
-  // add custom pre-transition code here
-  // return false to terminate transition
   return true;
 }
 
@@ -58,7 +65,7 @@ function loadJSONdoc(db) {
 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		
+		counter = 0;
 		var JSONdata = JSON.parse(xmlhttp.responseText);
 		
 		for (var i in JSONdata)
@@ -76,15 +83,109 @@ function loadJSONdoc(db) {
 		 vendor = JSONdata[x].vendor;
 		 link = JSONdata[x].link;
 		 
+		 posArray[counter]= new google.maps.LatLng(lat, lon);
+		 promotion_nameArray[counter] = promotion_name;
+		 promotion_valueArray[counter] = promotion_value;
+		 
+		// alert(promotion_nameArray[counter]);
+		 
+		 
+		 
+		 
+		 counter = counter + 1;
+		 
 		 db.transaction(populateDB, errorCB, successCB);
 		
-		alert(id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link);
+		//alert(id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link);
 		
 		//+ id + start_date + stop_date + start_time + stop_time + promotion_name + promotion_value + lat + lon + vendor + link
 		}
-	//	alert(xmlhttp.responseText);
-		//return xmlhttp.responseText;
-           // document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+		//after JSON parsing
+		
+		
+		alert("Calculating Route");
+ $('[id$=MapOfGarage]').gmapready(function(gmap) {
+ 
+ // initializing markers on map
+
+
+	for (var k=0; k<counter; k++){
+	
+		if (k==0) // sets current location marker first time through
+			{
+			if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showPosition)
+          };
+      function showPosition(position){
+		 myPos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		
+		var myPosMarker = new google.maps.Marker({ 
+		position:  myPos,
+        map: gmap,
+        title: 'Your Current Location', 
+        clickable: true
+		}); 
+		
+		
+        gmap.setCenter(myPos, 12);
+		//gmap.setCenter(posArray[3]);
+		};  
+			} 
+		
+		
+		markerArray[k] = new google.maps.Marker({ 
+        position:  posArray[k],
+        map: gmap,
+        title: "Promotion Name = " + promotion_nameArray[k] + "\nCurrent Promotion = " + promotion_valueArray[k], 
+        clickable: true
+		}); 
+		
+		/*infoWindowArray[k] = new google.maps.InfoWindow({
+		content: "Promotion Value = " + promotion_valueArray[k]
+		});
+		
+		alert(promotion_valueArray[k]);
+		
+	//	tempWindow = infoWindowArray[k];
+		//tempMarker = markerArray[k];
+		
+		google.maps.event.addListener(markerArray[k], 'click', function() {
+		infoWindowArray[k].open(gmap,markerArray[k]);
+		});*/
+		
+		
+		
+		}// end of for loop  
+		
+
+  
+
+
+ 
+  
+ 
+
+
+  
+   //gmap.setCenter(posArray[5]);
+ 
+ 
+ 
+ 
+
+	 
+	 
+
+	 
+	 
+});
+		
+		
+		
+		
+		
+		
+		
         }
     }
 
@@ -119,11 +220,13 @@ function populateDB(tx) {
 		// build List here
 		
 		// gets each longitude
-        alert("Returned rows = " + results.rows.item(j).lon);
+      //  alert("Longitude = " + results.rows.item(j).promotion_value);
+		
+	//	alert("TEST - Number Of Rows  = " + results.rows.length);
 		}
         // this will be true since it was a select statement and so rowsAffected was 0
         if (!results.rowsAffected) {
-            alert('No rows affected!');
+         //   alert('No rows affected!');
             return false;
         }
         // for an insert statement, this property will return the ID of the last inserted row
@@ -139,8 +242,8 @@ function populateDB(tx) {
     // Transaction success callback
     //
     function successCB() {
-		alert("success Callback entered");
-       // var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+		//alert("success Callback entered");
+      
 
     }
 
@@ -156,15 +259,21 @@ function populateDB(tx) {
  */
 phoneui.documentReadyHandler = function() {
 // opens database
-var db = window.openDatabase("Promotions", "1.0", "Cordova Demo", 200000);
+//alert("pre DB open");
+var db = window.openDatabase("Promotions", "1.0", "Promotionsdb", 200000);
+alert("db opened");
+
+loadJSONdoc(db);
  
- 
+
  
  // route calculation
  
  
- alert("Calculating Route");
- $('[id$=MapOfGarage]').gmapready(function(gmap) {
+ 
+
+/*Old Route drawing function
+ 
       directionsDisplay = new google.maps.DirectionsRenderer();
       directionsDisplay.setMap(gmap);
 
@@ -186,29 +295,19 @@ var db = window.openDatabase("Promotions", "1.0", "Cordova Demo", 200000);
           if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
           }
-        });
+        }); 
                
-     };
-
-});
-
-
+     };  */
 
 // DB testing
 
  
  //var JSON = loadJSONdoc();
- loadJSONdoc(db);
- //alert(JSON);
- 
- 
- 
- 
-		db.transaction(queryDB, errorCB);
+
 		
-		alert("DB query complete!");
+		//alert("DB query complete!");
 
-
+db.transaction(queryDB, errorCB);
   
 }
 
