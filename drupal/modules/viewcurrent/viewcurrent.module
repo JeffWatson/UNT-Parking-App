@@ -26,27 +26,27 @@ function viewcurrent_menu() {
  */
 function viewcurrent_form() {
 
-$query = "SELECT * FROM promotions";
+$query = "SELECT * FROM promotions";// WHERE vendor = $GLOBALS['user']->name;
 $query_result = db_query($query);
-$header = array(
-  'Start Date',
-  'Stop Date',
-  'Start Time',
-  'Stop Time',
-  'Promotion Name',
-  'Promotion Value',
-  'Latitude',
-  'Longitiude',
-  'Vendor',
-  'Link',
-);
+// $header = array(
+//   'Start Date',
+//   'Stop Date',
+//   'Start Time',
+//   'Stop Time',
+//   'Promotion Name',
+//   'Promotion Value',
+//   'Latitude',
+//   'Longitiude',
+//   'Vendor',
+//   'Link',
+// );
 
 //$query_result->fetchAll();
-
 
 $table = array(
   '#theme' => 'table',
   '#header' => array(
+    t('ID'),
     t('Vendor'),
     t('Start Date'),
     t('Stop Date'),
@@ -54,13 +54,26 @@ $table = array(
     t('Stop Time'),
     t('Promotion Name'),
     t('Promotion Value'),
-    t('Edit'),
+    //t('Delete'),
   ),
   '#rows' => array(),
 );
 
+$form['actions']['delete'] = array(
+  '#type' => 'submit',
+  '#value' => t('Delete'),
+  '#submit' => array('node_form_delete_submit'),
+  );
+
+
+//drupal_render($form['submit']);
+
+//discount_removal($form, $form_state, $id);
+
+// possibly nested loop to create a unique form for each row by db id?
 foreach ($query_result as $row){
   $table['#rows'][] = array(
+    $row->id,
     $row->vendor,
     $row->start_date,
     $row->stop_date,
@@ -68,8 +81,11 @@ foreach ($query_result as $row){
     $row->stop_time,
     $row->promotion_name,
     $row->promotion_value,
+    //l(t('Delete'), 'yo', array('class' => 'about-link')),
   );
 }
+
+
 
 return $table;
 
