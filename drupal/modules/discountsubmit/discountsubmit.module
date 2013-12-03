@@ -82,6 +82,37 @@ function discountsubmit_discount_form($form_state) {
     '#datepicker_options' => array(), // Optional, as of 7.x-2.6+, used to pass in additional parameters from the jQuery Datepicker widget.
 
   );
+
+	$form['start_time'] = array(
+		'#type' => 'select',
+		'#title' => t('Start Time'),
+		'#options' => array(
+			'00:00' => t('00:00'),
+			'00:30' => t('00:30'),
+			'01:00' => t('01:00'),
+		),
+		'#default_value' => 0,
+		'#description' => t('Select a start time.'),
+	);
+	
+	//For loop to create every possible time
+	for ($i=0; $i < 25; $i++)
+	{
+			if ($i < 10)
+			{
+				$form['start_time']['#options'][t('0' . $i . ':' . '00')] = t('0' . $i . ':' . '00');
+			
+				if ($i != 24)
+					$form['start_time']['#options'][t('0' . $i . ':' . '30')] = t('0' . $i . ':' . '30');
+			} else if ($i >= 10) {
+				$form['start_time']['#options'][t($i . ':' . '00')] = t($i . ':' . '00');
+			
+				if ($i != 24)
+					$form['start_time']['#options'][t($i . ':' . '30')] = t($i . ':' . '30');
+			}
+
+	}
+
   //Days of week it's active
   $form['days'] = array(
     '#type' => 'checkboxes',
@@ -105,18 +136,33 @@ function discountsubmit_discount_form($form_state) {
     '#datepicker_options' => array(), 
 
   );
+  
+  $form['stop_time'] = array(
+		'#type' => 'select',
+		'#title' => t('Stop Time'),
+		'#options' => array(
+			'00:00' => t('00:00'),
+		),
+		'#default_value' => 0,
+		'#description' => t('Select a stop time.'),
+	);
+	
+	for ($i=0; $i < 25; $i++)
+	{
+			if ($i < 10)
+			{
+				$form['stop_time']['#options'][t('0' . $i . ':' . '00')] = t('0' . $i . ':' . '00');
+			
+				if ($i != 24)
+					$form['stop_time']['#options'][t('0' . $i . ':' . '30')] = t('0' . $i . ':' . '30');
+			} else if ($i >= 10) {
+				$form['stop_time']['#options'][t($i . ':' . '00')] = t($i . ':' . '00');
+			
+				if ($i != 24)
+					$form['stop_time']['#options'][t($i . ':' . '30')] = t($i . ':' . '30');
+			}
 
-  // $form['lat'] = array(
-  //   '#type' => 'textfield',
-  //   '#required' => TRUE,
-  //   '#title' => t('Latitude'),
-  // );
-
-  // $form['lon'] = array(
-  //   '#type' => 'textfield',
-  //   '#required' => TRUE,
-  //   '#title' => t('Longitude'),
-  // );
+	}
 
   $form['addr'] = array(
     '#type' => 'textfield',
@@ -134,9 +180,6 @@ function discountsubmit_discount_form($form_state) {
 
 function discountsubmit_discount_form_validate($form, &$form_state) {
   
-  //TODO: Calculate days of week and put in several database entries between two dates, this is a specific note.
-  //TODO: Split start date and stop date into date and time
-  //TODO: String typcast date and time Unnecessary?
 }
 
 function discountsubmit_discount_form_submit($form, &$form_state) {
@@ -219,8 +262,8 @@ function addressConvert($string){
   $fields = array(
     'start_date' => $form_state['values']['start_date'],
     'stop_date' => $form_state['values']['stop_date'],
-    'start_time' => '00:00',
-    'stop_time' => '24:00',
+    'start_time' => $form_state['values']['start_time'],
+    'stop_time' => $form_state['values']['stop_time'],
     'promotion_name' => $form_state['values']['promotion_name'],
     'promotion_value' => $form_state['values']['promotion_value'],
     'lat' => $cordinates['lat'],
