@@ -178,7 +178,7 @@
         </Property>
         <Property name="Form Action" type="int" value="0"/>
         <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-          <Link urlPath=""/>
+          <Link urlPath="relfile:"/>
         </Property>
         <Property name="Link Transition" type="int" value="6"/>
       </Properties>
@@ -268,7 +268,7 @@
         </Property>
         <Property name="Form Action" type="int" value="0"/>
         <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-          <Link urlPath=""/>
+          <Link urlPath="relfile:"/>
         </Property>
         <Property name="Link Transition" type="int" value="6"/>
       </Properties>
@@ -358,7 +358,7 @@
         </Property>
         <Property name="Form Action" type="int" value="0"/>
         <Property name="Link" type="com.genuitec.mobione.designer.comp.iphone.links.Link" editor="org.netbeans.modules.form.editors2.LinkEditor">
-          <Link urlPath=""/>
+          <Link urlPath="relfile:"/>
         </Property>
         <Property name="Link Transition" type="int" value="6"/>
       </Properties>

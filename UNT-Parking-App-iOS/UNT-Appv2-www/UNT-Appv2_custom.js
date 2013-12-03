@@ -20,6 +20,7 @@ var end = "33.208666,-97.145877";
 var directionsService = null;
 var mapPos = null;
 var counter=0;
+var indexArray = new Array(80);
 var posArray = new Array(80);
 var markerArray = new Array(80);
 var infoWindowArray = new Array(80);
@@ -254,6 +255,14 @@ function loadJSONdoc(db) {
         clickable: true
 		}); 
 		
+		 var infowindow1 = new google.maps.InfoWindow({
+		content: "Your Current Location"
+		});
+		
+		google.maps.event.addListener(myPosMarker, 'click', function() {
+		infowindow1.open(gmap,myPosMarker);
+		});
+		
 		
         gmap.setCenter(myPos, 12);
 		//gmap.setCenter(posArray[3]);
@@ -268,22 +277,30 @@ function loadJSONdoc(db) {
         clickable: true
 		}); 
 		
-		/*infoWindowArray[k] = new google.maps.InfoWindow({
-		content: "Promotion Value = " + promotion_valueArray[k]
+		indexArray[k] = k;
+
+		
+		
+		
+		infoWindowArray[k] = new google.maps.InfoWindow({
 		});
 		
-		alert(promotion_valueArray[k]);
 		
-	//	tempWindow = infoWindowArray[k];
-		//tempMarker = markerArray[k];
+		google.maps.event.addListener(markerArray[k], 'click', (function(k) {
+        return function() {
+          infoWindowArray[k].open(gmap,markerArray[k]);
+		  infoWindowArray[k].setContent( "<div>" +
+				"Promotion Name = " + promotion_nameArray[k] + "<br />" + "Promotion Value = " + promotion_valueArray[k]
+                 + "</div>");
+        }
+      })(k));
+	
 		
-		google.maps.event.addListener(markerArray[k], 'click', function() {
-		infoWindowArray[k].open(gmap,markerArray[k]);
-		});*/
 		
 		
 		
 		}// end of for loop  
+		
 		
 
 
@@ -302,7 +319,9 @@ function loadJSONdoc(db) {
 }
 
 
-    
+
+
+		
 
     // Populate the database 
    
