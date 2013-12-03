@@ -1,19 +1,3 @@
-.m1-tabbar{
-  overflow: hidden;
-}
-
-.m1-tabbar-button{
-  overflow: hidden;
-}
-
-.m1-tabbar-button-label{
-  text-align: center;
-}
-
-.m1-multipanel{
-  overflow: hidden;
-}
-
 .m1-root{
   -webkit-user-select: none;
   left: 0px;
@@ -305,26 +289,48 @@ li > .m1-list .m1-text{
   background-image: url(res/images/checkboxOn.png);
 }
 
-.m1-background-1{
+.m1-background-2{
   background-color: rgba(0,0,0,0);
   background-image: url(images/pinstripes.png);
   background-repeat: repeat;
 }
 
-.m1-border-1{
-  -webkit-border-radius: 0px;
+.m1-background-1,.m1-list.m1-plain-list > .m1-list-header.m1-background-4{
+  background-color: rgb(255,255,255);
+  background-image: none;
 }
 
-.m1-list.m1-plain-list > .m1-list-header.m1-background-4{
+.m1-font-1{
+  color: rgb(0,0,0);
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.m1-background-5{
+  background-color: rgb(5,144,51);
+  background-image: none;
+}
+
+.m1-font-2{
+  color: rgb(255,255,255);
+  font-family: Arial;
+  font-size: 19px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.m1-list.m1-plain-list > .m1-list-header.m1-background-6{
   background-color: rgba(0,0,0,0);
   background-image: 
     -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(177,188,205)), to(rgb(109,131,161)));
 }
 
-.m1-font-1{
-  color: rgb(91,100,118);
-  font-family: Helvetica;
-  font-size: 17px;
+.m1-font-3{
+  color: rgb(0,0,0);
+  font-family: Arial;
+  font-size: 24px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -333,28 +339,33 @@ li > .m1-list .m1-text{
   text-shadow: rgb(255,255,255) 1px 1px 1px;
 }
 
-.m1-background-2,.m1-list.m1-rounded-list > li.m1-background-5{
-  background-color: rgb(0,0,0);
-  background-image: none;
-}
-
-
-  .m1-list.m1-rounded-list > li.m1-clicked.m1-highlight.m1-background-6,.m1-list.m1-rounded-list > li.m1-unclicked.m1-highlight.m1-background-7
-  {
-  background-color: rgba(0,0,0,0);
-  background-image: 
-    -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(79,141,237)), to(rgb(2,91,230)));
-}
-
-.m1-font-2{
-  color: rgb(5,144,51);
+.m1-font-4{
+  color: rgb(0,0,0);
   font-family: Helvetica;
-  font-size: 17px;
+  font-size: 14px;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.m1-button.m1-font-5{
+  color: rgb(177,177,177);
+  font-family: Helvetica;
+  font-size: 12px;
   font-weight: bold;
   text-decoration: none;
 }
 
-.m1-button.m1-font-3{
+.m1-clicked.m1-button.m1-background-7{
+  background-color: rgba(0,0,0,0);
+  background-image: 
+    -webkit-gradient(linear, 50.0% 0.0, 50.0% 100.0%, from(rgb(71,248,71)), to(rgb(0,225,0)), color-stop(0.499,rgb(8,240,8)), color-stop(0.501,rgb(0,225,0)));
+}
+
+.m1-button.m1-shadow-2{
+  text-shadow: rgb(64,64,64) 0px -1px 1px;
+}
+
+.m1-button.m1-font-6{
   color: rgb(255,255,255);
   font-family: Helvetica;
   font-size: 12px;
@@ -362,8 +373,41 @@ li > .m1-list .m1-text{
   text-decoration: none;
 }
 
-.m1-button.m1-shadow-2{
-  text-shadow: rgb(64,64,64) 0px -1px 1px;
+.m1-border-1{
+  -webkit-border-radius: 0px;
+}
+
+.m1-font-7{
+  color: rgb(91,100,118);
+  font-family: Helvetica;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.m1-background-3,.m1-list.m1-rounded-list > li.m1-background-8{
+  background-color: rgb(0,0,0);
+  background-image: none;
+}
+
+
+  .m1-list.m1-rounded-list > li.m1-clicked.m1-highlight.m1-background-9,.m1-list.m1-rounded-list > li.m1-unclicked.m1-highlight.m1-background-10
+  {
+  background-color: rgba(0,0,0,0);
+  background-image: 
+    -webkit-gradient(linear, 50.0% 0.0%, 50.0% 100.0%, from(rgb(79,141,237)), to(rgb(2,91,230)));
+}
+
+.m1-font-8{
+  color: rgb(5,144,51);
+  font-family: Helvetica;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.m1-clicked.m1-button.m1-active-color-1,.m1-list > li.m1-clicked.m1-highlight div.m1-active-color-2{
+  color: rgb(255,255,255);
 }
 
 .m1-btn-1{
@@ -374,7 +418,7 @@ li > .m1-list .m1-text{
   -webkit-border-image: url(res/images/backButton2.png) 10 10 10 26 stretch stretch;
 }
 
-.m1-font-4{
+.m1-font-9{
   color: rgb(255,255,255);
   font-family: Helvetica;
   font-size: 19px;
@@ -392,94 +436,10 @@ li > .m1-list .m1-text{
   border-style: solid;
 }
 
-.m1-font-5{
-  color: rgb(255,255,255);
-  font-family: Arial;
-  font-size: 19px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 .m1-border-3{
   -webkit-border-radius: 0px;
   border-color: rgb(0,0,0);
   border-style: solid;
-}
-
-.m1-button.m1-font-6{
-  color: rgb(255,255,255);
-  font-family: Helvetica;
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.m1-clicked.m1-button.m1-background-9{
-  background-color: rgba(0,0,0,0);
-  background-image: 
-    -webkit-gradient(linear, 50.0% 0.0, 50.0% 100.0%, from(rgb(71,248,71)), to(rgb(0,225,0)), color-stop(0.499,rgb(8,240,8)), color-stop(0.501,rgb(0,225,0)));
-}
-
-.m1-clicked.m1-button.m1-active-color-2,.m1-list > li.m1-clicked.m1-highlight div.m1-active-color-1{
-  color: rgb(255,255,255);
-}
-
-.m1-background-3,.m1-list.m1-plain-list > .m1-list-header.m1-background-10{
-  background-color: rgb(255,255,255);
-  background-image: none;
-}
-
-.m1-font-7{
-  color: rgb(255,255,255);
-  font-family: Helvetica;
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.m1-shadow-3{
-  text-shadow: rgb(64,64,64) 1px 1px 1px;
-}
-
-.m1-font-8{
-  color: rgb(0,0,0);
-  font-family: Arial;
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.m1-font-9{
-  color: rgb(0,0,0);
-  font-family: Helvetica;
-  font-size: 14px;
-  font-weight: lighter;
-  text-decoration: none;
-}
-
-.m1-background-8,.m1-selected.m1-background-11{
-  background-color: rgb(5,144,51);
-  background-image: none;
-}
-
-.m1-selected.m1-border-4{
-  -webkit-border-radius: 3px;
-}
-
-.m1-font-10{
-  color: rgb(177,177,177);
-  font-family: Arial;
-  font-size: 11px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.m1-selected.m1-font-11{
-  color: rgb(255,255,255);
-  font-family: Arial;
-  font-size: 11px;
-  font-weight: bold;
-  text-decoration: none;
 }
 
 .m1-preload-images-1{
@@ -513,276 +473,40 @@ body{
   width: 0px;
 }
 
-#m1-UNT-Appv2-tabBar-Settings-label{
-  height: 12px;
-  left: 0px;
-  line-height: 12px;
-  margin-right: 0px;
-  top: 15px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-tabBar-Settings-img{
-  height: 16px;
-  left: 42px;
-  top: 7px;
-  width: 16px;
-}
-
-#m1-UNT-Appv2-tabBar-Settings{
-  height: 43px;
-  left: 215px;
-  top: -83px;
-  width: 100px;
-}
-
-#m1-UNT-Appv2-tabBar-DiscountStatus-label{
-  height: 12px;
-  left: 0px;
-  line-height: 12px;
-  margin-right: 0px;
-  top: 15px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-tabBar-DiscountStatus-img{
-  height: 16px;
-  left: 42px;
-  top: 7px;
-  width: 16px;
-}
-
-#m1-UNT-Appv2-tabBar-DiscountStatus{
-  height: 43px;
-  left: 109px;
-  top: -40px;
-  width: 100px;
-}
-
-#m1-UNT-Appv2-tabBar-Map-label{
-  height: 12px;
-  left: 0px;
-  line-height: 12px;
-  margin-right: 0px;
-  top: 15px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-tabBar-Map-img{
-  height: 16px;
-  left: 42px;
-  top: 7px;
-  width: 16px;
-}
-
-#m1-UNT-Appv2-tabBar-Map{
-  height: 43px;
-  left: 3px;
-  top: 3px;
-  width: 100px;
-}
-
-#m1-UNT-Appv2-tabBar{
+#m1-UNT-Appv2-custom3{
+  -webkit-border-radius: 4px;
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
   height: 49px;
-  left: 0px;
+  left: 212px;
   line-height: 49px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Promotions2{
-  height: 21px;
-  left: 284px;
-  line-height: 21px;
-  top: -14px;
-  width: 21px;
-}
-
-#m1-UNT-Appv2-Parking{
-  height: 21px;
-  left: 284px;
-  line-height: 21px;
-  top: -23px;
-  width: 21px;
-}
-
-#m1-UNT-Appv2-NotificationsHeader-label{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 45px;
-  left: 8px;
-  line-height: 29px;
-  margin-right: 0px;
-  top: 8px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-NotificationsHeader{
-  height: 45px;
-  left: 0px;
-  line-height: 29px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-NotificationsList{
-  height: 45px;
-  left: 0px;
-  line-height: 45px;
-  margin-right: 0px;
-  top: -28px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-text1{
-  height: 23px;
-  left: 122px;
-  line-height: 23px;
   text-align: center;
-  top: 10px;
-  width: 76px;
+  top: -98px;
+  width: 108px;
 }
 
-#m1-UNT-Appv2-Navigation-Settings{
-  height: 43px;
-  left: 0px;
-  line-height: 43px;
-  margin-right: 0px;
-  top: -60px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-listHeader2-label{
+#m1-UNT-Appv2-custom2{
+  -webkit-border-radius: 4px;
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-listHeader2{
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Discounts{
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 90px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-listHeader3-label{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-listHeader3{
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Promotions{
-  height: 30px;
-  left: 0px;
-  line-height: 30px;
-  margin-right: 0px;
-  top: 150px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Settings-box-scroller{
-  border-top-color: transparent;
-  border-width: 1px 0px 0px 0px;
-  height: 411px;
-  left: 0px;
-  line-height: 40px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Settings-box{
-  height: 411px;
-  left: 0px;
-  line-height: 411px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Settings{
-  height: 100.0%;
-  left: 0px;
-  top: 0px;
-  width: 100.0%;
+  height: 49px;
+  left: 107px;
+  line-height: 49px;
+  text-align: center;
+  top: -49px;
+  width: 109px;
 }
 
 #m1-UNT-Appv2-custom1{
   -webkit-border-radius: 4px;
   border-top-color: transparent;
   border-width: 1px 0px 0px 0px;
-  height: 369px;
+  height: 49px;
   left: 0px;
-  line-height: 369px;
+  line-height: 49px;
   text-align: center;
   top: 0px;
-  width: 320px;
-}
-
-#m1-UNT-Appv2-text3{
-  height: 23px;
-  left: 86px;
-  line-height: 23px;
-  text-align: center;
-  top: 10px;
-  width: 147px;
-}
-
-#m1-UNT-Appv2-Navigation-DiscountStatus{
-  height: 43px;
-  left: 0px;
-  line-height: 43px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-DiscountStatus-box{
-  height: 411px;
-  left: 0px;
-  line-height: 411px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-DiscountStatus{
-  height: 100.0%;
-  left: 0px;
-  top: 0px;
-  width: 100.0%;
+  width: 115px;
 }
 
 #m1-UNT-Appv2-MapOfGarage{
@@ -818,31 +542,6 @@ body{
   height: 43px;
   left: 0px;
   line-height: 43px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Map-box{
-  height: 411px;
-  left: 0px;
-  line-height: 411px;
-  margin-right: 0px;
-  top: 0px;
-  width: auto;
-}
-
-#m1-UNT-Appv2-Map{
-  height: 100.0%;
-  left: 0px;
-  top: 0px;
-  width: 100.0%;
-}
-
-#m1-UNT-Appv2-multiPage1{
-  height: 411px;
-  left: 0px;
-  line-height: 411px;
   margin-right: 0px;
   top: 0px;
   width: auto;
@@ -1008,11 +707,172 @@ body{
   width: auto;
 }
 
+#m1-settings-settings-button{
+  -webkit-border-radius: 4px;
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 49px;
+  left: 212px;
+  line-height: 49px;
+  text-align: center;
+  top: 123px;
+  width: 108px;
+}
+
+#m1-settings-discount-button{
+  -webkit-border-radius: 4px;
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 49px;
+  left: 107px;
+  line-height: 49px;
+  text-align: center;
+  top: 172px;
+  width: 109px;
+}
+
+#m1-settings-map-button{
+  -webkit-border-radius: 4px;
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 49px;
+  left: 0px;
+  line-height: 49px;
+  text-align: center;
+  top: 221px;
+  width: 115px;
+}
+
+#m1-settings-Promotions-checkbox{
+  height: 21px;
+  left: 284px;
+  line-height: 21px;
+  top: -14px;
+  width: 21px;
+}
+
+#m1-settings-Discounts-checkbox{
+  height: 21px;
+  left: 284px;
+  line-height: 21px;
+  top: -23px;
+  width: 21px;
+}
+
+#m1-settings-listHeader3-label{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 45px;
+  left: 8px;
+  line-height: 29px;
+  margin-right: 0px;
+  top: 8px;
+  width: auto;
+}
+
+#m1-settings-listHeader3{
+  height: 45px;
+  left: 0px;
+  line-height: 29px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-settings-list3{
+  height: 45px;
+  left: 0px;
+  line-height: 45px;
+  margin-right: 0px;
+  top: -28px;
+  width: auto;
+}
+
+#m1-settings-text1{
+  height: 23px;
+  left: 122px;
+  line-height: 23px;
+  text-align: center;
+  top: 10px;
+  width: 76px;
+}
+
+#m1-settings-navigation-settings{
+  height: 43px;
+  left: 0px;
+  line-height: 43px;
+  margin-right: 0px;
+  top: -60px;
+  width: auto;
+}
+
+#m1-settings-listHeader2-label{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-settings-listHeader2{
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-settings-Discounts{
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 90px;
+  width: auto;
+}
+
+#m1-settings-listHeader1-label{
+  border-top-color: transparent;
+  border-width: 1px 0px 0px 0px;
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-settings-listHeader1{
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 0px;
+  width: auto;
+}
+
+#m1-settings-Promotions{
+  height: 30px;
+  left: 0px;
+  line-height: 30px;
+  margin-right: 0px;
+  top: 150px;
+  width: auto;
+}
+
 #m1-landing{
   display: none;
 }
 
 #m1-list{
+  display: none;
+}
+
+#m1-settings{
   display: none;
 }
 
