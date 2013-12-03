@@ -85,7 +85,7 @@
     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="null"/>
     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-      <ComponentRef name="null"/>
+      <ComponentRef name="default"/>
     </Property>
   </AccessibilityProperties>
   <AuxValues>
@@ -162,7 +162,7 @@
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Custom List"/>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
             <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-              <ComponentRef name="null"/>
+              <ComponentRef name="default"/>
             </Property>
           </AccessibilityProperties>
           <actual-rect x="75" y="9" width="170" height="25"/>
@@ -411,7 +411,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Item"/>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="null"/>
                     <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
-                      <ComponentRef name="null"/>
+                      <ComponentRef name="default"/>
                     </Property>
                   </AccessibilityProperties>
                   <actual-rect x="18" y="10" width="33" height="23"/>

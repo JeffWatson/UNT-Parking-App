@@ -8,7 +8,11 @@
     "m1_UNT_Appv2_listItem1:click": "action5",
     "m1_list_listItem1:click": "action6",
     "m1_list_back1:click": "action7",
-    "m1_UNT_Appv2_custom1:click": "action8"
+    "m1_UNT_Appv2_custom1:click": "action8",
+    "m1_settings_map_button:click": "action9",
+    "m1_settings_discount_button:click": "action10",
+    "m1_UNT_Appv2_custom2:click": "action11",
+    "m1_UNT_Appv2_custom3:click": "action12"
   },
   "splashScreenHashes": {}
 }

@@ -29,6 +29,7 @@ var tempWindow;
 var tempMarker;
 var myPos;
 var id, start_date, stop_date, start_time, stop_time, promotion_name, promotion_value, lat, lon, vendor, link;
+var yourLocIcon = new google.maps.MarkerImage("http://www.googlemapsmarkers.com/v1/009900/");
 phoneui.prePageTransition = function(currentScreenId,targetScreenId) {
 //alert("prePage Entered");
 
@@ -247,6 +248,8 @@ function loadJSONdoc(db) {
 		var myPosMarker = new google.maps.Marker({ 
 		position:  myPos,
         map: gmap,
+		animation: google.maps.Animation.DROP,
+		icon: yourLocIcon,
         title: 'Your Current Location', 
         clickable: true
 		}); 
